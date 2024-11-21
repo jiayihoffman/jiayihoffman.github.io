@@ -19,7 +19,7 @@ In this blog, I will show you how to install the RTSP streaming service on a Rad
 
 ## Radio-controlled Car
 
-The RTSP streaming service will be installed on a Raspberry Pi with the Pi Camera. Therefore, the first step is to find an RC car with space for the Raspberry Pi and camera. 
+The RTSP streaming service will be installed on a Raspberry Pi with the Pi Camera. Therefore, the first step is to find a RC car with space for the Raspberry Pi and camera. 
 
 In a local hobby shop, I found one like this. It is called the "Mojave Grom 4X4 Desert Truck" from Arrma RC. The truck is about one foot long, half a foot wide, and a half foot tall. It is a good size to fit in the Raspberry Pi. The truck has a radio receiver controlling the wheel's rotation and turning. Besides the truck, the set comes with a Spektrum Radio control, a LiPO battery, and a USB charger. The truck is ready to run once the battery is charged. The whole set costs $149.99, which I think is reasonably priced. 
 
@@ -29,7 +29,7 @@ This RC truck is pretty durable. I occasionally drove it into a wall or a curb, 
 
 ## Upgrade the RC truck with a Camera
 
-Now, it is time to upgrade the RC truck. The truck's removable outer shell is handy when I modify it. I removed the shell, removed the "drivers," and replaced them with the Raspberry Pi and the Pi camera.
+Now, it is time to upgrade the RC truck. The truck's removable outer shell is handy when I modify it. I removed the shell and the "drivers", and replaced them with the Raspberry Pi and the Pi camera.
 
 ![RC_PI_1](/assets/IMG_2724.jpeg)
 
@@ -37,7 +37,7 @@ Now, it is time to upgrade the RC truck. The truck's removable outer shell is ha
 
 ### Raspberry Pi
 
-I am using Raspberry Pi 5 with the Pi Camera 3. Raspberry Pi 5 is the latest generation of Pi with 2 to 3x the speed of the previous generation. The Camera 3 is also new, released in 2023, after seven years of long-awaited updates to the Camera 2. The Raspberry Pi and its camera can be purchased from Amazon or the PiShop. The Raspberry Pi 5's camera port is 15 Pin, so be sure to get the ribbon cable that has 15 Pin on one end and 22 Pin on the other end. 
+I am using Raspberry Pi 5 with the Pi Camera 3. Raspberry Pi 5 is the latest generation of Pi with 3x the speed of the previous generation. The Camera 3 is also new, released in 2023, after seven years of long-awaited updates to the Camera 2. The Raspberry Pi and its camera can be purchased from Amazon or the PiShop. The Raspberry Pi 5's camera port is 15 Pin, so be sure to get the ribbon cable that has 15 Pin on one end and 22 Pin on the other end. 
 
 The Raspberry Pi OS I installed is Debian version 12, nicknamed Bookworm. The OS is installed on the mini SD card using "Raspberry Pi Imager". In the Imager, I chose "Raspberry Pi 5" as the "Raspberry Pi Device" option and "64-bit Raspberry Pi Desktop" for the "Operating System" drop-down. 
 
