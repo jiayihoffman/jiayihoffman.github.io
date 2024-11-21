@@ -17,9 +17,9 @@ In this blog, I will show you how to install the RTSP streaming service on a Rad
   <source src="/assets/cat.mp4" type="video/mp4">
 </video>
 
-## Radio-controlled car
+## Radio-controlled Car
 
-The RTSP streaming service will be installed on a Raspberry Pi with the Pi Camera Module. Therefore, the first step is to find an RC car with space for the Raspberry Pi and camera. 
+The RTSP streaming service will be installed on a Raspberry Pi with the Pi Camera. Therefore, the first step is to find an RC car with space for the Raspberry Pi and camera. 
 
 In a local hobby shop, I found one like this. It is called the "Mojave Grom 4X4 Desert Truck" from Arrma RC. The truck is about one foot long, half a foot wide, and a half foot tall. It is a good size to fit in the Raspberry Pi. The truck has a radio receiver controlling the wheel's rotation and turning. Besides the truck, the set comes with a Spektrum Radio control, a LiPO battery, and a USB charger. The truck is ready to run once the battery is charged. The whole set costs $149.99, which I think is reasonably priced. 
 
@@ -37,7 +37,7 @@ Now, it is time to upgrade the RC truck. The truck's removable outer shell is ha
 
 ### Raspberry Pi
 
-I am using Raspberry Pi 5 with the Pi Camera Module 3. Raspberry Pi 5 is the latest generation of Pi with 2 to 3x the speed of the previous generation. The Camera Module 3 is also new, released in 2023, after seven years of long-awaited updates to the Camera 2. The Raspberry Pi and its camera can be purchased from Amazon or the PiShop. Raspberry Pi 5 camera port is 15 Pin, so be sure to get the ribbon cable that has 15 Pin on one end and 22 Pin on the other end. 
+I am using Raspberry Pi 5 with the Pi Camera 3. Raspberry Pi 5 is the latest generation of Pi with 2 to 3x the speed of the previous generation. The Camera 3 is also new, released in 2023, after seven years of long-awaited updates to the Camera 2. The Raspberry Pi and its camera can be purchased from Amazon or the PiShop. The Raspberry Pi 5's camera port is 15 Pin, so be sure to get the ribbon cable that has 15 Pin on one end and 22 Pin on the other end. 
 
 The Raspberry Pi OS I installed is Debian version 12, nicknamed Bookworm. The OS is installed on the mini SD card using "Raspberry Pi Imager". In the Imager, I chose "Raspberry Pi 5" as the "Raspberry Pi Device" option and "64-bit Raspberry Pi Desktop" for the "Operating System" drop-down. 
 
@@ -47,7 +47,7 @@ Connecting the Pi camera to the Raspberry Pi using the ribbon cable is standard,
 
 Once the two are connected, please start Raspberry Pi and run `rpicam-hello` command in the terminal to verify the connection is good. You can get to the Raspberry Pi's terminal either through SSH or by connecting it with a monitor, keyboard, and mouse. 
 
-* If you are using SSH and see these printouts from the "rpicam-hello" command, the connection has been successful. 
+* If you are using SSH and see these printouts from the "rpicam-hello" command, it means the connection has been successful. 
 ```
 #0 (0.00 fps) exp 32680.00 ag 5.39 dg 1.37
 #1 (30.01 fps) exp 32680.00 ag 5.39 dg 1.37
@@ -63,7 +63,7 @@ If the camera cannot stream video, please check the ribbon cable connection and 
 
 Now we have the camera configured to work with the Raspberry Pi, we are ready for video streaming. With video streaming, there are two popular options: UV4L and GStreamer. I tried both, and here are my observations:
 
-**UV4L** is explicitly designed for Raspberry Pi and has a smaller user base. It is simpler to set up on the older version of Raspberry Pi for basic WebRTC streaming. I used UV4L on Raspberry Pi OS "Buster" for WebRTC streaming. However, UV4L does not work with the latest Raspberry Pi OS, "Bookworm." Installing UV4L on the latest Raspberry Pi OS leads to packaging errors. 
+**UV4L** is explicitly designed for Raspberry Pi and has a smaller user base. It is simpler to set up on the older version of Raspberry Pi for basic WebRTC streaming. I used UV4L on Raspberry Pi OS "Buster" for WebRTC streaming. However, UV4L does not work with the latest Raspberry Pi OS "Bookworm". Installing UV4L on the latest Raspberry Pi OS leads to packaging errors. 
 
 **GStreamer** is highly flexible. Construct pipelines give the user precise control over video processing, encoding, and transmission. Therefore, GStreamer typically outperforms UV4L in complex video streaming and processing scenarios. GStreamer supports a wide range of protocols, has a large, active community, and is widely used across different platforms.
 
@@ -92,7 +92,7 @@ sudo apt install -y python3-gi python3-gi-cairo gir1.2-gtk-3.0 gir1.2-gst-rtsp-s
 
 SSH into the Raspberry Pi (`ssh pi@<your_raspberry_pi_ipaddress>`) and create a folder called "streamer" in the pi user's home directory. Download the Python script [rtsp_server.py](/code/rtsp_server.py) and place it in the "streamer" folder. 
 
-To run the RTSP server on the RC truck, type the command `python rtsp_server.py` on the Raspberry Pi, for example:
+To start the RTSP service on the RC truck, type the command `python rtsp_server.py` on the Raspberry Pi, for example:
 ```
 $ cd streamer
 $ python rtsp_server.py
