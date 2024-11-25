@@ -116,3 +116,5 @@ In the app, tap "Go Live View", then you will see the truck's live view on your 
 [0:14:25.198383912] [2041]  INFO RPI pisp.cpp:1451 Sensor: /base/axi/pcie@120000/rp1/i2c@80000/imx708@1a - Selected sensor format: 1536x864-SBGGR10_1X10 - Selected CFE format: 1536x864-PC1B
 ...
 ```
+[Droid Vision Tutorial]: {% link _posts/2024-11-24-DroidVision-Tutorial.md %}
+For detailed step-by-step video tutorial, please check out my another blog post [Droid Vision Tutorial]
