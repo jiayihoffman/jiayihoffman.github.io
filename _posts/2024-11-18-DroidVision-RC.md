@@ -37,7 +37,7 @@ Now, it is time to upgrade the RC truck. The truck's removable outer shell is ha
 
 ### Raspberry Pi
 
-I am using Raspberry Pi 5 with the Pi Camera 3. Raspberry Pi 5 is the latest generation of Pi with 3x the speed of the previous generation. The Camera 3 is also new, released in 2023, after seven years of long-awaited updates to the Camera 2. The Raspberry Pi and its camera can be purchased from Amazon or the PiShop. The Raspberry Pi 5's camera port is 15 Pin, so be sure to get the ribbon cable that has 15 Pin on one end and 22 Pin on the other end. 
+I am using Raspberry Pi 5 with the Pi Camera 3 Wide. Raspberry Pi 5 is the latest generation of Pi with 3x the speed of the previous generation. The Camera 3 is also new, released in 2023, after seven years of long-awaited updates to the Camera 2. The Raspberry Pi and its camera can be purchased from Amazon or the PiShop. The Raspberry Pi 5's camera port is 15 Pin, so be sure to get the ribbon cable that has 15 Pin on one end and 22 Pin on the other end. 
 
 The Raspberry Pi OS I installed is Debian version 12, nicknamed Bookworm. The OS is installed on the mini SD card using "Raspberry Pi Imager". In the Imager, I chose "Raspberry Pi 5" as the "Raspberry Pi Device" option and "64-bit Raspberry Pi Desktop" for the "Operating System" drop-down. 
 
