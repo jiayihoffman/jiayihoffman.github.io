@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Droid Vision Step-by-Step Video Tutorial"
+title: "Droid Vision Step-by-Step Tutorial"
 date: 2024-11-24 10:53:28 -0600
 categories: Droid_Vision
 ---
