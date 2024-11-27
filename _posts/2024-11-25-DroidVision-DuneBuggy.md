@@ -6,9 +6,13 @@ categories: Droid_Vision
 ---
 # See the world through a robot’s eyes 
 
-<iframe width="1000" height="461"
+<!-- <iframe width="1000" height="461"
 src="https://www.youtube.com/embed/1-lspAspX0A?autoplay=1&mute=0">
-</iframe>
+</iframe> -->
+
+<video width="800" height="600" preload="auto" muted controls>
+  <source src="/assets/My_Robot.mp4" type="video/mp4">
+</video>
 
 [Droid Vision RC Truck]: {% link _posts/2024-11-18-DroidVision-RC.md %}
 [Droid Vision Step-by-Step Video Tutorial]: {% link _posts/2024-11-24-DroidVision-Tutorial.md %}
