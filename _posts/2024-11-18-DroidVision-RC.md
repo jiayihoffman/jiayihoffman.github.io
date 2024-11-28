@@ -118,3 +118,7 @@ In the app, tap "Go Live View", then you will see the truck's live view on your 
 ```
 [Droid Vision Tutorial]: {% link _posts/2024-11-24-DroidVision-Tutorial.md %}
 For detailed step-by-step video tutorial, please check out my another blog post [Droid Vision Tutorial]
+
+## Get the Droid Vision app
+
+Download it for free from the [App Store](https://apps.apple.com/us/app/droid-vision/id6737351549) in Apple.

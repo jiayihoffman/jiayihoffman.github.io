@@ -27,3 +27,6 @@ Once the streaming service is running, we can connect to it using the Droid Visi
 To connect to the droid’s RTSP service, tap the "+" button in the App and enter the robot’s name and RTSP URL captured in the previous step. Save it and tap "Go Live View" to view and record the live video. 
 
 The events in the "Live View History" can be removed by left-swiping the row. 
+
+### Get the Droid Vision app
+Download it for free from the [App Store](https://apps.apple.com/us/app/droid-vision/id6737351549) in Apple.
