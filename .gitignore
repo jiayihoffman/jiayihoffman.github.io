@@ -4,5 +4,5 @@ _site
 .jekyll-metadata
 vendor
 Gemfile.lock
-notes
+notes.md
 .DS_Store
