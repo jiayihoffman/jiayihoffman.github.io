@@ -4,4 +4,7 @@
 
 layout: home
 ---
+<head>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+</head>
 See the World through Robots Eyes
