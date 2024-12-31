@@ -121,4 +121,4 @@ For detailed step-by-step video tutorial, please check out my another blog post 
 
 ## Get the Droid Vision app
 
-Download it for free from the [App Store](https://apps.apple.com/us/app/droid-vision/id6737351549) in Apple.
+Download it for free from [App Store](https://apps.apple.com/us/app/droid-vision/id6737351549) and [Google Play](https://play.google.com/store/apps/details?id=ai.modularmachines.droidvision&hl=en-US). 

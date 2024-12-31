@@ -29,4 +29,4 @@ To connect to the droid’s RTSP service, tap the "+" button in the App and ente
 The events in the "Live View History" can be removed by left-swiping the row. 
 
 ### Get the Droid Vision app
-Download it for free from the [App Store](https://apps.apple.com/us/app/droid-vision/id6737351549) in Apple.
+Download it for free from [App Store](https://apps.apple.com/us/app/droid-vision/id6737351549) and [Google Play](https://play.google.com/store/apps/details?id=ai.modularmachines.droidvision&hl=en-US). 
