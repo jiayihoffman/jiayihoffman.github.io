@@ -28,7 +28,7 @@ email: contact@modularmachines.ai
 #   Google search results) and in your feed.xml site description.
 description: Bookmark this page to get project updates about Modular Machines
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://www.modularmachines.ai/" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://www.modularmachines.ai" # the base hostname & protocol for your site, e.g. http://example.com
 google_analytics: G-54KQB8PSD3
 # twitter_username: jekyllrb
 # github_username:  jekyll
