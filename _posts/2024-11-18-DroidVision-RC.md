@@ -25,15 +25,20 @@ In a local hobby shop, I found one like this. It is called the "Mojave Grom 4X4 
 
 This RC truck is pretty durable. I occasionally drove it into a wall or a curb, but the front and back bumpers absorbed the impact, so the frame remained unharmed. 
 
-![RC Car](/assets/IMG_2725.jpeg)
+<a href="/assets/IMG_2725.jpeg" target="_blank">
+  <img src="/assets/IMG_2725.jpeg" />
+</a>
 
 ## Upgrade the RC truck with a Camera
 
 Now, it is time to upgrade the RC truck. The truck's removable outer shell is handy when I modify it. I removed the shell and the "drivers", and replaced them with the Raspberry Pi and the Pi camera.
 
-![RC_PI_1](/assets/IMG_2724.jpeg)
-
-![RC_PI_2](/assets/IMG_2675.jpeg)
+<a href="/assets/IMG_2724.jpeg" target="_blank">
+  <img src="/assets/IMG_2724.jpeg" width="350" />
+</a>
+<a href="/assets/IMG_2675.jpeg" target="_blank">
+  <img src="/assets/IMG_2675.jpeg" width="350" />
+</a>
 
 ### Raspberry Pi
 

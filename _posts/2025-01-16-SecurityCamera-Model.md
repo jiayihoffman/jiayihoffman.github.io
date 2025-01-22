@@ -16,7 +16,12 @@ This blog will focus on the technologies for building a security camera, particu
 
 ![RC_PI_2](/assets/IMG_2910.jpeg) -->
 
-<img src="/assets/IMG_2903.jpeg" width="350" />  <img src="/assets/IMG_2910.jpeg" width="350" />
+<a href="/assets/IMG_2903.jpeg" target="_blank">
+  <img src="/assets/IMG_2903.jpeg" width="350" />
+</a>
+<a href="/assets/IMG_2910.jpeg" target="_blank">
+  <img src="/assets/IMG_2910.jpeg" width="350" />
+</a>
 
 To build a security camera, the simplest device will be a Raspberry Pi, The Pi is a handy little device for many edge use cases. Each Pi has at least one camera port, up to four USB ports, and 40 GPIO pins. We can use those ports and pins to extend the Pi with video cameras, microphones, speakers, or sensors. For the Object Detection application, I recommend Raspberry Pi 5 since the application uses Convolutional Neural Networks (CNN) to detect objects, which requires some computation power. Raspberry Pi runs Pi OS, based on Debian Linux. 
 
