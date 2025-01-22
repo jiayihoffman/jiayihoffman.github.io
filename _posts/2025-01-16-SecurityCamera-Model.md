@@ -6,9 +6,9 @@ categories: Security_Camera
 ---
 ## Introduction
 
- I have always wanted to build my security camera. There are many benefits to that. First of all, data privacy is paramount to me. I prefer videos captured around my house to remain private with me. Besides, model customization is critical. I want the model to be smart enough to tell the difference between my family members and strangers. The other reason for a customized model is that I live in an area with lots of wildlife, and I would like to create a security camera that can capture footage of those creatures visiting the house. I love to see them. :D
+ I have always wanted to build my security camera. There are many benefits to that. First of all, data privacy is paramount to me. I prefer videos captured around my house to remain private with me. Besides, model customization is critical. I want the model to be smart enough to tell the difference between my family members and strangers. The other reason for a customized model is that I live in an area with lots of wildlife, and I would like to create a security camera that can capture footage of those lovely creatures visiting my house. :D
 
-This blog will focus on the technologies for building a security camera, particularly the AI models and the video streaming framework adequate for Object Detection on edge devices. In the next blog, I will discuss how to create a customized model for the security camera so it alerts me only to things I am interested in.  
+This blog will focus on the technologies for building a security camera, particularly the AI models and the video streaming framework for Object Detection on edge devices. In the next blog, I will discuss how to create a customized model for the security camera so it alerts me only to things I am interested in.  
 
 ## Choose the Hardware
 
@@ -20,11 +20,11 @@ This blog will focus on the technologies for building a security camera, particu
 
 To build a security camera, the simplest device will be a Raspberry Pi, The Pi is a handy little device for many edge use cases. Each Pi has at least one camera port, up to four USB ports, and 40 GPIO pins. We can use those ports and pins to extend the Pi with video cameras, microphones, speakers, or sensors. For the Object Detection application, I recommend Raspberry Pi 5 since the application uses Convolutional Neural Networks (CNN) to detect objects, which requires some computation power. Raspberry Pi runs Pi OS, based on Debian Linux. 
 
-Besides Raspberry Pi, the Pi Foundation also releases four types of Pi Cameras. Two are NoIR versions, meaning No Infrared filter, which lets it see in the dark but takes odd pictures during the daylight. Two Pi cameras have a wide field of view (FoV). I like the "wide" model due to its wide angle, but it is slightly pricy compared to the Pi standard cameras. The wide-angle version is $35 vs $25 for the standard one. You can find many generic brands on Amazon if a wide angle is not critical to your use case. They are a drop-n-replace of the Pi Camera. Some of them are as low as $8. 
+Besides Raspberry Pi, the Pi Foundation also releases four types of Pi Cameras. Two are NoIR versions, meaning No Infrared filter, which lets it see in the dark but takes odd pictures during the daylight. Two Pi cameras have a wide field of view (FoV). I like the "wide" version due to its wide angle, but it is slightly pricy compared to the Pi standard cameras. The wide-angle version is $35 vs $25 for the standard one. You can find many generic brands on Amazon if a wide angle is not critical to your use case. They are a drop-n-replace of the Pi Camera. Some of them are as low as $8. 
 
 Instruction on installing the Pi camera can be found [here](https://youtu.be/GImeVqHQzsE).
  
-Besides Raspberry Pi, NVIDIA Jetson Orin Nano is another popular device in the makers' world. The NVIDIA Jetson Nano will be an overkill for a vision-only security camera unless we plan to extend the security camera with the capability of conversation and simultaneous localization and mapping (SLAM). A walking and talking camera is cool to have. I will create a future blog to cover that.  NVIDIA Jetson Nano runs Ubuntu OS, which can easily support ROS2. 
+Besides Raspberry Pi, NVIDIA Jetson Orin Nano is another popular device in the makers' world. The NVIDIA Jetson Nano will be an overkill for a vision-only security camera unless I plan to extend the security camera with the capability of conversation and simultaneous localization and mapping (SLAM). A walking and talking camera is cool to have. I will create a future blog to cover that.  NVIDIA Jetson Nano runs Ubuntu OS, which can easily support ROS2. 
 
 ## Choose the Technology
 
