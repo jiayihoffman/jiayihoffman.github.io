@@ -68,6 +68,46 @@ For successful A/B testing, we must define the following requirements before con
 2. Acceptance criteria, 
 3. Duration of the test, 
 4. Test data size and randomization. 
+
+Object Detection using "YOLOv5-Tiny"
+```
+class ObjectDetectorYolo(ObjectDetector):
+    def __init__(self, options: ObjectDetectorOptions = ObjectDetectorOptions()):
+        self._options = options
+        self._model = torch.hub.load('ultralytics/yolov5', 'yolov5s', pretrained=True)  # YOLOv5-Tiny
+
+    def detect(self, input_image: np.ndarray) -> List[Detection]:
+        # Perform object detection
+        results = self._model(input_image)
+
+        # Extract predictions (labels, confidence, coordinates)
+        predictions = results.pandas().xyxy[0]  # Pandas DataFrame
+        return self._postprocess(predictions)
+
+    def _postprocess(self, predictions):
+        filtered_df = predictions[predictions['confidence'] > self._options.score_threshold]
+        filtered_df = filtered_df.sort_values(by='confidence', ascending=False)
+        filtered_df = filtered_df.head(self._options.max_results)
+
+        records = filtered_df.to_dict(orient='records')
+        results = [
+            Detection(
+                bounding_box=Rect(
+                    left=int(record['xmin']),
+                    top=int(record['ymin']),
+                    right=int(record['xmax']),
+                    bottom=int(record['ymax'])
+                ),
+                category=Category(
+                    score=record['confidence'],
+                    label=record['name'],  # 0 is reserved for background
+                    index=record['class']
+                )
+            ) for record in records
+        ]
+
+        return results
+```
  
 ### Streaming Frameworks
 To efficiently process the video on Raspberry Pi, we need a good video streaming framework that supports Raspberry Pi. We can then access individual frames from the video to run inference.  
