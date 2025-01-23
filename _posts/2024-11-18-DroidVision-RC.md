@@ -95,11 +95,39 @@ sudo apt install -y python3-gi python3-gi-cairo gir1.2-gtk-3.0 gir1.2-gst-rtsp-s
 
 ### Start the RTSP Streaming Service on Raspberry Pi
 
-SSH into the Raspberry Pi (`ssh pi@<your_raspberry_pi_ipaddress>`) and create a folder called "streamer" in the pi user's home directory. Download the Python script [rtsp_server.py](/code/rtsp_server.py) and place it in the "streamer" folder. 
+SSH into the Raspberry Pi (`ssh pi@<your_raspberry_pi_ipaddress>`) and create a folder called "streamer" in the pi user's home directory. Create a Python script`rtsp_server.py` in the "streamer" folder. Please see below for the code:
+``` 
+#!/usr/bin/env python3
+import gi
+from gi.repository import GLib
+
+gi.require_version('Gst', '1.0')
+gi.require_version('GstRtspServer', '1.0')
+from gi.repository import Gst, GstRtspServer
+
+class RTSPServer:
+    def __init__(self):
+        Gst.init(None)
+        # Gst.debug_set_default_threshold(3)
+        self.server = GstRtspServer.RTSPServer()
+        self.factory = GstRtspServer.RTSPMediaFactory()
+        self.factory.set_launch("libcamerasrc ! video/x-raw,format=YUY2,width=640,height=480,framerate=30/1 ! videoconvert ! x264enc tune=zerolatency speed-preset=ultrafast ! rtph264pay name=pay0 pt=96")
+        self.factory.set_shared(True)
+        self.server.get_mount_points().add_factory("/stream", self.factory)
+        self.server.attach(None)
+
+    def run(self):
+        print("RTSP server is running on rtsp://localhost:8554/stream")
+        loop = GLib.MainLoop()
+        loop.run()
+
+if __name__ == "__main__":
+    server = RTSPServer()
+    server.run()
+```
 
 To start the RTSP service on the RC truck, type the command `python rtsp_server.py` on the Raspberry Pi, for example:
 ```
-$ cd streamer
 $ python rtsp_server.py
 RTSP server is running on rtsp://localhost:8554/stream
 ```
