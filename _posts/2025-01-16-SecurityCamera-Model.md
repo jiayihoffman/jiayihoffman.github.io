@@ -113,17 +113,23 @@ class ObjectDetectorYolo(ObjectDetector):
 To efficiently process the video on Raspberry Pi, we need a good video streaming framework that supports Raspberry Pi. We can then access individual frames from the video to run inference.  
 
 Since we are using a Pi camera, we can use the native "picamera2" library for video streaming. It is explicitly designed for the modern Raspberry Pi camera stack. 
+
+In Picamera2, capturing and encoding video is mostly automatic. The application only needs to define its encoder to compress the video data and where the compressed data goes. The encoding and output happen in a separate thread from the camera handling to minimize the risk of dropping camera frames. On Pi 4 and earlier devices, there is dedicated hardware for H264 and MJPEG encoding. However, on Pi 5, the codecs are implemented in software using FFmpeg libraries with similar or better performance. Source: [picamera2-manual.pdf](https://datasheets.raspberrypi.com/camera/picamera2-manual.pdf)
+
 ```
 from picamera2 import Picamera2
 
 picam2 = Picamera2()
-config = self.picam2.create_preview_configuration(main={"size": (width, height), "format": "BGR888"})
+config = picam2.create_preview_configuration(main={"size": (width, height), "format": "BGR888"})
+encoder = H264Encoder(bitrate=10000000)
 picam2.configure(config)
 picam2.start()
 
 while time.time() - start_time < duration:
     frame = picam2.capture_array()
     detections = detector.detect(frame)
+    if len(detections) > 0:
+        picam2.start_encoder(encoder, output)
 ```
 
 If we use a webcam, we can use the OpenCV library for video streaming. 
@@ -138,9 +144,13 @@ while cap.isOpened():
     success, frame = cap.read()
     if success:
         detections = detector.detect(frame)
+        if len(detections) > 0:
+            fourcc = cv2.VideoWriter_fourcc(*'avc1')  # H.264 for MP4
+            out = cv2.VideoWriter(output, fourcc, recording_fps, (width, height))
+            out.write(frame)
 ```
 
-Due to changes in the camera stack on newer Raspberry Pi OS versions, OpenCV’s default `cv2.VideoCapture()` does not support the new camera stack. However, I want my application to be portable and not have to rewrite the streaming piece in the future when my application switches to run on Ubuntu. 
+Due to changes in the camera stack on newer Raspberry Pi OS versions, OpenCV’s default `cv2.VideoCapture()` does not support the new Pi camera stack. However, I want my application to be portable and not have to rewrite the entire streaming piece in the future when my application switches to run on Ubuntu. 
 
 To make the code modular and portable, I introduced the `CameraManager` class and implemented it for the Pi camera and webcam. This refactoring has made my streaming code cleaner and future-proof. 
 
@@ -150,6 +160,8 @@ while cm.is_camera_open():
     success, frame = cm.read()
     if success:
         detections = detector.detect(frame)
+        if len(detections) > 0:
+            start_recording(cm, frame)
 
 ```
 
