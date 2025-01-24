@@ -12,12 +12,12 @@ This blog will focus on the technologies for building a security camera, particu
 
 ## Choose the Hardware
 
-<a href="/assets/IMG_2903.jpeg" target="_blank">
+<!-- <a href="/assets/IMG_2903.jpeg" target="_blank">
   <img src="/assets/IMG_2903.jpeg" width="350" />
 </a>
 <a href="/assets/IMG_2910.jpeg" target="_blank">
   <img src="/assets/IMG_2910.jpeg" width="350" />
-</a>
+</a> -->
 
 To build a security camera, the simplest device will be a Raspberry Pi, The Pi is a handy little device for many edge use cases. Each Pi has at least one camera port, up to four USB ports, and 40 GPIO pins. We can use those ports and pins to extend the Pi with video cameras, microphones, speakers, or sensors. For the Object Detection application, I recommend Raspberry Pi 5 since the application uses Convolutional Neural Networks (CNN) to detect objects, which requires some computation power. Raspberry Pi runs Pi OS, a Debian Linux. 
 
@@ -63,7 +63,7 @@ In the end, which model we choose depends on the application. For the security c
 
 In addition to the general application guideline, model A/B testing is another important mechanism for model selection. A/B testing can determine whether a variable change improves the model’s performance. It is widely used in Data Science beyond model technology selection. 
 
-For successful A/B testing, we must define the following requirements before conducting the test:
+For successful A/B testing, we must define the following requirements **before** conducting the test:
 1. Measurable metrics, i.e., F1 score, 
 2. Acceptance criteria, 
 3. Duration of the test, 
@@ -150,7 +150,7 @@ while cap.isOpened():
             out.write(frame)
 ```
 
-Due to changes in the camera stack on newer Raspberry Pi OS versions, OpenCV’s default `cv2.VideoCapture()` does not support the new Pi camera stack. However, I want my application to be portable and not have to rewrite the entire streaming piece in the future when my application switches to run on Ubuntu. 
+Due to changes in the camera stack on newer Raspberry Pi OS versions, OpenCV’s default `cv2.VideoCapture()` does not support the new Pi camera stack. However, I want my application to be portable and not have to rewrite the entire streaming piece in the future when my application moves to Ubuntu. 
 
 To make the code modular and portable, I introduced the `CameraManager` class and implemented it for the Pi camera and webcam. This refactoring has made my streaming code cleaner and future-proof. 
 
@@ -165,4 +165,4 @@ while cm.is_camera_open():
 
 ```
 
-To be continued...
+To be continued in the next blog...
