@@ -12,12 +12,12 @@ This blog will focus on the technologies for building a security camera, particu
 
 ## Choose the Hardware
 
-<!-- <a href="/assets/IMG_2903.jpeg" target="_blank">
+<a href="/assets/IMG_2903.jpeg" target="_blank">
   <img src="/assets/IMG_2903.jpeg" width="350" />
 </a>
 <a href="/assets/IMG_2910.jpeg" target="_blank">
   <img src="/assets/IMG_2910.jpeg" width="350" />
-</a> -->
+</a>
 
 To build a security camera, the simplest device will be a Raspberry Pi, The Pi is a handy little device for many edge use cases. Each Pi has at least one camera port, up to four USB ports, and 40 GPIO pins. We can use those ports and pins to extend the Pi with video cameras, microphones, speakers, or sensors. For the Object Detection application, I recommend Raspberry Pi 5 since the application uses Convolutional Neural Networks (CNN) to detect objects, which requires some computation power. Raspberry Pi runs Pi OS, a Debian Linux. 
 
@@ -25,7 +25,7 @@ Besides Raspberry Pi, the Pi Foundation also releases four types of Pi Cameras. 
 
 Instructions on installing the Pi camera on the Raspberry Pi can be found [here](https://youtu.be/GImeVqHQzsE).
  
-Besides Raspberry Pi, NVIDIA Jetson Orin Nano is another popular device in the makers' world. The NVIDIA Jetson Nano will be an overkill for a vision-only security camera unless I plan to extend the security camera with the capability of conversation and simultaneous localization and mapping (SLAM). A walking and talking camera is cool to have. I will create a future blog to cover that.  NVIDIA Jetson Nano runs Ubuntu OS, which can easily support ROS2. 
+Besides Raspberry Pi, NVIDIA Jetson Orin Nano is another popular device in the maker's world. The NVIDIA Jetson Nano will be an overkill for a vision-only security camera unless I plan to extend the security camera with the capability of conversation and simultaneous localization and mapping (SLAM). A walking and talking camera is cool to have. I will create a future blog to cover that.  NVIDIA Jetson Nano runs Ubuntu OS, which can easily support ROS2. 
 
 ## Choose the Technology
 
