@@ -56,7 +56,7 @@ That being said, EfficientDet is slower than YOLOv5-Tiny and MobileNet-SSD due t
 The YOLO model is highly optimized for real-time inference. It has superior detection accuracy, especially for small objects. It is slightly heavier and slower compared to MobileNet-SSD.
 
 #### MobileNet-SSD
-MobileNet is lightweight and fast. However, this model has lower accuracy compared to YOLOv5-Tiny and EfficientDet-Lite.
+MobileNet-SSD is lightweight and fast. However, this model has lower accuracy compared to YOLOv5-Tiny and EfficientDet-Lite.
 
 #### Model selection
 In the end, which model we choose depends on the application. For the security camera, we don't need real-time continuous object detection; instead, we need accurate detection. Once the object is detected, we start video streaming until the subject disappears. The video is streamed to a remote server for alert playback. Therefore, whether the model can accurately detect the objects of interest is critical to the application's success. 
@@ -67,7 +67,7 @@ For successful A/B testing, we must define the following requirements **before**
 1. Measurable metrics, i.e., F1 score, 
 2. Acceptance criteria, 
 3. Duration of the test, 
-4. Test data size and randomization. 
+4. Test data size and data variant. 
 
 Object Detection using "YOLOv5-Tiny"
 ```
@@ -165,4 +165,6 @@ while cm.is_camera_open():
 
 ```
 
-To be continued ...
+### Security Alerts
+Here, the security camera spotted a wildcat came to our back deck:
+![alt text](/assets/02-07-25_095643.jpg)
