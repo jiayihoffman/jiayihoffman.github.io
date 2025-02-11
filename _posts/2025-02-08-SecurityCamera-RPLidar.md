@@ -16,7 +16,7 @@ In Robotics, the Robot Operating System (ROS) is the default choice for building
 
 The RPLidar has a standard ROS node that reads data from a RPLidar 2D laser scanner and publishes that data as a message to an ROS topic. This allows other ROS nodes to access and utilize the laser scan information for tasks like obstacle avoidance or mapping in robotics applications. A ROS node is a program that runs on ROS and communicates with other nodes. Nodes are the basic building blocks of ROS and are used to perform computations and control systems. 
 
-The problem with using ROS on Raspberry Pi is that it does not support Raspbian, the OS optimized for the Raspberry Pi hardware. To use ROS on Raspberry Pi, we either install 64-bit Ubuntu or run ROS 2 Docker in the Raspberry Pi OS. I tried Ubuntu on Raspberry Pi, but it was too heavy for the little Pi. Therefore, I want to use ROS 2 Docker on Pi for my security robot. The concept of using Docker for Robotic applications is relatively new. 
+The problem with using ROS on Raspberry Pi is that ROS does not support Raspbian, the OS optimized for the Raspberry Pi hardware. To use ROS on Raspberry Pi, we either install 64-bit Ubuntu or run ROS 2 Docker in the Raspberry Pi OS. I tried Ubuntu on Raspberry Pi, and found it was too heavy for the little Pi. Therefore, I want to use ROS 2 Docker on Pi for my security robot. The concept of using Docker for Robotic applications is relatively new. 
 
 By the way, ROS has two versions: ROS 1 and ROS 2. ROS 2 is the current version and is designed to be more flexible, secure, and performant than ROS 1. 
 
@@ -32,7 +32,7 @@ A Dockerfile is a text file containing instructions for creating a Docker image.
 
 Here is a starting Dockerfile I created for my security robot. This Dockerfile creates a "ros" user, a "ros" group, establishes a home directory, and configures the environment for the user. The environment variable "ROS_DOMAIN_ID" ensures that only systems in the same domain can communicate with one another.
 
-Additionally, this Dockerfile creates a ROS workspace, "bot_ws," alongside the user creation. This workspace is necessary for developing ROS applications, which I will discuss later.
+Additionally, this Dockerfile creates a ROS workspace, "bot_ws". This workspace is necessary for developing ROS applications, which I will discuss later.
 
 ```
 FROM ros:humble-perception
@@ -73,7 +73,7 @@ To start the docker container: `docker run -it --rm my_ros2_image`.
 ## RPLidar
 Now we have a starting container for robot development. Let's see how to install the RPLidar there. 
 
-The RPLidar I purchased is the RPLidar A1, which is a 360-degree laser scanner with a diameter range up to 12 meters. It has a sample frequency of 8,000 Hz and a scan rate of 5.5 Hz. It comes with a serial port adapter board and a USB cable that connects the RPLidar to the Raspberry Pi. 
+The RPLidar I purchased is the RPLidar A1, a 360-degree 2D laser scanner with a diameter range of up to 12 meters. It has a sample frequency of 8,000 Hz and a scan rate of 5.5 Hz. The RPLidar comes with a serial port adapter board and a USB cable that connects it to the Raspberry Pi.  
 ![alt text](/assets/RPLidar.png)
 
 To enable the RPLidar to scan and publish its scan data, we need its driver code. The RPLidar has a [git repository](https://github.com/Slamtec/rplidar_ros/tree/ros2) for its ROS 2 ecosystem. We  can clone that repository and build it using `colcon build`. The RPLidar package provides a node that publishes the scan data to the ROS "/scan" topic, as well as ROS services to start and stop the RPLidar motor. Building from the ROS package source code is a common approach for utilizing third-party robotic hardware.
@@ -110,15 +110,15 @@ RUN /bin/bash -c "source /opt/ros/humble/setup.bash && \
     cd ${BOT_HOME}/bot_ws && \
     colcon build --symlink-install --packages-select rplidar_ros"
 ```
-Here is the updated [Dockerfile](/code/Dockerfile).
+Click [here](/code/Dockerfile) to download the updated Dockerfile.
 
-Now, rebuild the Docker image using the updated Dockerfile with the command `docker build -t my_ros2_image .`
+Now, let's rebuild the Docker image using the updated Dockerfile:<br>`docker build -t my_ros2_image .`
 
 # Create my_ros2 Docker Container
 
-To allow a Docker container to use a device connected to the host, we need to specify which device port we need in Docker. In the case of RPLidar, we must specify the ttyUSB port when using `docker run`. 
+To let a Docker container use a device connected to the host machine, we need to specify which device port required by the container. In the case of RPLidar, we must specify the ttyUSB port when start the container. 
 
-A straightforward approach is to use the `docker run --device` option, as follows: `docker run -it --network=host --ipc=host --device=/dev/ttyUSB0 my_ros2_image`. However, over time, I found this is not the most convenient approach, as the USB port can change after reconnecting the RPLidar's USB cable. Therefore, a better method is to map to all devices and then use device group rules to restrict it to only USB serial converters, which belong to device group 188, as mentioned in the previous section. 
+A straightforward approach is to use the `docker run --device` option, as follows: `docker run -it --network=host --ipc=host --device=/dev/ttyUSB0 my_ros2_image`. However, over time, I found this is not the most convenient way, as the USB port can change after reconnecting the RPLidar's USB cable. Therefore, a better method is to map to all devices and then use device group rules to restrict it to only USB serial converters, which belong to device group 188, as mentioned in the previous section. 
 ```
 $ docker run -it --network=host --ipc=host -v /dev:/dev --device-cgroup-rule='c 188:* rmw' my_ros2_image
 ```
@@ -165,15 +165,15 @@ $ ros2 service call /start_motor std_srvs/srv/Empty
 
 ## Viewing the Lidar Scan
 
-ROS 2 on the Raspberry Pi serves as the robot controller. To keep it lightweight, it has only a command interface. To monitor the robot's activities, I use a separate system, typically an Ubuntu Linux desktop, which has a graphical user interface and subscribes to the topics published by the robot.
+The ROS on Raspberry Pi acts as the robot controller. To keep it lightweight, it only has a command interface. To monitor the robot's activities, I use a separate system, typically an Ubuntu Linux desktop, which has a graphical user interface and subscribes to the topics published by the robot from the Pi.
 
-ROS includes RViz, a 3D visualization tool for displaying sensor data and the environments in which robots operate. It assists developers and operators in observing how robots interact with their surroundings in real-time or through recorded data. RViz employs a plugin architecture that allows for the addition of custom visualizations or data displays, making it highly extensible.
+The ROS desktop version includes RViz, a 3D visualization tool for displaying sensor data and the environments in which robots operate. It helps developers and operators observe how robots interact with their surroundings in real-time or through recorded data. RViz uses a plugin architecture that enables the addition of custom visualizations or data displays, making it highly extensible.
 
-As mentioned earlier, we set the environment variable "export ROS_DOMAIN_ID=0" to control who can access the data published by the robot running in ROS 2 Docker. I installed ROS 2 Desktop version on my Ubuntu Linux machine. Detailed installation steps can be found [here](https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debs.html#install-ros-2-packages).
+As mentioned earlier, we set the environment variable "export ROS_DOMAIN_ID=0" to control who can access the data published by the robot running on Raspberry Pi. I installed ROS 2 Desktop version on my Ubuntu Linux machine. Detailed installation steps can be found [here](https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debs.html#install-ros-2-packages).
 
-Start RViz2 and add the "LaserScan" with the "/scan" topic. I created a [launch file](/code/view_rviz2.py) in the rplidar_ros package to streamline the steps: `ros2 launch rplidar_ros view_rviz2.py`.
+Viewing the scan data in RViz isn’t the easiest task. We need to add the "LaserScan" with the "/scan" topic along with some configurations. To simplify this process, I created a [launch file](/code/view_rviz2.py) in the rplidar_ros package. Instead of configuring RViz manually, just type the command `ros2 launch rplidar_ros view_rviz2.py`.
 
-Here, I can see the robot's lidar scan from my Ubuntu desktop. The left side is my office's curved bay window. A desk, a bookshelf, and a cat tower are next to the window, so it is quite busy there. 
+Here, by using RViz, I can view the robot's lidar scan from my Ubuntu desktop. On the left side is the curved bay window of my office. A desk, a bookshelf, and a cat tower sit next to the window, making that area quite busy. 
 <a href="/assets/rviz2_scan.png" target="_blank">
   <img src="/assets/rviz2_scan.png" />
 </a>
