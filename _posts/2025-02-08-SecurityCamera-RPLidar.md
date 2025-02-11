@@ -71,12 +71,14 @@ The command `docker build -t my_ros2_image .` is to create the docker image usin
 To start the docker container: `docker run -it --rm my_ros2_image`.
 
 ## RPLidar
-Now we have a starting container for the robot development. Let's see how to install the RPLidar there. The RPLidar has a USB cable that connects to the Raspberry Pi. 
+Now we have a starting container for robot development. Let's see how to install the RPLidar there. 
+
+The RPLidar I purchased is the RPLidar A1, which is a 360-degree laser scanner with a diameter range up to 12 meters. It has a sample frequency of 8,000 Hz and a scan rate of 5.5 Hz. It comes with a serial port adapter board and a USB cable that connects the RPLidar to the Raspberry Pi. 
 ![alt text](/assets/RPLidar.png)
 
-We need to get the driver code for RPLidar to scan and publish scan data. The RPLidar has a [git repository](https://github.com/Slamtec/rplidar_ros/tree/ros2) for its ROS 2 ecosystem.  We need to clone that repository and build it using `colcon build`. The RPLidar package provides a node that publishes the scan data to the "/scan" topic, and services to control start and stop the RPLidar motor. Building from the ROS package source code is a common way to consume third-party robotic hardware.
+To enable the RPLidar to scan and publish its scan data, we need its driver code. The RPLidar has a [git repository](https://github.com/Slamtec/rplidar_ros/tree/ros2) for its ROS 2 ecosystem. We  can clone that repository and build it using `colcon build`. The RPLidar package provides a node that publishes the scan data to the ROS "/scan" topic, as well as ROS services to start and stop the RPLidar motor. Building from the ROS package source code is a common approach for utilizing third-party robotic hardware.
 
-The RPLidar uses a serial port to communicate with ROS. The port must specified when we starting the RPLidar node. To find out which USB port is used by the RPLidar, let's connect the Lidar's USB cable to the Pi and issue this command: 
+The RPLidar uses a serial port to communicate with ROS. The port must specified when we starting the RPLidar node. To find out which USB port is used by the RPLidar, let's connect the lidar's USB cable to the Pi and issue this command: 
 ```
 $ ls -l /dev/serial/by-id/
 lrwxrwxrwx 1 root root 13 Feb 10 17:25 usb-Silicon_Labs_CP2102_USB_to_UART_Bridge_Controller_0001-if00-port0 -> ../../ttyUSB0
