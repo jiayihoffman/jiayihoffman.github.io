@@ -35,7 +35,7 @@ RUN /bin/bash -c "source /opt/ros/humble/setup.bash && \
     cd ${BOT_HOME}/bot_ws && \
     colcon build --symlink-install --packages-select rplidar_ros"
     
-RUN echo "export ROS_DOMAIN_ID=4" >> ~/.bashrc \
+RUN echo "export ROS_DOMAIN_ID=1" >> ~/.bashrc \
   && echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc \
   && echo "source ${BOT_HOME}/bot_ws/install/setup.bash" >> ~/.bashrc
 

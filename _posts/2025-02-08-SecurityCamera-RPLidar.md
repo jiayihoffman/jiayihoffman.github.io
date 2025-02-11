@@ -56,7 +56,7 @@ RUN groupadd --gid $USER_GID $USERNAME \
 
 USER ros
 
-RUN echo "export ROS_DOMAIN_ID=0" >> ~/.bashrc \
+RUN echo "export ROS_DOMAIN_ID=1" >> ~/.bashrc \
   && echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
 
 # Create the ROS 2 workspace
@@ -169,9 +169,9 @@ The ROS on Raspberry Pi acts as the robot controller. To keep it lightweight, it
 
 The ROS desktop version includes RViz, a 3D visualization tool for displaying sensor data and the environments in which robots operate. It helps developers and operators observe how robots interact with their surroundings in real-time or through recorded data. RViz uses a plugin architecture that enables the addition of custom visualizations or data displays, making it highly extensible.
 
-As mentioned earlier, we set the environment variable "export ROS_DOMAIN_ID=0" to control who can access the data published by the robot running on Raspberry Pi. I installed ROS 2 Desktop version on my Ubuntu Linux machine. Detailed installation steps can be found [here](https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debs.html#install-ros-2-packages).
+As mentioned earlier, we set the environment variable "export ROS_DOMAIN_ID=1" to control who can access the data published by the robot running on Raspberry Pi. I installed ROS 2 Desktop version on my Ubuntu Linux machine. Detailed installation steps can be found [here](https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debs.html#install-ros-2-packages).
 
-Viewing the scan data in RViz isn’t the easiest task. We need to add the "LaserScan" with the "/scan" topic along with some configurations. To simplify this process, I created a [launch file](/code/view_rviz2.py) in the rplidar_ros package. Instead of configuring RViz manually, just type the command `ros2 launch rplidar_ros view_rviz2.py`.
+Viewing the scan data in RViz isn’t the easiest task. We need to add the "LaserScan" with the "/scan" topic along with some configurations. To simplify this process, I created a [launch file](/code/view_rviz2.py) in the rplidar_ros package. Instead of configuring RViz manually, just type the command `ros2 launch rplidar_ros view_rviz2.py` after rebuild the rplidar_ros package. 
 
 Here, by using RViz, I can view the robot's lidar scan from my Ubuntu desktop. On the left side is the curved bay window of my office. A desk, a bookshelf, and a cat tower sit next to the window, making that area quite busy. 
 <a href="/assets/rviz2_scan.png" target="_blank">
