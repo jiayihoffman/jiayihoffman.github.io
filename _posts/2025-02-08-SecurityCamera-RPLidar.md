@@ -120,7 +120,10 @@ To let a Docker container use a device connected to the host machine, we need to
 
 A straightforward approach is to use the `docker run --device` option, as follows: `docker run -it --network=host --ipc=host --device=/dev/ttyUSB0 my_ros2_image`. However, over time, I found this is not the most convenient way, as the USB port can change after reconnecting the RPLidar's USB cable. Therefore, a better method is to map to all devices and then use device group rules to restrict it to only USB serial converters, which belong to device group 188, as mentioned in the previous section. 
 ```
-$ docker run -it --network=host --ipc=host -v /dev:/dev --device-cgroup-rule='c 188:* rmw' my_ros2_image
+docker run -it --network=host --ipc=host -v /dev:/dev \
+    --device-cgroup-rule='c 188:* rmw' \
+    --device-cgroup-rule='c 166:* rmw' \
+    my_ros2_image
 ```
 
 Once we are in the Docker container, we source the install setup script and run the RPLidar ROS 2 launch file. We then list the nodes, topics, and services to ensure the RPLidar is running correctly. 

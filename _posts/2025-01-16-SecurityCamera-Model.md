@@ -8,7 +8,7 @@ categories: Security_Camera
 
  I have always wanted to build my security camera. There are many benefits to that. First of all, data privacy is paramount to me. I prefer videos captured around my house to remain private with me. Besides, model customization is critical. I want the model to be smart enough to tell the difference between my family members and strangers. The other reason for a customized model is that I live in an area with lots of wildlife, and I would like to create a security camera that can capture footage of those lovely creatures visiting my house. :D
 
-This blog will focus on the technologies for building a security camera, particularly the AI models and the video streaming framework for Object Detection on edge devices. In the next blog, I will discuss how to create a customized model for the security camera so it alerts me only to things I am interested in.  
+This blog will focus on the technologies for building a security camera, particularly the AI models and the video streaming framework for Object Detection on edge devices. In a future blog, I will discuss how to create a customized model for the security camera so it alerts me only to things I am interested in.  
 
 ## Choose the Hardware
 
@@ -25,7 +25,7 @@ Besides Raspberry Pi, the Pi Foundation also releases four types of Pi Cameras. 
 
 Instructions on installing the Pi camera on the Raspberry Pi can be found [here](https://youtu.be/GImeVqHQzsE).
  
-Besides Raspberry Pi, NVIDIA Jetson Orin Nano is another popular device in the maker's world. The NVIDIA Jetson Nano will be an overkill for a vision-only security camera unless I plan to extend the security camera with the capability of conversation and simultaneous localization and mapping (SLAM). A walking and talking camera is cool to have. I will create a future blog to cover that.  NVIDIA Jetson Nano runs Ubuntu OS, which can easily support ROS2. 
+Besides Raspberry Pi, NVIDIA Jetson Orin Nano is another popular device in the maker's world. The Jetson Orin Nano will be an overkill for a vision-only security camera unless I plan to extend the security camera with the capability of conversation and simultaneous localization and mapping (SLAM). A walking and talking camera is cool to have. I will create a future blog to cover that.  NVIDIA Jetson Orin Nano runs Ubuntu OS, which can easily support ROS2. 
 
 ## Choose the Technology
 
@@ -35,7 +35,7 @@ The AI models suitable to run on a Raspberry Pi should be quantized and fused. "
 
 Quantization prunes all unnecessary operations and uses smaller bit-width floats. For example, it uses 16-bit floats rather than the regular 32-bit floating point. This reduces the model size by half with a small accuracy drop. Quantization can go further by shrinking the model weights down to 8-bit integers. Integers consume less CPU and energy and are ideal for running on an edge device. 
 
-When the accuracy drop becomes too severe, we must calibrate the model or perform quantization-aware training with some representative dataset. This will be needed when we train a customized model, which I will detail in the next blog.
+When the accuracy drop becomes too severe, we must calibrate the model or perform quantization-aware training with some representative dataset. This will be needed when we train a customized model, which I will detail in the a future blog.
 
 In this blog, we will consume a pre-trained and already quantized model. 
 
@@ -166,5 +166,6 @@ while cm.is_camera_open():
 ```
 
 ### Security Alerts
-Here, the security camera spotted a wildcat came to our back deck:
+Here, the security camera spotted a wildcat came to our back deck at 9:00 AM on February 02:
+
 ![alt text](/assets/02-07-25_095643.jpg)
