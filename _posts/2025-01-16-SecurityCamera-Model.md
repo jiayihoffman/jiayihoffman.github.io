@@ -19,9 +19,9 @@ This blog will focus on the technologies for building a security camera, particu
   <img src="/assets/IMG_2910.jpeg" width="350" />
 </a>
 
-To build a security camera, the simplest device will be a Raspberry Pi, The Pi is a handy little device for many edge use cases. Each Pi has at least one camera port, up to four USB ports, and 40 GPIO pins. We can use those ports and pins to extend the Pi with video cameras, microphones, speakers, or sensors. For the Object Detection application, I recommend Raspberry Pi 5 since the application uses Convolutional Neural Networks (CNN) to detect objects, which requires some computation power. Raspberry Pi runs Pi OS, a Debian Linux. 
+The simplest device for building a security camera is a Raspberry Pi, which is a handy little device for many edge use cases. Each Pi has at least one camera port, up to four USB ports, and 40 GPIO pins. We can use those ports and pins to extend the Pi with video cameras, microphones, speakers, or sensors. For the Object Detection application, I recommend Raspberry Pi 5 since the application uses Convolutional Neural Networks (CNN) to detect objects, which requires some computation power. Raspberry Pi runs Pi OS, a Debian Linux. 
 
-Besides Raspberry Pi, the Pi Foundation also releases four types of Pi Cameras. Two are NoIR versions, meaning No Infrared filter, which lets it see in the dark but takes odd pictures during the daylight. Two Pi cameras have a wide field of view (FoV). I like the "wide" version due to its wide angle, but it is slightly pricy compared to the Pi standard cameras. The wide-angle version is $35 vs $25 for the standard one. You can find many generic brands on Amazon if a wide angle is not critical to your use case. They are a drop-in replacement for the standard Pi Camera; and some are as low as $8. 
+Besides Raspberry Pi, the Pi Foundation also releases four types of Pi Cameras. Two are NoIR versions, meaning No Infrared filter, which lets it see in the dark but takes odd pictures during the daylight. Two Pi cameras have a wide field of view (FoV). I like the "wide" version due to its wide angle, but it is slightly pricy compared to the Pi standard cameras. The wide-angle version is $35 vs $25 for the standard one. You can find many generic brands on Amazon if a wide angle is not critical to your use case. They are a drop-in replacement for the standard Pi Camera; some are as low as $8. 
 
 Instructions on installing the Pi camera on the Raspberry Pi can be found [here](https://youtu.be/GImeVqHQzsE).
  
@@ -31,11 +31,11 @@ Besides Raspberry Pi, NVIDIA Jetson Orin Nano is another popular device in the m
 
 ### Tiny Model
 
-The AI models suitable to run on a Raspberry Pi should be quantized and fused. "Quantization" is a process of shrinking the model size and reducing latency and energy consumption. "Fuse" merges the model layers whenever possible. 
+The AI models suitable for Raspberry Pi should be quantized and fused. "Quantization" is a process of shrinking the model size and reducing latency and energy consumption. "Fuse" merges the model layers whenever possible. 
 
 Quantization prunes all unnecessary operations and uses smaller bit-width floats. For example, it uses 16-bit floats rather than the regular 32-bit floating point. This reduces the model size by half with a small accuracy drop. Quantization can go further by shrinking the model weights down to 8-bit integers. Integers consume less CPU and energy and are ideal for running on an edge device. 
 
-When the accuracy drop becomes too severe, we must calibrate the model or perform quantization-aware training with some representative dataset. This will be needed when we train a customized model, which I will detail in the a future blog.
+When the accuracy drop becomes too severe, we must calibrate the model or perform quantization-aware training with some representative dataset. This will be needed when we train a customized model, which I will detail in a future blog.
 
 In this blog, we will consume a pre-trained and already quantized model. 
 
@@ -110,7 +110,7 @@ class ObjectDetectorYolo(ObjectDetector):
 ```
  
 ### Streaming Frameworks
-To efficiently process the video on Raspberry Pi, we need a good video streaming framework that supports Raspberry Pi. We can then access individual frames from the video to run inference.  
+We need a good video streaming framework that supports Raspberry Pi to efficiently process videos on Raspberry Pi. We can then access individual frames from the video to run inference.  
 
 Since we are using a Pi camera, we can use the native "picamera2" library for video streaming. It is explicitly designed for the modern Raspberry Pi camera stack. 
 
@@ -165,7 +165,7 @@ while cm.is_camera_open():
 
 ```
 
-### Security Alerts
+## Security Alerts
 Here, the security camera spotted a wildcat came to our back deck at 9:00 AM on February 02:
 
 ![alt text](/assets/02-07-25_095643.jpg)

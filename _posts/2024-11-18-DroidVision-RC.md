@@ -81,6 +81,7 @@ Before we can run that script, we need to install GStreamer plugins and dependen
 
 ```
 # install gstreamer tools and core modules
+sudo apt update
 sudo apt install gstreamer1.0-tools gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly gstreamer1.0-libav
 sudo apt install gstreamer1.0-plugins-base-apps v4l-utils
 

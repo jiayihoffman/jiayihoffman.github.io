@@ -11,13 +11,13 @@ RUN apt-get update && apt-get install -y \
 # Create "ros" user and group
 ARG USERNAME=ros
 ARG USER_UID=1000
-ARG USER_GID=$USER_UID
+ARG USER_GID=${USER_UID}
 
 ENV BOT_HOME=/home/${USERNAME}
 
-RUN groupadd --gid $USER_GID $USERNAME \
-  && useradd -s /bin/bash --uid $USER_UID --gid $USER_GID -m $USERNAME -d $BOT_HOME \
-  && chown -R $USER_UID:$USER_GID ${BOT_HOME}
+RUN groupadd --gid ${USER_GID $USERNAME} \
+  && useradd -s /bin/bash --uid ${USER_UID} --gid ${USER_GID} -m ${USERNAME} -d ${BOT_HOME} \
+  && chown -R ${USER_UID}:${USER_GID} ${BOT_HOME}
     
 RUN usermod -a -G dialout ${USERNAME}
 
