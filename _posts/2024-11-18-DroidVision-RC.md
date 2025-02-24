@@ -7,7 +7,7 @@ categories: Droid_Vision
 ## Introduction
 I love robots, AI, and racing. I have always been curious about what the world looks like through the lens of a mobile robot, so I created the Droid Vision app. It can be downloaded for free from the [Apple Store](https://apps.apple.com/us/app/droid-vision/id6737351549) and [Google Play](https://play.google.com/store/apps/details?id=ai.modularmachines.droidvision&hl=en-US). 
 
-With “Droid Vision”, I can play with my cat in augmented reality using an RC car, which means I become the RC car and chase the cat.
+With “Droid Vision”, I can play with my cat in Augmented Reality using an RC car, which means I become the RC car and chase the cat.
 
 The app fetches the video data from the RTSP service running on the robot. In this blog, I will show you how to install the RTSP streaming service on a Radio-controlled truck and use the Droid Vision app to create videos like these:
 
