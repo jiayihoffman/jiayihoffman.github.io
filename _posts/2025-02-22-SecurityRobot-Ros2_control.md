@@ -1,11 +1,11 @@
 ---
 layout: post
-title: "ros2_control, robot control the right way"
+title: "ROS2 Control, Robot Control the Right Way"
 date: 2025-02-22 10:27:08 -0600
 categories: Security_Robot
 ---
 
-Journey of Building Mobile Robots using ROS2...
+Building Mobile Robots with ROS2
 
 ## First Attempt - Raspberry Pi GPIO
 
@@ -129,7 +129,7 @@ In addition to performance and efficiency advantages, ros2_control also promotes
 
 For reference, ros2_controller supports various types of control for the [wheeled mobile robot](https://control.ros.org/humble/doc/ros2_controllers/doc/mobile_robot_kinematics.html).
 
-### Update code to use ros2_control
+### Update My Code to Use ros2_control
 
 <a href="/assets/ros2_control.drawio.png" target="_blank">
   <img src="/assets/ros2_control.drawio.png" />
@@ -237,5 +237,17 @@ The hardware plugin "diffdrive_arduino/DiffDriveArduinoHardware" I used was deve
 
 The Arduino sketch works in conjunction with the hardware plugin. They were also developed by Josh and can be downloaded from [here](https://github.com/joshnewans/ros_arduino_bridge/tree/main).
 
+## Let the Robot Dance
 
-Cheers!
+I want to see how well the robot reacts to the joystick's twists and turns, so I created this robot dance clip. Cheers! :D
+
+```
+# start the robot on Raspberry Pi
+ros2 launch my_bot robot.launch.py
+
+# start the joystick teleop on the linux dev machine
+ros2 launch teleop_twist_joy teleop-launch.py
+```
+<iframe width="800" height="468"
+src="https://www.youtube.com/embed/7GwNFUnjZKw?autoplay=1&mute=0">
+</iframe>
