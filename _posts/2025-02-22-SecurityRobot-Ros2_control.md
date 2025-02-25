@@ -1,22 +1,22 @@
 ---
 layout: post
-title: "ROS2 Control, Robot Control the Right Way"
+title: "ROS 2 Control, Robot Control the Right Way"
 date: 2025-02-22 10:27:08 -0600
 categories: Security_Robot
 ---
 
-Building Mobile Robots with ROS2
+Building Mobile Robots with ROS 2
 
 ## First Attempt - Raspberry Pi GPIO
 
 When I began building mobile robots with ROS, I was unaware of ros2_control. I utilized ROS nodes to communicate directly with the Raspberry Pi's GPIO pins that control the sensors and motors. A ROS node is a program that runs on ROS and interacts with other nodes. Nodes are the basic building blocks of ROS and are used to perform computations and control systems. 
 
-By the way, ROS has two versions: ROS 1 and ROS 2. ROS 2 is the current version designed to be more flexible, secure, and performant than ROS 1. 
+ROS has two versions: ROS 1 and ROS 2. ROS 2 is the current version, designed to be more flexible, secure, and performant than ROS 1. I am using ROS 2 to build the robot.
 
 ### ROS Node Graph
-In the mobile robot, my PS5 Gamepad utilizes the joystick's teleop_node to publish velocity and direction messages to the/cmd_vel topic. My motor_gpio_node consumes these messages and directs the GPIO pin's Pulse Width Modulation (PWM) signals to the wheel motor. 
+In the initial version of the robot, my PS5 gamepad utilizes the joystick's "joy_node" to publish velocity and direction messages to the "/cmd_vel" topic. My "motor_gpio_node" consumes these messages and directs the GPIO pin's Pulse Width Modulation (PWM) signals to the wheel motor.
 
-Here is the ROS RQT output. RQT is a collection of plugins that provides a graphical user interface for ROS, enabling developers to visualize and interact with the robot's internals. Here is the "Node Graph" Introspection.
+Here is the "Node Graph" introspection from ROS RQT. RQT is a collection of plugins that offers a graphical user interface for ROS, enabling developers to visualize and interact with the robot's internals. 
 
 ![alt text](/assets/rqt_nodes_topics.png)
 
@@ -51,7 +51,7 @@ class MotorSubscriber(Node):
 After the excitement faded, I felt I was overloading the Raspberry Pi. The Pi should concentrate on robot control and high-level processing, while delegating hardware communication to another device. This is where Arduino comes into the picture.
 
 ## Second Attempt - Raspberry Pi with Arduino
-Arduino is a microcontroller optimized for low-level tasks, including precise PWM motor control, reading motor encoder outputs, retrieving sensor data, and managing real-time tasks without the overhead of an operating system. In contrast, Raspberry Pi is a single-board computer that can run AI/ML models and execute path-planning algorithms. 
+Arduino is a microcontroller optimized for low-level tasks, such as precise PWM motor control, reading motor encoder outputs, retrieving sensor data, and managing real-time tasks without the overhead of an operating system. In contrast, Raspberry Pi is a single-board computer that can run AI/ML models and execute path-planning algorithms. 
 
 I integrated Arduino into my robot design and rewired the motors, LED light, and PIR sensor. Here is its current appearance.
 
@@ -118,12 +118,12 @@ Firmata works well for a simple robot, but I will need to explore more sophistic
 
 ## Third Attempt - ros2_control
 
-The mobile robot I want to build will drive itself using a map, localization, and navigation. It needs a motor encoder to tell its velocity and position, and the robot will efficiently control the motor using a PID algorithm. Therefore, a simple open loop and pass-through from Raspberry Pi to Arduino are not enough. We need a feedback loop and real-time, low-latency execution using ros2_control. 
+The mobile robot I want to build will drive itself using a map, localization, and navigation. It needs a motor encoder to tell its velocity and position, and the robot will efficiently control the motor using the PID algorithm. Therefore, a simple open loop and pass-through control is not enough. I need a feedback loop and real-time, low-latency execution using ros2_control. 
 
 ### What is ros2_control
 ros2_control is a robot control framework in ROS 2 that provides a hardware abstraction layer for controlling robot actuators, sensors, and hardware interfaces in a modular and efficient way.
 
-The primary benefit of ros2_control is that it enhances performance and offers real-time capabilities. The ros2_control conducts a direct, low-latency interface with the hardware by reducing ROS message overhead when communicating with actuators and sensors. The ROS 2 controllers operate within a single process, rather than multiple processes collaborating through messages. 
+The primary benefit of ros2_control is that it enhances performance and offers real-time capabilities. The ros2_control conducts a direct, low-latency interface with the hardware by reducing ROS message overhead when communicating with actuators and sensors. The ROS 2 controllers operate within a single process, rather than multiple processes collaborating through messages and topics.
 
 In addition to performance and efficiency advantages, ros2_control also promotes standardization and modular robot control. It supports various hardware interfaces through the hardware abstraction layer and enables a seamless transition between simulated and different hardware implementations without changing the code. Developers can reuse existing controllers instead of writing their own from scratch. In fact, much of the robot control logic has already been developed by others, so the [pre-built ROS2 controllers](https://control.ros.org/humble/doc/ros2_controllers/doc/controllers_index.html) can be utilized as is in most use cases. 
 
@@ -136,15 +136,16 @@ For reference, ros2_controller supports various types of control for the [wheele
 </a>
 
 To incorporate ros2_control into my robot, here are the changes I made:
-1. Update ROS2 launch files to use standard ros2 controllers. 
+1. Update ROS 2 launch files to use standard ros2 controllers. 
 2. Add two new configuration files: "ros2_control.xacro" to describe the hardware plugin and the "diffbot_controllers.yaml" file to tweak the controller behaviors. 
 3. Add the hardware plugin that communicates with the Arduino for the state and command of the motors. 
-4. Add an Arduino sketch that provides encoder readings, open-loop and closed-loop control. 
-5. Remove the customized RO2 node "motor_gpio_node".
+4. Create an Arduino sketch that provides encoder readings, open-loop and closed-loop control. 
+5. Remove my RO2 node "motor_gpio_node".
 
-Let me share additional details about each change. The hardware plugin and Arduino sketch are available from the robotic community.
+Here are more details about each change. The hardware plugin and Arduino sketch (items #3 and #4) are available from the robotics community.
 
-This is the robot's launch file that uses the standard ROS 2 controllers. They include controllers for the [Wheeled Mobile Robot](https://control.ros.org/humble/doc/ros2_controllers/doc/mobile_robot_kinematics.html) and the [Joint State Broadcaster](https://control.ros.org/humble/doc/ros2_controllers/joint_state_broadcaster/doc/userdoc.html).
+#### ROS 2 Launch File 
+This is the robot's launch file that uses the standard ros2_controllers. They are controllers for the [Differential Drive](https://control.ros.org/humble/doc/ros2_controllers/doc/controllers_index.html#controllers-for-wheeled-mobile-robots) and the [Joint State Broadcaster](https://control.ros.org/humble/doc/ros2_controllers/joint_state_broadcaster/doc/userdoc.html).
 
 ```
 def generate_launch_description():
@@ -197,8 +198,8 @@ def generate_launch_description():
     return LaunchDescription(declared_arguments + nodes)
 ```
 
+#### New Configurations
 ros2_control.xacro:
-
 ```
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
@@ -232,7 +233,32 @@ ros2_control.xacro:
     </ros2_control>
 </robot>
 ```
+diffbot_controllers.yaml
+```
+controller_manager:
+  ros__parameters:
+    update_rate: 10  # Hz
 
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+    diffbot_base_controller:
+      type: diff_drive_controller/DiffDriveController
+
+diffbot_base_controller:
+  ros__parameters:
+    publish_rate: 50.0
+
+    base_frame_id: base_link
+
+    left_wheel_names: ["left_wheel_joint"]
+    right_wheel_names: ["right_wheel_joint"]
+    wheel_separation: 0.14
+    wheel_radius: 0.03
+    ...
+```
+
+#### Hardware Plugin and Arduino sketch
 The hardware plugin "diffdrive_arduino/DiffDriveArduinoHardware" I used was developed by Josh Newans. I cloned his [git repository](https://github.com/joshnewans/diffdrive_arduino/tree/humble) and then built it using `colcon` in my ROS 2 workspace. 
 
 The Arduino sketch works in conjunction with the hardware plugin. They were also developed by Josh and can be downloaded from [here](https://github.com/joshnewans/ros_arduino_bridge/tree/main).
