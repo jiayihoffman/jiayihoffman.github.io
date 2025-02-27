@@ -103,7 +103,7 @@ OK
 The baud rate is the communication speed between two devices over a serial port, representing the number of bits transmitted per second (bps). The default setting is 9600. The output of the mini-term depends on what is loaded onto the Arduino board.
 
 ### Firmata
-At this stage, my robot is quite simple. The control node calculates the PWM value and sends it to the Arduino to control the wheel's direction and velocity. Therefore, I can use the standard Firmata instead of writing my own delegate code for Arduino. Firmata comes with the Arduino IDE and can be accessed via File -> Examples -> Firmata -> StandardFirmata. Once the Firmata sketch is uploaded to the Arduino board, the Arduino side is ready to take commands from the Raspberry Pi. 
+At this stage, my robot is quite simple. The control node calculates the PWM value and sends it to the Arduino to control the direction and velocity of the wheels. Therefore, I can use the standard Firmata instead of writing my own delegate code for Arduino. Firmata comes with the Arduino IDE and can be accessed through File -> Examples -> Firmata -> StandardFirmata. Once the Firmata sketch is uploaded to the Arduino board, the Arduino side is ready to receive commands from the Raspberry Pi.
 
 Here's what to configure on the Raspberry Pi:
 1. Install pyFirmata - `pip3 install pyfirmata`
@@ -113,7 +113,7 @@ Here's what to configure on the Raspberry Pi:
 ```
 import pyfirmata
 
-board = pyfirmata.Arduino('YOUR_PORT_HERE')
+board = pyfirmata.Arduino('/dev/ttyACM1')
 
 board.digital[RIGHT_MOTOR_1].write(0)
 board.digital[RIGHT_MOTOR_2].write(0)
