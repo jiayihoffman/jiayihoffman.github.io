@@ -16,7 +16,7 @@ In Robotics, the Robot Operating System (ROS) is the default choice for building
 
 The RPLidar has a standard ROS node that reads data from an RPLidar 2D laser scanner and publishes that data as a message to a ROS topic. This allows other ROS nodes to access and utilize the laser scan information for tasks like obstacle avoidance or mapping in robotics applications. A ROS node is a program that runs on ROS and communicates with other nodes. Nodes are the basic building blocks of ROS and are used to perform computations and control systems. 
 
-The problem with using ROS on Raspberry Pi is that ROS only has "Tier 3" support on Raspbian, the OS optimized for the Raspberry Pi hardware. To use ROS on Raspberry Pi, we either install 64-bit Ubuntu or run ROS 2 Docker in the Raspberry Pi OS. I tried Ubuntu on Raspberry Pi and found it was too heavy for the little Pi. Therefore, I want to use ROS 2 Docker on Pi for my security robot. The concept of using Docker for Robotic applications is relatively new. 
+The problem with using ROS on Raspberry Pi is that ROS only has "Tier 3" support on Raspbian, the OS optimized for the Raspberry Pi hardware. To use ROS on Raspberry Pi, we either install 64-bit Ubuntu or run ROS 2 Docker in the Raspberry Pi OS. I tried Ubuntu on Raspberry Pi and found it was too heavy for the little Pi. Therefore, I want to use ROS 2 Docker on Pi for my security robot. The concept of using Docker for robotic applications is relatively new. 
 
 By the way, ROS has two versions: ROS 1 and ROS 2. ROS 2 is the current version designed to be more flexible, secure, and performant than ROS 1. 
 

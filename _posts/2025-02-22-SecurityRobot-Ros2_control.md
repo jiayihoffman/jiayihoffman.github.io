@@ -141,7 +141,7 @@ For reference, ros2_control supports various types of control for the [wheeled m
 </a>
 
 To incorporate ros2_control into my robot, here are the changes I made:
-1. Update ROS 2 launch files to use standard ros2 controllers. 
+1. Update the robot launch file to use standard ROS2 controllers. 
 2. Add two new configuration files. 
 3. Add the hardware plugin that communicates with the Arduino for the state and command of the motors. 
 4. Create an Arduino sketch that provides encoder readings, open-loop and closed-loop control. 
@@ -214,7 +214,7 @@ The "ros2_control.xacro" describes the hardware plugin.
             <param name="left_wheel_name">left_wheel_joint</param>
             <param name="right_wheel_name">right_wheel_joint</param>
             <param name="loop_rate">30</param>
-            <param name="device">/dev/ttyACM0</param>
+            <param name="device">/dev/ttyACM1</param>
             <param name="baud_rate">57600</param>
             <param name="timeout_ms">1000</param>
             <param name="enc_counts_per_rev">2600</param>
