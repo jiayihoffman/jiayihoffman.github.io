@@ -83,20 +83,20 @@ Due to its unique interaction style, Arduino can execute tasks with precision an
 Raspberry Pi communicates with Arduino using either a Serial port or I2C. The serial port is simpler and has default support. I2C allows for multiple boards but requires slightly more complex wiring. A serial connection can be established through UART or USB. For quick prototyping, I used Serial over USB. After connecting the Raspberry Pi to Arduino, I could find the serial port on the Pi using this command:
 ```
 $ ls -l /dev/serial/by-id
-lrwxrwxrwx 1 root root 13 Feb 20 17:05 usb-Arduino__www.arduino.cc__0043_956353339303515160E1-if00 -> ../../ttyACM1
+lrwxrwxrwx 1 root root 13 Feb 20 17:05 usb-Arduino__www.arduino.cc__0043_956353339303515160E1-if00 -> ../../ttyACM0
 ``` 
 
 I tested the serial communication on the Raspberry Pi using the Python utility called "mini-term," as shown below.
 ```
-$ python3 -m serial.tools.miniterm -e /dev/ttyACM1 57600
---- Miniterm on /dev/ttyACM1  57600,8,N,1 ---
+$ python3 -m serial.tools.miniterm -e /dev/ttyACM0 57600
+--- Miniterm on /dev/ttyACM0  57600,8,N,1 ---
 --- Quit: Ctrl+] | Menu: Ctrl+T | Help: Ctrl+T followed by Ctrl+H ---
 r
 OK
 
 ```
 
-* "/dev/ttyACM1" is the serial port identified from the above "by-id" command, 
+* "/dev/ttyACM0" is the serial port identified from the above "by-id" command, 
 * "57600" is the "baudrate", declared in the Arduino sketch setup function. 
 * The output from the miniterm depends on the Arduino code in the loop function.
 
@@ -113,7 +113,7 @@ Here's what to configure on the Raspberry Pi:
 ```
 import pyfirmata
 
-board = pyfirmata.Arduino('/dev/ttyACM1')
+board = pyfirmata.Arduino('/dev/ttyACM0')
 
 board.digital[RIGHT_MOTOR_1].write(0)
 board.digital[RIGHT_MOTOR_2].write(0)
@@ -214,7 +214,7 @@ The "ros2_control.xacro" describes the hardware plugin.
             <param name="left_wheel_name">left_wheel_joint</param>
             <param name="right_wheel_name">right_wheel_joint</param>
             <param name="loop_rate">30</param>
-            <param name="device">/dev/ttyACM1</param>
+            <param name="device">/dev/ttyACM0</param>
             <param name="baud_rate">57600</param>
             <param name="timeout_ms">1000</param>
             <param name="enc_counts_per_rev">2600</param>
