@@ -75,7 +75,7 @@ To start the Docker container, use the `docker run -it --rm my_ros2_image` comma
 ## RPLidar
 Now that we have a container for robot development. Let's see how to install the RPLidar there. 
 
-The RPLidar I purchased is the RPLidar A1, a 360-degree 2D laser scanner with a diameter range of up to 12 meters. It has a sample frequency of 8,000 Hz and a scan rate of 5.5 Hz. The RPLidar comes with a serial port adapter board and a USB cable that connects it to the Raspberry Pi.  
+The RPLidar I purchased is the RPLidar A1, a 360-degree 2D laser scanner with a diameter range of 0.15 meters to 12 meters, which translates to approximately 6 inches to 39 feet, pretty impressive! This RPLidar has a sample frequency of 8,000 Hz and a scan rate of 5.5 Hz. It includes a serial port adapter board and a USB cable for connecting to the Raspberry Pi.  
 ![alt text](/assets/RPLidar.png)
 
 To enable the RPLidar to scan and publish its scan data, we need its driver code. The RPLidar has a [ROS2 git repository](https://github.com/Slamtec/rplidar_ros/tree/ros2). We can clone and build that repository using `colcon build`. The RPLidar package provides a node that publishes the scan data to the ROS "/scan" topic, as well as ROS services to start and stop the RPLidar motor. Building from the ROS package source code is a common approach for utilizing third-party robotic hardware.
