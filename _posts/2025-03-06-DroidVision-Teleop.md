@@ -8,7 +8,7 @@ categories: Droid_Vision
 [RPLidar in ROS 2 Docker on Raspberry Pi]: {% link _posts/2025-02-08-SecurityRobot-RPLidar.md %}
 [ROS 2 Control, Robot Control the Right Way]: {% link _posts/2025-02-22-SecurityRobot-Ros2_control.md %}
 
-Chasing my cat and watching him run around through the lens of a mobile robot is pretty cool. However, I find it inconvenient to hold the iPad in one hand and the remote control in the other. What if I could integrate the remote control into the Droid Vision app, so that I could see and control the robot using just one device, with everything consolidated in the Droid Vision app?
+Chasing my cat and watching him run around through the lens of a mobile robot is pretty cool. However, there is one drawback: I find it inconvenient to hold the iPad in one hand and the remote control in the other. What if I could integrate the remote control into the Droid Vision app, allowing me to see and control the robot using just one device, with everything consolidated in the Droid Vision app? 
 
 This leads to Droid Vision 2.1, which is available for free from the [Apple Store](https://apps.apple.com/us/app/droid-vision/id6737351549).
 
@@ -24,7 +24,7 @@ To run ROS on Raspberry Pi, I recommend using ROS 2 Docker.
 
 Docker is widely used in enterprise software's microservice architecture, where each service functions as a lightweight Docker container that can be independently deployed and upgraded. A Docker container is created from a Docker image, which serves as a template defining its structure and dependencies. 
 
-The concept of using Docker for robotic applications is relatively new. I have a detailed article about it [RPLidar in ROS 2 Docker on Raspberry Pi].
+The concept of using Docker for robotic applications is relatively new. I have a detailed article about it, which is [RPLidar in ROS 2 Docker on Raspberry Pi].
 
 The Dockerfile and its dependent script that I prepared for my robot can be downloaded from here: [Dockerfile](/code/Dockerfile) and [start_robot.sh](/code/start_robot.sh). We can build and start the Docker container using the following commands:
 
@@ -57,5 +57,12 @@ Using the joystick or keypad on the Droid Vision is straightforward. We just ena
 
 The "Joystick" is the default option for controlling the robot since it is easier to use than the "Keypad".
 
-The "ROS2 Topic" depends on your robot, but "/cmd_vel" is the default ROS topic for the robot's velocity. My [ROS 2 Control, Robot Control the Right Way] blog shows how to configure the "controller_manager" in the robot's launch file to use "cmd_vel" as the Velocity Command topic. 
+If using the "Keypad", we tap the key for the robot to go in the corresponding direction. To continuously send the same velocity messages, we press down the key, and it sends the same message every 0.3 seconds.  
 
+The value of "ROS2 Topic" depends on your robot, but "/cmd_vel" is the default ROS topic for the robot's velocity. My [ROS 2 Control, Robot Control the Right Way] blog shows how to configure the "controller_manager" in the robot's launch file to use "cmd_vel" as the velocity command topic. 
+
+<a href="/assets/IMG_2975.PNG" target="_blank">
+  <img src="/assets/IMG_2975.PNG" width="350" />
+</a>
+
+Cheers!
