@@ -264,9 +264,9 @@ diffbot_base_controller:
 ```
 
 #### Hardware Plugin and Arduino sketch
-The hardware plugin "diffdrive_arduino/DiffDriveArduinoHardware" I used was developed by Josh Newans. I cloned his [git repository](https://github.com/joshnewans/diffdrive_arduino/tree/humble) and built it using `colcon` in my ROS 2 workspace. 
+The hardware plugin "diffdrive_arduino/DiffDriveArduinoHardware" I used was originally developed by the robotics community. I made some adjustments for my motors and easier wiring. I clone the [git repository](https://github.com/jiayihoffman/diffdrive_arduino/tree/humble) and built it using `colcon` in my ROS 2 workspace. 
 
-The Arduino sketch works in conjunction with the hardware plugin and can be downloaded from [here](https://github.com/joshnewans/ros_arduino_bridge/tree/main).
+The Arduino sketch works with the hardware plugin and can be downloaded [here](https://github.com/jiayihoffman/ros_arduino_bridge/tree/main).
 
 ## Let the Robot Dance
 
