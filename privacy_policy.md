@@ -3,17 +3,17 @@ layout: page
 title: Private Policy
 permalink: /private_policy/
 ---
-App Privacy Document for Droid Vision
+App Privacy Document
 
 Effective Date: Nov 19, 2024
 
 ## Introduction
 
-At Droid Vision, your privacy is our priority. We are committed to providing a safe and secure app experience. This document explains our privacy practices and reassures you that we do not collect, store, or share any of your personal data.
+At Modular Machines, your privacy is our priority. We are committed to providing a safe and secure app experience. This document explains our privacy practices and reassures you that we do not collect, store, or share any of your personal data.
 
 ## No Data Collection
 
-Droid Vision does not collect, store, or transmit any of your personal or usage data. This includes, but is not limited to:
+Our apps do not collect, store, or transmit any of your personal or usage data. This includes, but is not limited to:
 
 * Personal information (e.g., name, email address).
 * Video content or metadata created using the app.
@@ -24,11 +24,11 @@ Your activities within the app remain private and are not accessible by us or an
 
 ## Security
 
-Although we do not collect data, Droid Vision prioritizes the security of your information stored on your device. We do not have access to this data, and it remains solely under your control.
+Although we do not collect data, our apps prioritize the security of your information stored on your device. We do not have access to this data, and it remains solely under your control.
 
 ## Children’s Privacy
 
-Droid Vision is safe for all users, including children. Since we do not collect any data, there is no risk of personal information being accessed or shared.
+Our app is safe for all users, including children. Since we do not collect any data, there is no risk of personal information being accessed or shared.
 
 ## Contact Us
 
