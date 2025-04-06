@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "MapTools User Guide"
+title: "MapTools App User Guide"
 date: 2025-04-05 11:45:28 -0600
 categories: MapTools
 ---
