@@ -18,7 +18,7 @@ The Earth isn’t a perfect sphere; it’s slightly flattened at the poles and b
 * A coordinate system defines how positions are expressed, such as latitude/longitude (Geodetic) or grid-based (MGRS, GEOREF, UTM).
 * A datum is a mathematical model of the Earth used to align the coordinate system with the real world (e.g., WGS84, NAD83, NAD27).
 
-Different applications and regions may utilize various combinations of these, making it essential to convert and compare them easily — and that’s exactly what MapTools helps you do.
+Different applications and regions may utilize various combinations of these, making it essential to convert and compare them easily — and that’s exactly what the MapTools helps you do.
 
 The following coordinate systems are available for selection as either the source or target coordinate system:
 
@@ -42,11 +42,7 @@ The Coordinates Conversion feature allows you to convert coordinates among diffe
 #### Choose the Input Method
 At the top, select your preferred input method for the location:
 * Enter Input Location: Manually type in coordinates.
-* Use Current Location: Automatically detect your current position using GPS. Use the map icon to preview the input location on a map. Tap the map icon next to the input header to visually confirm your location if it is valid; otherwise, an error will be displayed in red.
-
-<a href="/assets/maptools/IMG_0583.PNG" target="_blank">
-  <img src="/assets/maptools/IMG_0583.PNG" width="500" />
-</a>
+* Use Current Location: Automatically detect your current position using GPS. 
 
 #### Enter or Fetch the Location
 
@@ -77,6 +73,12 @@ To use the current location, the app needs location permission. If denied, grant
 </a>
 <a href="/assets/maptools/IMG_3006.PNG" target="_blank">
   <img src="/assets/maptools/IMG_3006.PNG" width="350" />
+</a>
+
+For either input method, you can use the map icon to preview the location on the map. Tap the map icon next to the input header to visually confirm if your location is correct.
+
+<a href="/assets/maptools/IMG_0583.PNG" target="_blank">
+  <img src="/assets/maptools/IMG_0583.PNG" width="500" />
 </a>
 
 #### Choose the Output System 
