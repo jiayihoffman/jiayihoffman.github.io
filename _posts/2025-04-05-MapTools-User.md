@@ -35,6 +35,8 @@ The following coordinate systems are available for selection as either the sourc
 * Greek Grid with EGSA87 Datum
 * Singapore TM with SVY21 Datum
 
+For a complete list of datums supported by MapTools, please refer to this [file](/assets/all_datums.txt).
+
 ## MapTools Features
 ### Coordinates Conversion
 The Coordinates Conversion feature allows you to convert coordinates among different formats, coordinate systems, and datums. You can input coordinates manually or use your current location.
