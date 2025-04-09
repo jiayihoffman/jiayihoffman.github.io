@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Private Policy
-permalink: /private_policy/
+title: Privacy Policy
+permalink: /privacy_policy/
 ---
 App Privacy Document
 
