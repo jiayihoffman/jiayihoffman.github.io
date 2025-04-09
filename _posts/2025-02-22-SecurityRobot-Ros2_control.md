@@ -217,7 +217,7 @@ The "ros2_control.xacro" describes the hardware plugin.
             <param name="device">/dev/ttyACM0</param>
             <param name="baud_rate">57600</param>
             <param name="timeout_ms">1000</param>
-            <param name="enc_counts_per_rev">2600</param>
+            <param name="enc_counts_per_rev">2000</param>
         </hardware>
         <joint name="left_wheel_joint">
             <command_interface name="velocity">
