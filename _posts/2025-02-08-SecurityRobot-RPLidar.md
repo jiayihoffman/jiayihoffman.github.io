@@ -6,10 +6,13 @@ categories: Security_Robot
 ---
 ## Introduction - RPLidar and ROS
 
-I bought an RPLidar for my security robot's localization, mapping, and navigation. RPLidar is a 360-degree laser scanner that uses triangulation to measure distances and detect obstacles.
+I purchased RPLidars for my security robot's localization, mapping, and navigation. RPLidar is a 360-degree 2D LiDAR scanner that measures distances and detects obstacles using laser through triangulation or Time-of-Flight.
 
-<a href="/assets/IMG_2918.jpeg" target="_blank">
-  <img src="/assets/IMG_2918.jpeg" />
+<a href="/assets/rplidar/IMG_3081.jpeg" target="_blank">
+  <img src="/assets/rplidar/IMG_3081.jpeg" width="350" />
+</a>
+<a href="/assets/rplidar/IMG_2918.jpeg" target="_blank">
+  <img src="/assets/rplidar/IMG_2918.jpeg" width="350"/>
 </a>
 
 In Robotics, the Robot Operating System (ROS) is the default choice for building robot applications. It offers software libraries and tools that help developers seamlessly connect motors, sensors, and software and speed up the process of building advanced robots. 
@@ -26,7 +29,7 @@ Docker is widely used in enterprise software's microservice architecture, where 
 The official ROS 2 Docker images are available [here](https://hub.docker.com/_/ros/tags). There are several varieties: [ros-core, ros-base, or perception](https://www.ros.org/reps/rep-2001.html#humble-hawksbill-may-2022-may-2027), each one extending from the previous with additional ROS packages.
 
 ### Dockerfile
-To build robotic applications using ROS 2 Docker, we need to create our own Dockerfile using the ROS 2 Docker image as the base image.
+To build robotic applications using ROS 2 Docker, we need to our own Dockerfile using the ROS 2 Docker image as the base image.
 
 A Dockerfile is a text file containing instructions for creating a Docker image. It specifies the base image, adds dependencies, sets environment variables, and defines the application's startup command. In our case, the base image will be the "ros:humble-perception" ROS 2 image.
 
@@ -65,19 +68,29 @@ RUN mkdir -p ${BOT_HOME}/bot_ws/src
 # Set default working directory
 WORKDIR ${BOT_HOME}/bot_ws
 ```
-### Create the Docker image and start the Docker container
+### Create a Docker image
 Before building the Docker image with the Dockerfile above, we must install the Docker engine on the Raspberry Pi. Please follow the instructions on the [official Docker website](https://docs.docker.com/engine/install/debian/). Remember to configure the Docker engine to [run as a non-root user](https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user), as it simplifies the Docker command. 
 
-Once the Docker engine is installed on the Pi, we can execute the command `docker build -t my_ros2_image .` to create the Docker image. I left out the repository URL from the tag to keep it simple and use only the image name.
+Once the Docker engine is installed on the Pi, we can execute the command `docker build -t my_bot_image .` to create the Docker image. 
 
-To start the Docker container, use the `docker run -it --rm my_ros2_image` command.
+### Start the Docker container
+To start the Docker container, use the `docker run -it --rm my_bot_image` command.
 
-## RPLidar
 Now that we have a container for robot development. Let's see how to install the RPLidar there. 
 
-The RPLidar I purchased is the RPLidar A1, a 360-degree 2D laser scanner with a diameter range of 0.15 meters to 12 meters, which translates to approximately 6 inches to 39 feet, pretty impressive! This RPLidar has a sample frequency of 8,000 Hz and a scan rate of 5.5 Hz. It includes a serial port adapter board and a USB cable for connecting to the Raspberry Pi.  
-![alt text](/assets/RPLidar.png)
+## RPLidar
+### Technical Specification
+I have two RPLidars, C1 and A1. Both are 360-degree 2D laser scanners. Let's first look at the RPLidar C1, which has a diameter range of 0.05 meters to 12 meters, translating to approximately 2 inches to 39 feet in the scan range. This RPLidar has a scan rate of 10 Hz, which means  10 full circles per second, and a sample frequency of 5,000 samples per second.
 
+![alt text](/assets/rplidar/rplidar_c1.jpg)
+
+Here is the RPLidar A1, which has a scanning diameter range of 0.15 meters to 12 meters. Its scan rate is 5.5 Hz, and has a sample frequency of 8,000 samples per second. 
+
+![alt text](/assets/rplidar/RPLidar.png)
+
+The RPLidar C1 is a newer and more advanced model than the RPLidar A1. The C1 utilizes Direct Time-of-Flight (DTOF) technology, which allows for higher precision and improved performance. Additionally, the RPLidar C1 features a brushless motor that reduces mechanical friction and noise, enhancing its durability. The C1 is also significantly smaller and lighter than the A1, making it ideal for constructing home robots.
+
+### RPLidar driver code
 To enable the RPLidar to scan and publish its scan data, we need its driver code. The RPLidar has a [ROS2 git repository](https://github.com/Slamtec/rplidar_ros/tree/ros2). We can clone and build that repository using `colcon build`. The RPLidar package provides a node that publishes the scan data to the ROS "/scan" topic, as well as ROS services to start and stop the RPLidar motor. Building from the ROS package source code is a common approach for utilizing third-party robotic hardware.
 
 The RPLidar uses a serial port to communicate with ROS. The port must be specified when we start the RPLidar node. To find out which USB port is used by the RPLidar, let's connect the lidar's USB cable to the Pi and issue this command: 
@@ -93,7 +106,7 @@ The command output tells us a few things:
 3. The device's major number is 188, which stands for "USB serial" in the [linux manual](https://www.kernel.org/doc/Documentation/admin-guide/devices.txt)
 
 ## Run RPLidar in ROS 2 Docker
-### Update my_ros2 Docker Image
+### Update my_bot Docker Image
 With all this information, we are ready to update our Docker images for running RPLidar in Docker:
 
 First, we must add a line to the Dockerfile granting the "ros" user permission to access the ttyUSB port. 
@@ -114,24 +127,28 @@ RUN /bin/bash -c "source /opt/ros/humble/setup.bash && \
 ```
 Click [here](/code/Dockerfile) to download the updated Dockerfile.
 
-Now, let's rebuild the Docker image using the updated Dockerfile:<br>`docker build -t my_ros2_image .`
+Now, let's rebuild the Docker image using the updated Dockerfile:
+```
+docker build -t my_bot_image .
+```
 
-### Create my_ros2 Docker Container
+### Create my_bot Docker Container
 
 To let a Docker container use a device connected to the host machine, we need to specify which device port the container requires. In the case of RPLidar, we must specify the ttyUSB port when starting the container. 
 
-A straightforward approach is to use the `docker run --device` option, as follows: `docker run -it --network=host --ipc=host --device=/dev/ttyUSB0 my_ros2_image`. However, over time, I found this is not the most convenient way, as the USB port can change after reconnecting the RPLidar's USB cable. Therefore, a better method is to map to all devices and then use device group rules to restrict it to only USB serial converters belonging to device group 188, as mentioned in the previous section. 
+A straightforward approach is to use the `docker run --device` option, as follows: `docker run -it --network=host --ipc=host --device=/dev/ttyUSB0 my_bot_image`. However, over time, I found this is not the most convenient way, as the USB port can change after reconnecting the RPLidar's USB cable. Therefore, a better method is to map to all devices and then use device group rules to restrict it to only USB serial converters belonging to device group 188, as mentioned in the previous section. 
 ```
-docker run -it --network=host --ipc=host -v /dev:/dev \
+docker run -it --rm --network=host --ipc=host -v /dev:/dev \
     --device-cgroup-rule='c 188:* rmw' \
     --device-cgroup-rule='c 166:* rmw' \
-    my_ros2_image
+    my_bot_image
 ```
 
-Once in the Docker container, we source the install setup script and run the RPLidar ROS 2 launch file. We then list the nodes, topics, and services to verify the RPLidar runs correctly. 
+Once in the Docker container, we run the RPLidar ROS 2 launch file. We then list the nodes, topics, and services to verify the RPLidar runs correctly. 
 
 ```
-$ ros2 launch rplidar_ros rplidar_a1_launch.py serial_port:=/dev/ttyUSB0
+# start rplidar_c1
+$ ros2 launch rplidar_ros rplidar_c1_launch.py serial_port:=/dev/ttyUSB0
 
 $ ros2 node list
 /rplidar_node
@@ -150,6 +167,12 @@ $ ros2 service list
 /rplidar_node/set_parameters_atomically
 /start_motor
 /stop_motor
+```
+
+The command to start the RPLidar A1 is similar; simply replace "c1" in the launch file with "a1":
+
+```
+$ ros2 launch rplidar_ros rplidar_a1_launch.py serial_port:=/dev/ttyUSB0
 ```
 
 If you receive the error code "80008004” from `ros2 launch rplidar_ros`, it indicates a communication issue between the ROS node and the RPLidar hardware. Please verify if the OS recognizes the LiDAR device at the specified ttyUSB. 
@@ -177,9 +200,20 @@ As mentioned earlier, we set the environment variable "export ROS_DOMAIN_ID=1" t
 
 Viewing the scan data in RViz isn’t the easiest task. We need to add the "LaserScan" with the "/scan" topic and some configurations. To simplify this process, I created a [launch file](/code/view_rviz2.py) in the rplidar_ros package. Instead of configuring RViz manually, type the command `ros2 launch rplidar_ros view_rviz2.py` in the linux desktop after rebuilding the rplidar_ros package. 
 
+```
+$ ros2 launch rplidar_ros view_rviz2.py
+```
+
 Here, by using RViz, I can view the robot's lidar scan from my Ubuntu desktop. On the left side is the curved bay window of my office. A desk, a bookshelf, and a cat tower sit next to the window, making that area quite busy. 
-<a href="/assets/rviz2_scan.png" target="_blank">
-  <img src="/assets/rviz2_scan.png" />
+
+Scan from the RPLidar C1:
+<a href="/assets/rplidar/rviz2_c1_scan.png" target="_blank">
+  <img src="/assets/rplidar/rviz2_c1_scan.png" />
+</a>
+
+Scan from the RPLidar A1:
+<a href="/assets/rplidar/rviz2_a1_scan.png" target="_blank">
+  <img src="/assets/rplidar/rviz2_a1_scan.png" />
 </a>
 
 Cheers!
