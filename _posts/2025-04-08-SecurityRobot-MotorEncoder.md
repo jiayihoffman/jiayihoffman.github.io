@@ -50,7 +50,7 @@ The readings from the encoders assist in reporting the position, angle, and velo
 </a>
 
 ## Upgrade DC Motors using Motor Encoders
-I have several [OSEPP DC motors](https://osepp.com/robotic-kits/4-tank-mechanical-kit) that I used for different DIY robotics projects. These motors are high-quality, made from durable materials, and they provide high torque and a long motor shaft. They work well with the mechanical components of my robot.
+I have several [OSEPP DC motors](https://osepp.com/accessories/motors/143-ls-00041-high-torque-electric-motor-6v) that I used for different DIY robotics projects. These motors are high-quality, made from durable materials, and they provide high torque and a long motor shaft. They work well with the mechanical components of my robot.
 
 <a href="/assets/IMG_2910.jpeg" target="_blank">
   <img src="/assets/IMG_2910.jpeg" width="350" />
@@ -85,8 +85,8 @@ After following the assembly instructions, I installed the encoder mount next to
 I used the following Arduino program to check the readings.
 
 ```
-#define ENCA A4 // Yellow 2, A4
-#define ENCB A5 // White 3, A5
+#define ENCA A4 // Pin 2, A4
+#define ENCB A5 // Pin 3, A5
 
 void setup() {
   Serial.begin(9600);
