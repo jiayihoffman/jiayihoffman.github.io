@@ -59,7 +59,7 @@ I have several [OSEPP DC motors](https://osepp.com/accessories/motors/143-ls-000
   <img src="/assets/motor_encoder/IMG_2990.jpeg" width="350" />
 </a>
 
-I considered using a new pair of DC motors with built-in encoders to simplify the setup. However, the ones I found on Amazon do not have a long enough motor shaft to work with my robotic parts. Additionally, their build quality is not ideal.
+I considered using a new pair of DC motors with built-in encoders to simplify the setup. However, the ones I found on Amazon do not have a long enough motor shaft to work with my robotic parts. 
 
 <a href="/assets/motor_encoder/IMG_3065.jpeg" target="_blank">
   <img src="/assets/motor_encoder/IMG_3065.jpeg" width="600" />
