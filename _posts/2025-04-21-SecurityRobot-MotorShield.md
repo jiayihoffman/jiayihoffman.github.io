@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Enhancing Robot Cars with Motor Shield TB6612"
+title: "Simplify Robot Cars using TB6612 Motor Shield"
 date: 2025-04-21 8:27:08 -0600
 categories: Security_Robot
 ---
@@ -49,7 +49,7 @@ TB6612FNG features a newer, more efficient design, utilizing MOSFETs for switchi
 
 Regarding the wiring, TB6612FNG uses the same pins as L298N to drive the motor and can serve as a drop-in replacement for L298N.
 
-Here is TB6612FNG and L298N side by side; TB6612FNG is less than one fifth the size of L298N. 
+Here is L298N and TB6612FNG side by side; TB6612FNG is less than one fifth the size of L298N. 
 
 <a href="/assets/motor_driver/IMG_3125.jpeg" target="_blank">
   <img src="/assets/motor_driver/IMG_3125.jpeg" width="350" />
@@ -143,4 +143,7 @@ The motor shield includes logic rails labeled “V” and GND rails “G” for 
 
 The alternative is to use Arduino 5V and GND for a clean and stable reference voltage, which is what I ended up choosing in my setup.
 
+### Update to the ROS Arduino Bridge Sketch
+I updated the [ros_arduino_bridge](https://github.com/jiayihoffman/ros_arduino_bridge/tree/MS_TB6612) repository to add support for the TB6612 motor shield and changed the encoder_driver to use analog pins A2-A5 for encoder readings.
 
+Cheers!
