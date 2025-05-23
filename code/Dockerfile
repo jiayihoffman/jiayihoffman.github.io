@@ -30,6 +30,11 @@ ENV BOT_HOME=/home/${USERNAME}
 COPY start_robot.sh ${BOT_HOME}/start_robot.sh
 RUN chmod +x ${BOT_HOME}/start_robot.sh
 
+# Copy SSH key and configure permissions
+RUN mkdir -p ${BOT_HOME}/.ssh && chmod 700 ${BOT_HOME}/.ssh
+COPY id_rsa ${BOT_HOME}/.ssh/id_rsa
+RUN ssh-keyscan github.com >> ${BOT_HOME}/.ssh/known_hosts
+
 RUN groupadd --gid ${USER_GID} ${USERNAME} \
   && useradd -s /bin/bash --uid ${USER_UID} --gid ${USER_GID} -m ${USERNAME} -d ${BOT_HOME} \
   && chown -R ${USER_UID}:${USER_GID} ${BOT_HOME}
@@ -39,7 +44,7 @@ RUN usermod -a -G dialout ${USERNAME}
 # the rest of the command run as ros
 USER ros
 
-# Create the ROS 2 workspace
+# Create the ROS2 workspace
 RUN mkdir -p ${BOT_HOME}/bot_ws/src 
 
 # download the rplidar source code
@@ -48,12 +53,16 @@ RUN cd ${BOT_HOME}/bot_ws/src \
 
 # diffdrive hardware component
 RUN cd ${BOT_HOME}/bot_ws/src \
-  && git clone -b humble https://github.com/joshnewans/diffdrive_arduino.git
+  && git clone -b humble https://github.com/jiayihoffman/diffdrive_arduino.git
 
-# Source ROS 2 env and build the rplidar nodes
-RUN /bin/bash -c "source /opt/ros/humble/setup.bash && \
-    cd ${BOT_HOME}/bot_ws && \
-    colcon build --symlink-install"
+# download my_bot
+# RUN cd ${BOT_HOME}/bot_ws/src \
+#   && git clone git@github.com:jiayihoffman/my_bot.git
+
+# Source ROS2 env and build the rplidar, diffdrive hardware and my_bot
+RUN /bin/bash -c "source /opt/ros/humble/setup.bash \
+    && cd ${BOT_HOME}/bot_ws \
+    && colcon build --symlink-install"
 
 # config ros2 environment
 RUN echo "export ROS_DOMAIN_ID=1" >> ~/.bashrc \

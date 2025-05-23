@@ -33,7 +33,7 @@ The L298N uses bipolar junction transistors (BJTs) in its H-bridge design, which
 Another problem I face when using the L298N is that it is bulky and requires messy wiring to connect the necessary L298N pins to the Arduino. Here are the pins that must be connected:
 * EnableA, EnableB (connect to Arduino's PWM pins to control the motor's speed)
 * IN1, IN2, IN3, IN4 (control the motor direction) 
-* 5V logic voltage, Ground 
+* 5V logic voltage, GND 
 
 <a href="/assets/motor_driver/IMG_3119.jpeg" target="_blank">
   <img src="/assets/motor_driver/IMG_3119.jpeg" width="350" />
@@ -65,7 +65,7 @@ The OSEPP TB6612 Motor Shield uses two TB6612FNG dual H-bridge driver chips, all
 
 Here are the pictures of the updated wiring. I replaced the L298N motor driver with the TB6612 motor shield. Once I connect the motors to the motor shield using the wire clips, I don't need any additional wires to control the motor. The four wires on the motor shield are for the motor encoders, not for the motors themselves. 
 
-The motor shield has convenient "V" and "G" rails to provide the 5V Logic Voltage and Ground for the encoders and sensors. However, they are NOT directly connected to Arduino’s 5V/GND rails, so be careful when using them. More details will be discussed in the next section on how to use them correctly.
+The motor shield has convenient "V" and "G" rails to provide the 5V Logic Voltage and GND for the encoders and sensors. However, they are NOT directly connected to Arduino’s 5V/GND rails, so be careful when using them. More details will be discussed in the next section on how to use them correctly.
 
 <a href="/assets/motor_driver/IMG_3098.jpeg" target="_blank">
   <img src="/assets/motor_driver/IMG_3098.jpeg" width="350" />
@@ -82,10 +82,10 @@ Unlike a standalone motor driver, the OSEPP TB6612 motor shield has a [Driver Sc
 
 The STBY (standby) pins are internally connected to 5V, keeping both motor drivers active by default. This design integrates neatly with Arduino UNO headers, requiring no external wiring for basic motor control.
 
-Each type of shield has its own schematic. Grok or ChatGPT are currently not aware of it and hallucinate heavily. For example, they believe the reason the code is not working with the motor shield is that the STBY pin is not set to HIGH and insist I run a jumper wire to connect pin 10 to 5V since pin 10 is usually the STBY pin. :D
+Each type of shield has its schematic. Grok or ChatGPT are currently not aware of it and hallucinate heavily. For example, they believe the reason the code is not working with the TB6612 motor shield is that the STBY pin is not set to HIGH and insist I run a jumper wire to connect pin 10 to 5V since pin 10 is usually the STBY pin. :D
 
 #### PWM with One DIRECTION Input
-From the OSEPP example code, I also learned that I only use one pin to control the direction, unlike L298N or TB6612FNG, which use two input pins for the direction. Therefore, to stop the motor, I must set PWM to 0 rather than setting the input pins to LOW. 
+From the OSEPP example code, I learned that I only use one pin to control the direction, unlike L298N or TB6612FNG, which use two input pins for the direction. Therefore, to stop the motor, I must set PWM to 0 rather than setting the input pins to LOW. 
 
 Here is the Arduino sketch I created to test the DC motor with the OSEPP TB6612 Motor Shield:
 ```

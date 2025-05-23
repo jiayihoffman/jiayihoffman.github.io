@@ -108,7 +108,7 @@ At this stage, my robot is quite simple. The control node calculates the PWM val
 Here's what to configure on the Raspberry Pi:
 1. Install pyFirmata - `pip3 install pyfirmata`
 2. Grant the robot user permission to read and write the serial port - `sudo adduser $USER dialout`
-3. Create ROS nodes using pyFirmata
+3. Update the ROS node to use pyFirmata
 
 ```
 import pyfirmata
@@ -117,6 +117,7 @@ board = pyfirmata.Arduino('/dev/ttyACM0')
 
 board.digital[RIGHT_MOTOR_1].write(0)
 board.digital[RIGHT_MOTOR_2].write(0)
+...
 ```
 
 Firmata works well for a simple robot, but I must explore more sophisticated options as my robot advances.
