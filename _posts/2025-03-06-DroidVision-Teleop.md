@@ -32,7 +32,7 @@ Docker is widely used in enterprise software's microservice architecture, where 
 
 The concept of using Docker for robotic applications is relatively new. I have a detailed article about it, which is [RPLidar in ROS 2 Docker on Raspberry Pi].
 
-The Dockerfile and its associated script that I prepared for my robot can be downloaded from here: [Dockerfile](/code/Dockerfile), [requirements.txt](/code/requirements.txt). This Docker image contains all the necessary ROS2 modules, Python libraries, and source code repositories. Access to the private git repository is granted using an SSL key.
+The Dockerfile I prepared for my robot can be downloaded from here: [Dockerfile](/code/Dockerfile) and [requirements.txt](/code/requirements.txt). The Docker image created from the Dockerfile includes all the necessary ROS2 modules, Python libraries, and source code repositories. Access to the private Git repository is granted using an SSL key.
 
 We can build the Docker image and start the Docker container using the following commands. Building the Docker image compiles the source code and creates the bot environment. 
 
@@ -81,7 +81,7 @@ If using the "Keypad", we tap the key for the robot to go in the corresponding d
 This is a Differential Mobile Robot featuring two independently driven wheels and two caster wheels for balance. The Differential Bot moves forward or backward by spinning both wheels in the same direction, and it rotates in place by spinning the wheels in opposite directions. 
 
 <a href="/assets/teleop/IMG_3220.jpeg" target="_blank">
-  <img src="/assets/teleop/IMG_3220.jpeg" width="500" />
+  <img src="/assets/teleop/IMG_3220.jpeg" width="400" />
 </a>
 
 Here is my robot circling the kitchen. I was controlling the robot using Droid Vision's joystick and viewing the kitchen from the robot's onboard camera through the Droid Vision app. The robot has a pair of sports tires, and the ground is textured tile, so the ride is a little bumpy. :)
