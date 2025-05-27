@@ -32,7 +32,7 @@ Docker is widely used in enterprise software's microservice architecture, where 
 
 The concept of using Docker for robotic applications is relatively new. I have a detailed article about it, which is [RPLidar in ROS 2 Docker on Raspberry Pi].
 
-The Dockerfile and its associated script that I prepared for my robot can be downloaded from here: [Dockerfile](/code/Dockerfile), [requirements.txt](/code/requirements.txt) and [start_robot.sh](/code/start_robot.sh). This Docker image contains all the necessary ROS2 modules, Python libraries, and source code repositories. Access to the private git repository is granted using an SSL key.
+The Dockerfile and its associated script that I prepared for my robot can be downloaded from here: [Dockerfile](/code/Dockerfile), [requirements.txt](/code/requirements.txt). This Docker image contains all the necessary ROS2 modules, Python libraries, and source code repositories. Access to the private git repository is granted using an SSL key.
 
 We can build the Docker image and start the Docker container using the following commands. Building the Docker image compiles the source code and creates the bot environment. 
 
@@ -47,7 +47,8 @@ docker run -it --rm --network=host --ipc=host -v /dev:/dev \
     my_bot_image
 
 # start the robot and rosbridge_server in the docker container
-ros@raspi3:~/bot_ws$ ../start_robot.sh 
+ros@raspi:ros2 launch my_bot robot.launch.py
+ros@raspi:ros2 launch rosbridge_server rosbridge_websocket_launch.xml
 ```
 
 With that, the Rosbridge WebSocket is open on the Raspberry Pi and can be accessed from the Droid Vision app.

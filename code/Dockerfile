@@ -27,9 +27,6 @@ ARG USER_GID=${USER_UID}
 
 ENV BOT_HOME=/home/${USERNAME}
 
-COPY start_robot.sh ${BOT_HOME}/start_robot.sh
-RUN chmod +x ${BOT_HOME}/start_robot.sh
-
 # Copy SSH key and configure permissions
 RUN mkdir -p ${BOT_HOME}/.ssh && chmod 700 ${BOT_HOME}/.ssh
 COPY id_rsa ${BOT_HOME}/.ssh/id_rsa
@@ -76,4 +73,3 @@ RUN python3 -m pip install --user --no-cache-dir --no-compile -r ${BOT_HOME}/req
 # Set default working directory
 WORKDIR ${BOT_HOME}/bot_ws
 
-# CMD ["~/start_robot.sh"]
