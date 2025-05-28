@@ -5,19 +5,21 @@ date: 2025-05-26 10:27:08 -0600
 categories: Security_Robot
 ---
 
+[Enhance DC Motors using Motor Encoders]: {% link _posts/2025-04-08-SecurityRobot-MotorEncoder.md %}
 [RPLidar in ROS 2 Docker on Raspberry Pi]: {% link _posts/2025-02-08-SecurityRobot-RPLidar.md %}
+[Droid Vision with built-in Joystick and Keypad]: {% link _posts/2025-03-06-DroidVision-Teleop.md %}
 
-I am always curious about how the Roomba vacuum automatically creates a map of the floor by driving around. In this article, I will explain how to create the floor map using a mobile robot with the Nav2 SLAM Toolbox.
+I am always curious about how the Roomba vacuum automatically creates a map of the floor by driving around. In this blog, I will explain how to create the floor map using a mobile robot with the Nav2 SLAM Toolbox.
 
 ## Get to Know the SLAM Toolbox
 
-The Nav2 (Navigation 2) stack is a modular system that enables autonomous navigation for mobile robots in ROS. The SLAM Toolbox, which stands for Simultaneously Localize and Map, plays a key role in the navigation stack and is part of ROS Nav2.
+The Nav2 (Navigation 2) stack is a modular system that enables autonomous navigation for mobile robots in the ROS framework. The SLAM Toolbox, which stands for Simultaneous Localization and Mapping, plays a crucial role in the navigation stack and is part of ROS Navigation 2.
 
 ### Mapping 
 
-The SLAM Toolbox is a 2D mapping system based on LiDAR data and odometry. It enables the robot to generate a map of an unknown environment while tracking its position on that map in real time. SLAM Toolbox builds an 2D occupancy grid map using the robot's laser scans and motion data. 
+The SLAM Toolbox is a 2D mapping system based on LiDAR data and odometry. It enables the robot to generate a map of an unknown environment while tracking its position on that map in real time. SLAM Toolbox builds a 2D occupancy grid map using the robot's laser scans and motion data. 
 
-Here is the kitchen map made by my robot R4 as it circled the kitchen. 
+Here is the kitchen map created by my robot, R4, as it circled the kitchen.
 
 <a href="/assets/slam/mapping.png" target="_blank">
   <img src="/assets/slam/mapping.png" />
@@ -37,14 +39,16 @@ Mapping is the first step of the navigation pipeline, and SLAM Toolbox plays a c
 
 The SLAM Toolbox is also a localization system that identifies the robot's position and orientation (pose) within its perceived world. 
 
-To explain the concept of "location" in ROS, we need to discuss the ROS Frame and Transform.
+To explain the concept of "location" in ROS, we must discuss the ROS Frame and Transform.
 
 #### Frame 
-* **Frame** refers to a 3D coordinate system used to define the spatial location and orientation of an entity (like a robot, sensor, or object) in space.
-* **odom Frame** is the starting point of the robot’s trajectory. As the robot moves, its pose changes in the odom frame based on odometry data.
-* **base_link Frame** is a fixed frame attached to the robot's chassis or main body. It serves as a reference point for other robot frames, such as wheels and lidar sensors.
+* A **Frame** refers to a 3D coordinate system used to define the spatial location and orientation of an entity (like a robot, sensor, or object) in space.
+* The **odom Frame** is the starting point of the robot’s trajectory. As the robot moves, its pose changes in the odom frame based on odometry data.
+* The **base_link Frame** is a fixed frame attached to the robot's chassis or main body. It serves as a reference point for other robot frames, such as wheels and lidar sensors.
 
-Here are the frames of my mobile robot, as seen in RViz, with red representing x axies, green representing y, and blue representing z. Every joint defined in the robot's URDF has a frame.
+The ROS coordinate frame follows the Right-Hand Rule, where X goes forward from the robot’s center, Y goes to the left, and Z rises upward, perpendicular to the floor.
+
+Here are the frames of my mobile robot, as seen in RViz, with red representing the X-axis, green representing the Y-axis, and blue representing the Z-axis. Every joint defined in the robot's URDF has a frame.
 
 <a href="/assets/slam/rviz2.png" target="_blank">
   <img src="/assets/slam/rviz2.png" />
@@ -54,7 +58,7 @@ Here are the frames of my mobile robot, as seen in RViz, with red representing x
 #### Transform chain
 What is Transform in ROS? 
 
-* **Transform(TF)**, represents the position and orientation of a coordinate frame relative to another. It's a fundamental concept in ROS to describe how objects and coordinate systems are located in 3D space, enabling systems to understand the relative positions of various components and their interactions. 
+* **Transform(TF)** represents the position and orientation of a coordinate frame relative to another. It's a fundamental concept in ROS that describes how objects and coordinate systems are positioned in 3D space, enabling systems to understand the relative positions of various components and their interactions.
 
 A typical Transform chain for mobile robots looks like this:
 
@@ -63,16 +67,16 @@ map → odom → base_link → laser_frame
 ```
 
 Each transform has a purpose:
-* **odom → base_link** comes from the wheel encoder or other local sensors. It tracks how far the robot has moved from its starting point. It is fast to compute, continuous but accumulates drifts over time. <br><br>To correct for odometry drift, a higher-level system like SLAM Toolbox computes the robot’s true global pose and broadcasts.
+* The **odom → base_link** comes from the wheel encoder or other local sensors. It tracks how far the robot has moved from its starting point. It is fast to compute, continuous but accumulates drift over time. <br><br>To correct for odometry drift, a higher-level system like SLAM Toolbox computes the robot’s true global pose and broadcasts.
 
-* **map → odom** comes from the SLAM Toolbox and provides global correction to the drifting odometry. <br><br>The SLAM Toolbox estimates the robot’s pose in the global map frame based on the Laser scan and odom data. It uses this information to compute a correction transform, and broadcasts it as map → odom. This allows the robot’s current global position to be determined as base_link in the map frame.
+* The **map → odom** comes from the SLAM Toolbox and provides global correction to the drifting odometry. <br><br>The SLAM Toolbox estimates the robot's pose in the global map frame based on laser scans and odometry data. It uses this information to compute a correction transform and broadcasts it as the map → odom transform. This allows the robot's current global position to be determined as base_link in the map frame.
 
 The "map → odom" transform is essential for: 
-1. RViz visualization, so the robot appears in the correct position on the map.
-2. Path planning, so global planners can compute paths from the robot’s actual location.
-3. Localization, so the robot can recognize when it returns to a previously visited place (loop closure).
+1. RViz visualization: the robot appears in the correct position on the map.
+2. Path planning: the global planners can compute paths from the robot's actual location.
+3. Localization: the robot can recognize when it returns to a previously visited location, known as loop closure.
 
-In summary, SLAM Toolbox broadcasts map → odom to anchor the robot’s local odometry into the global map frame. This corrects for drift and ensures accurate global navigation. Without this transform, Nav2 cannot correctly localize the robot or plan valid paths. 
+In summary, the SLAM Toolbox broadcasts the map → odom transform to anchor the robot's local odometry in the global map frame. This corrects for drift and ensures accurate global navigation. Without this transform, Nav2 cannot correctly localize the robot or plan valid paths.
 
 ## Meet Robot R4
 This is my Differential Mobile Robot featuring two independently driven wheels and two caster wheels for balance. The Differential Bot moves forward or backward by rotating both wheels in the same direction, and it can rotate in place by spinning the wheels in opposite directions.
@@ -85,10 +89,10 @@ At the top of the robot is the RPLidar, which generates the scan data. I have a 
 
 ## Run the Robot with Mapping 
 
-To run the robot that generates maps, we need a ROS environment that includes the robot modules, the RPLidar driver, the navigation stack, the rosbridge suite, and many other dependencies. The cleanest and simplest way is to use a Docker container. Docker simplifies deployment and makes the environment portable, consistent, and shareable.
+To run the robot that generates maps, we need a ROS environment that includes the robot module, the RPLidar driver, the navigation stack, the rosbridge suite, and many other dependencies. The cleanest and simplest way is to use a Docker container. Docker simplifies deployment and makes the environment portable, consistent, and shareable.
 
 ### A Docker Container
-A Docker container is created from a Docker image, which serves as a template defining its structure and dependencies. Docker is widely used in enterprise software's microservice architecture but is relatively new in robotic applications. I have a blog [RPLidar in ROS 2 Docker on Raspberry Pi] explaining in detail how to use a Docker container in a robot. 
+A Docker container is created from a Docker image, which serves as a template defining its structure and dependencies. Docker is widely used in enterprise software's microservice architecture, but is relatively new in robotic applications. I have a blog, [RPLidar in ROS 2 Docker on Raspberry Pi], which explains in detail how to use a Docker container in a robot. 
 
 The Dockerfile I prepared for my robot can be downloaded from here: [Dockerfile](/code/Dockerfile) and [requirements.txt](/code/requirements.txt). The Docker image created from the Dockerfile includes all the necessary ROS 2 modules, Python libraries, and source code repositories. Access to the private Git repository is granted using an SSL key.
 
@@ -108,7 +112,9 @@ docker run -it --rm --network=host --ipc=host -v /dev:/dev \
 
 ### Commands to Run the Robot with Mapping  
 
-On the Raspberry Pi Docker container, we launch the robot, the SLAM toolbox, and the navigation server. Additionally, I start the rosbridge_server because I use Droid Vision to view and control the robot remotely from my phone. If you prefer the traditional ROS teleop_twist_keyboard or teleop_twist_joy for remote control, feel free to use that instead and skip running the rosbridge_server.  
+On the Raspberry Pi Docker container, we launch the robot, the SLAM toolbox, and the navigation server. 
+
+Additionally, I start the "rosbridge_server" because I use the Droid Vision app to view and control my robot remotely from my phone. Please see the article [Droid Vision with built-in Joystick and Keypad] for more information. If you prefer the traditional ROS teleop_twist_keyboard or teleop_twist_joy for remote control, feel free to use those and skip launching the rosbridge_server.  
 
 ```
 # 1. Start the robot itself
@@ -127,7 +133,7 @@ ros2 launch nav2_bringup navigation_launch.py use_sim_time:=false
 ros2 launch rosbridge_server rosbridge_websocket_launch.xml
 ```
 
-On the Linux development machine, launch RViz to visualize the robot in its perceived world.
+On the Linux development machine, I launch RViz to visualize the robot in its world.
 
 ```
 rviz2 -d ~/dev/dev_ws/src/my_bot/config/view_bot_map.rviz
