@@ -21,12 +21,8 @@ The SLAM Toolbox is a 2D mapping system based on LiDAR data and odometry. It ena
 
 Here is the kitchen map created by my robot, R4, as it circled the kitchen.
 
-<a href="/assets/slam/mapping.png" target="_blank">
-  <img src="/assets/slam/mapping.png" />
-</a>
-
 <iframe width="800" height="468"
-src="https://youtube.com/embed/LCufwPer-VU?autoplay=1&mute=0">
+src="https://youtube.com/embed/5HTosrSPC9A?autoplay=1&mute=0">
 </iframe>
 
 The tool that displays the map is RViz2, which is a 3D visualization tool within the ROS 2 framework. RViz2 enables users to view and interact with a robot's state, sensor data, and environment in a 3D space. It provides a window into the robot's world, illustrating what the robot "sees" and how it is positioned.
@@ -112,7 +108,7 @@ docker run -it --rm --network=host --ipc=host -v /dev:/dev \
 
 ### Commands to Run the Robot with Mapping  
 
-On the Raspberry Pi Docker container, we launch the robot, the SLAM toolbox, and the navigation server. 
+I launch the robot and the PRLidar on the Raspberry Pi Docker container. 
 
 Additionally, I start the "rosbridge_server" because I use the Droid Vision app to view and control my robot remotely from my phone. Please see the article [Droid Vision with built-in Joystick and Keypad] for more information. If you prefer the traditional ROS teleop_twist_keyboard or teleop_twist_joy for remote control, feel free to use those and skip launching the rosbridge_server.  
 
@@ -123,24 +119,24 @@ ros2 launch my_bot robot.launch.py
 # 2. Start the robot's LiDAR scan
 ros2 launch rplidar_ros rplidar_c1_launch.py serial_port:=/dev/ttyUSB0 frame_id:=laser_frame
 
-# 3. Start the slam toolbox
-ros2 launch slam_toolbox online_async_launch.py use_sim_time:=false
-
-# 4. Start the navigation server
-ros2 launch nav2_bringup navigation_launch.py use_sim_time:=false
-
-# 5. Start the rosbridge_server for Droid Vision Teleop
+# 3. Start the rosbridge_server for Droid Vision Teleop
 ros2 launch rosbridge_server rosbridge_websocket_launch.xml
 ```
 
-On the Linux development machine, I launch RViz to visualize the robot in its world.
+On the Linux development machine, I launch RViz to visualize the robot in its world and run the SLAM toolbox to create the map.
 
 ```
+# 1. Launch RViz
 rviz2 -d ~/dev/dev_ws/src/my_bot/config/view_bot_map.rviz
+
+# 2. Start the slam toolbox
+ros2 launch slam_toolbox online_async_launch.py use_sim_time:=false
+
 ```
 
 <a href="/assets/slam/mapping.png" target="_blank">
   <img src="/assets/slam/mapping.png" />
 </a>
+
 
 Cheers! :D
