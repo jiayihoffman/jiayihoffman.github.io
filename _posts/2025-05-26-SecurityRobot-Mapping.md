@@ -27,7 +27,7 @@ src="https://youtube.com/embed/5HTosrSPC9A?autoplay=1&mute=0">
 
 The tool that displays the map is RViz2, which is a 3D visualization tool within the ROS 2 framework. RViz2 enables users to view and interact with a robot's state, sensor data, and environment in a 3D space. It provides a window into the robot's world, illustrating what the robot "sees" and how it is positioned.
 
-The generated map can be saved in RViz2 using the "slam_toolbox" panel. This panel contains the "save" and "serialization" options, where the “serialization” format is intended for use by the SLAM Toolbox itself, while the "save" format allows the map to be utilized by other Nav2 localization tools, such as AMCL.
+The generated map can be saved in RViz2 using the "slam_toolbox" panel. This panel contains the "save" and "serialization" options, where the “serialization” format is intended for use by the SLAM Toolbox itself, while the "save" format allows the map to be utilized by other Nav2 localization tools, such as Adaptive Monte Carlo Localization (AMCL).
 
 Mapping is the first step of the navigation pipeline, and SLAM Toolbox plays a crucial role in map generation. 
 
@@ -99,7 +99,7 @@ We can build the Docker image and start the Docker container using the following
 docker build -t my_bot_image .
 
 # start the docker container from the image
-docker run -it --rm --network=host --ipc=host -v /dev:/dev \
+docker run -it --network=host --ipc=host -v /dev:/dev \
     --device-cgroup-rule='c 188:* rmw' \
     --device-cgroup-rule='c 166:* rmw' \
     my_bot_image
@@ -108,7 +108,7 @@ docker run -it --rm --network=host --ipc=host -v /dev:/dev \
 
 ### Commands to Run the Robot with Mapping  
 
-I launch the robot and the PRLidar on the Raspberry Pi Docker container. 
+I launch the robot, the PRLidar, and the SLAM toolbox in the Raspberry Pi's Docker container. 
 
 Additionally, I start the "rosbridge_server" because I use the Droid Vision app to view and control my robot remotely from my phone. Please see the article [Droid Vision with built-in Joystick and Keypad] for more information. If you prefer the traditional ROS teleop_twist_keyboard or teleop_twist_joy for remote control, feel free to use those and skip launching the rosbridge_server.  
 
@@ -119,23 +119,24 @@ ros2 launch my_bot robot.launch.py
 # 2. Start the robot's LiDAR scan
 ros2 launch rplidar_ros rplidar_c1_launch.py serial_port:=/dev/ttyUSB0 frame_id:=laser_frame
 
-# 3. Start the rosbridge_server for Droid Vision Teleop
+# 3. Start the slam toolbox to create the map 
+ros2 launch slam_toolbox online_async_launch.py use_sim_time:=false
+
+# 4. Start the rosbridge_server for the Droid Vision Teleop
 ros2 launch rosbridge_server rosbridge_websocket_launch.xml
 ```
 
-On the Linux development machine, I launch RViz to visualize the robot in its world and run the SLAM toolbox to create the map.
+On the Linux development machine, I launch RViz to visualize the robot in its world.
 
 ```
 # 1. Launch RViz
 rviz2 -d ~/dev/dev_ws/src/my_bot/config/view_bot_map.rviz
 
-# 2. Start the slam toolbox
-ros2 launch slam_toolbox online_async_launch.py use_sim_time:=false
 
 ```
 
-<a href="/assets/slam/mapping.png" target="_blank">
-  <img src="/assets/slam/mapping.png" />
+<a href="/assets/slam/mapping2.png" target="_blank">
+  <img src="/assets/slam/mapping2.png" />
 </a>
 
 
