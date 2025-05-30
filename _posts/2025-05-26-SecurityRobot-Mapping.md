@@ -21,9 +21,9 @@ The SLAM Toolbox is a 2D mapping system based on LiDAR data and odometry. It ena
 
 Here is the kitchen map created by my robot, R4, as it circled the kitchen.
 
-<iframe width="800" height="468"
-src="https://youtube.com/embed/5HTosrSPC9A?autoplay=1&mute=0">
-</iframe>
+<a href="/assets/slam/mapping.png" target="_blank">
+  <img src="/assets/slam/mapping.png" />
+</a>
 
 The tool that displays the map is RViz2, which is a 3D visualization tool within the ROS 2 framework. RViz2 enables users to view and interact with a robot's state, sensor data, and environment in a 3D space. It provides a window into the robot's world, illustrating what the robot "sees" and how it is positioned.
 
@@ -83,7 +83,7 @@ At the top of the robot is the RPLidar, which generates the scan data. I have a 
   <img src="/assets/teleop/IMG_3220.jpeg" width="400" />
 </a>
 
-## Run the Robot with Mapping 
+## Robot Mapping 
 
 To run the robot that generates maps, we need a ROS environment that includes the robot module, the RPLidar driver, the navigation stack, the rosbridge suite, and many other dependencies. The cleanest and simplest way is to use a Docker container. Docker simplifies deployment and makes the environment portable, consistent, and shareable.
 
@@ -106,7 +106,7 @@ docker run -it --network=host --ipc=host -v /dev:/dev \
 
 ```
 
-### Commands to Run the Robot with Mapping  
+### Commands to Run the Robot Mapping  
 
 I launch the robot, the PRLidar, and the SLAM toolbox in the Raspberry Pi's Docker container. 
 
@@ -131,13 +131,9 @@ On the Linux development machine, I launch RViz to visualize the robot in its wo
 ```
 # 1. Launch RViz
 rviz2 -d ~/dev/dev_ws/src/my_bot/config/view_bot_map.rviz
-
-
 ```
-
-<a href="/assets/slam/mapping2.png" target="_blank">
-  <img src="/assets/slam/mapping2.png" />
-</a>
-
+<iframe width="800" height="468"
+src="https://youtube.com/embed/5HTosrSPC9A?autoplay=1&mute=0">
+</iframe>
 
 Cheers! :D
