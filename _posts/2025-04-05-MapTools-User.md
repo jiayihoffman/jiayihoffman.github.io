@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "MapTools App User Guide"
+title: "MapTools iOS App User Guide"
 date: 2025-04-05 11:45:28 -0600
 categories: MapTools
 ---
@@ -10,7 +10,7 @@ MapTools is a versatile utility app designed to help you work with geographic co
 * Measure distances and bearings between two geographic points
 * Preview locations on a map using your current position or manually entered coordinates
 
-MapTools is available from the [Apple Store](https://apps.apple.com/us/app/map-tools/id329231582).
+MapTools is available from the [App Store](https://apps.apple.com/us/app/map-tools/id329231582).
 
 ## Why Different Coordinate Systems and Datums
 

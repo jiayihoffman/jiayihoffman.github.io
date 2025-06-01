@@ -13,14 +13,21 @@ At Modular Machines, your privacy is our priority. We are committed to providing
 
 ## No Data Collection
 
-Our apps do not collect, store, or transmit any of your personal or usage data. This includes, but is not limited to:
+Your data is stored on your device and iCloud when using iOS apps. Our apps do not collect, store, or transmit any of your personal or usage data. This includes, but is not limited to:
 
 * Personal information (e.g., name, email address).
 * Video content or metadata created using the app.
+* Location and map data used in the app.
 * Usage statistics or analytics data.
 * Device information (e.g., IP address, device model, or operating system).
 
 Your activities within the app remain private and are not accessible by us or any third-party services.
+
+### Map Data of GPS app
+
+Map data is provided by Apple and Google APIs. This data is never routed through us. Your device will share its location with Apple or Google services to obtain details for rendering the map.
+
+Your location is never shared with us.
 
 ## Security
 
