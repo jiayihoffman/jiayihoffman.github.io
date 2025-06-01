@@ -87,7 +87,7 @@ This is a Differential Mobile Robot featuring two independently driven wheels an
 Here is my robot circling the kitchen. I was controlling the robot using Droid Vision's joystick and viewing the kitchen from the robot's onboard camera through the Droid Vision app. The robot has a pair of sports tires, and the ground is textured tile, so the ride is a little bumpy. :)
 
 <iframe width="800" height="468"
-src="https://youtube.com/embed/U6OvrCttuMQ?autoplay=1&mute=0">
+src="https://youtube.com/embed/LCufwPer-VU?autoplay=1&mute=0">
 </iframe>
 
 Cheers!
