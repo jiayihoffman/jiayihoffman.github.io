@@ -74,7 +74,7 @@ Before building the Docker image with the Dockerfile above, we must install the 
 Once the Docker engine is installed on the Pi, we can execute the command `docker build -t my_bot_image .` to create the Docker image. 
 
 ### Start the Docker container
-To start the Docker container, use the `docker run -it --rm my_bot_image` command.
+To start the Docker container, use the `docker run -it my_bot_image` command.
 
 Now that we have a container for robot development. Let's see how to install the RPLidar there. 
 

@@ -41,7 +41,7 @@ We can build the Docker image and start the Docker container using the following
 docker build -t my_bot_image .
 
 # start the docker container from the image
-docker run -it --rm --network=host --ipc=host -v /dev:/dev \
+docker run -it --network=host --ipc=host -v /dev:/dev \
     --device-cgroup-rule='c 188:* rmw' \
     --device-cgroup-rule='c 166:* rmw' \
     my_bot_image

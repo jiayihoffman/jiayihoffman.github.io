@@ -13,13 +13,20 @@ I am always curious about how the Roomba vacuum automatically creates a map of t
 
 ## Get to Know the SLAM Toolbox
 
-The Nav2 (Navigation 2) stack is a modular system that enables autonomous navigation for mobile robots in the ROS framework. The SLAM Toolbox, which stands for Simultaneous Localization and Mapping, plays a crucial role in the navigation stack and is part of ROS Navigation 2.
+The Nav2 (Navigation 2) stack is a modular system that enables autonomous navigation for mobile robots in the ROS framework. The **SLAM Toolbox**, which stands for Simultaneous Localization and Mapping, plays a crucial role in the navigation stack and is part of ROS Navigation 2.
+
+The SLAM Toolbox is a 2D mapping and localization system based on LiDAR data and odometry. It is the first two steps of the Nav2 pipeline, which are: 
+1. **Mapping**: generating and publishing the map of the environment
+2. **Localization**: using the saved map to localize the robot in the known environment
+3. **Planning**: computing the path from the current pose to the goal
+4. **Control**: following the path using velocity commands
+5. **Recovery**: handling failure conditions, such as scenarios where the robot gets stuck
 
 ### Mapping 
 
-The SLAM Toolbox is a 2D mapping system based on LiDAR data and odometry. It enables the robot to generate a map of an unknown environment while tracking its position on that map in real time. SLAM Toolbox builds a 2D occupancy grid map using the robot's laser scans and motion data. 
+The SLAM Toolbox enables the robot to generate a map of an unknown environment while tracking its position on that map in real time. SLAM Toolbox builds a 2D occupancy grid map using the robot's laser scans and motion data. 
 
-Here is the kitchen map created by my robot, R4, as it circled the kitchen.
+Here is the kitchen map created by my robot, R4, as it circled the kitchen using the [Droid Vision app](https://apps.apple.com/us/app/droid-vision/id6737351549).
 
 <a href="/assets/slam/mapping.png" target="_blank">
   <img src="/assets/slam/mapping.png" />
@@ -35,7 +42,7 @@ Mapping is the first step of the navigation pipeline, and SLAM Toolbox plays a c
 
 The SLAM Toolbox is also a localization system that identifies the robot's position and orientation (pose) within its perceived world. 
 
-To explain the concept of "location" in ROS, we must discuss the ROS Frame and Transform.
+To explain the concept of "Localization" in ROS, we must discuss the ROS Frame and Transform.
 
 #### Frame 
 * A **Frame** refers to a 3D coordinate system used to define the spatial location and orientation of an entity (like a robot, sensor, or object) in space.
