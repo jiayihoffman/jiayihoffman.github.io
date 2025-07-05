@@ -5,7 +5,7 @@ date: 2025-07-04 07:45:28 -0600
 categories: DIY 
 ---
 
-I live in the Hill Country of Austin, Texas. The weather here can be dry, but we experience thunderstorms throughout the year. When the storms hit, rainwater rushes down from the roof, flowing toward the lawn. Since the house is built on a hill, there is a consistent path that the rainwater travels on the lawn. Over time, the grass along this path is washed away, leaving bare soil, which doesn't look appealing during sunny days.
+I live in the Hill Country of Austin, Texas. The weather here can be dry, but we experience thunderstorms throughout the year. When the storms hits, rainwater rushes down from the roof, flowing toward the lawn. Since the house is built on a hill, there is a consistent path that the rainwater travels on the lawn. Over time, the grass along this path is washed away, leaving bare soil, which doesn't look appealing during sunny days.
 
 A year ago, I had someone install a dry riverbed along the water path to help manage rainwater. The riverbed is made of rocks of different kinds and colors. It loops around the house and directs the water to the backyard and down the hill. Besides its practical use, the riverbed also adds visual interest to the backyard.
 
@@ -25,9 +25,9 @@ A year ago, I had someone install a dry riverbed along the water path to help ma
 
 The drainage problem has been solved, but it introduced a new issue. The yard is now split into two sections. To open the backyard gate, we must walk on the rocks, which disrupts the layered structure of the riverbed. To mow the lawn, my husband has to lift the lawnmower over the rocks. This makes me want to build a garden bridge that is large enough for a lawnmower and a person to cross easily, but small enough to stay roughly within the bounds of the dry riverbed.  
 
-I have some 2x6 construction heart redwood lumber from a previous decking project in California before we moved here. I also kept pallet boards from the Tesla Powerwall and solar panels. The pallet wood is treated and sturdy, making it perfect for the bridge's foundation. The California redwood is beautiful and unique in this Texas Hill Country since the coastal redwood is exclusive to the American West Coast and has to be transported to Texas. I also have galvanized nails and decking screws from the earlier project. So, I have most of the materials needed to build the garden bridge. I only need to buy the paint and brackets. 
+I have some 2x6 construction heart redwood lumber from the previous decking project in California before we moved here. I also kept pallet boards from the Tesla Powerwall and solar panels. The pallet wood is treated and sturdy, making it perfect for the bridge's foundation. The California redwood is beautiful and unique in this Texas Hill Country since the coastal redwood is exclusive to the American West Coast and has to be transported to Texas. I also have galvanized nails and decking screws from the earlier project. So, I have most of the materials needed to build the garden bridge. I only need to buy the paint and brackets. 
 
-Regarding the tools, I need a miter saw to cut lumber to specific lengths. I also need a jigsaw for making curves, along with a drill, impact driver, sander, hammer, rafter square, tape measure, pencils, and a paintbrush. I purchased these tools during the decking project and plan to reuse them for future woodworking. It's good to be handy, and I enjoy woodworking because it requires creativity, artistry, and engineering precision. 
+Regarding the tools, I need a miter saw to cut lumber to specific lengths. I also need a jigsaw for making curves, along with a drill, impact driver, sander, hammer, rafter square, tape measure, pencils, and a paintbrush. I purchased these tools during the decking project and plan to reuse them for future woodworking. I enjoy woodworking because it requires creativity, artistry, and engineering precision. 
 
 <a href="/assets/garden_bridge/IMG_3320.jpeg" target="_blank">
   <img src="/assets/garden_bridge/IMG_3320.jpeg" width="350"/>
@@ -92,7 +92,7 @@ I set the impact driver's setting to "1" so it does not overpower the screws. On
 </a> 
 
 ### Backyard Time
-Here is what the bridge looks like in my backyard. 
+Check out my backyard! I’ve constructed two bridges, one before and one after the gate.
 
 <a href="/assets/garden_bridge/IMG_3264.jpeg" target="_blank">
   <img src="/assets/garden_bridge/IMG_3264.jpeg" />
