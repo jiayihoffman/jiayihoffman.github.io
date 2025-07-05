@@ -81,6 +81,8 @@ The "map → odom" transform is essential for:
 
 In summary, the SLAM Toolbox broadcasts the map → odom transform to anchor the robot's local odometry in the global map frame. This corrects for drift and ensures accurate global navigation. Without this transform, Nav2 cannot correctly localize the robot or plan valid paths.
 
+With the SLAM Toolbox for mapping and localization, the navigation server performs the remaining steps of planning, control, and recovery in the navigation pipeline.
+
 ## Meet Robot R4
 This is my Differential Mobile Robot featuring two independently driven wheels and two caster wheels for balance. The Differential Bot moves forward or backward by rotating both wheels in the same direction, and it can rotate in place by spinning the wheels in opposite directions.
 
@@ -92,7 +94,7 @@ At the top of the robot is the RPLidar, which generates the scan data. I have a 
 
 ## Robot Mapping 
 
-To run the robot that generates maps, we need a ROS environment that includes the robot module, the RPLidar driver, the navigation stack, the rosbridge suite, and many other dependencies. The cleanest and simplest way is to use a Docker container. Docker simplifies deployment and makes the environment portable, consistent, and shareable.
+To run the robot that generates maps, we need a ROS environment that includes the robot module, the RPLidar driver, the navigation stack, the rosbridge suite, and many other dependencies. The most straightforward approach is to use a Docker container. Docker simplifies deployment and makes the environment portable, consistent, and shareable.
 
 ### A Docker Container
 A Docker container is created from a Docker image, which serves as a template defining its structure and dependencies. Docker is widely used in enterprise software's microservice architecture, but is relatively new in robotic applications. I have a blog, [RPLidar in ROS 2 Docker on Raspberry Pi], which explains in detail how to use a Docker container in a robot. 

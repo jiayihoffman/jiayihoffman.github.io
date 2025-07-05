@@ -8,7 +8,7 @@ categories: Droid_Vision
 [RPLidar in ROS 2 Docker on Raspberry Pi]: {% link _posts/2025-02-08-SecurityRobot-RPLidar.md %}
 [ROS 2 Control, Robot Control the Right Way]: {% link _posts/2025-02-22-SecurityRobot-Ros2_control.md %}
 
-Chasing my cat and watching him run around through the lens of a mobile robot is quite fun. However, there is one drawback: it is inconvenient to hold the iPhone in one hand and the remote control in the other. What if I could integrate the remote control into the Droid Vision app, allowing me to see and control the robot using just one device, with everything consolidated in the app? 
+Chasing my cat and watching him run around through the lens of a mobile robot is quite fun. However, there is one drawback: it is inconvenient to hold the iPhone in one hand and the remote control in the other. What if I could integrate the remote control into the Droid Vision app, allowing me to see and control the robot using just one device, with everything consolidated in the app! 
 
 This leads to Droid Vision 2.1, free from the [App Store](https://apps.apple.com/us/app/droid-vision/id6737351549).
 
