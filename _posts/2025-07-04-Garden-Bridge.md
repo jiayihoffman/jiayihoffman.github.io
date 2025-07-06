@@ -3,6 +3,7 @@ layout: post
 title: "Build Backyard Garden Bridges"
 date: 2025-07-04 07:45:28 -0600
 categories: DIY 
+image: /assets/garden_bridge/IMG_3264.jpeg
 ---
 
 I live in the Hill Country of Austin, Texas. The weather here can be dry, but we experience thunderstorms throughout the year. When the storms hits, rainwater rushes down from the roof, flowing toward the lawn. Since the house is built on a hill, there is a consistent path that the rainwater travels on the lawn. Over time, the grass along this path is washed away, leaving bare soil, which doesn't look appealing during sunny days.
