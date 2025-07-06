@@ -162,7 +162,3 @@ Tap the record button next to the play/pause button to record the live stream vi
 <a href="/assets/IMG_0523.png" target="_blank">
   <img src="/assets/IMG_0523.png" />
 </a>
-
-<a href="/assets/IMG_0519.png" target="_blank">
-  <img src="/assets/IMG_0519.png" />
-</a>

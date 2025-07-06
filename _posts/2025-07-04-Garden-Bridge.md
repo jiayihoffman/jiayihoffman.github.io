@@ -6,7 +6,7 @@ categories: DIY
 image: /assets/garden_bridge/IMG_3264.jpeg
 ---
 
-I live in the Hill Country of Austin, Texas. The weather here can be dry, but we experience thunderstorms throughout the year. When the storms hits, rainwater rushes down from the roof, flowing toward the lawn. Since the house is built on a hill, there is a consistent path that the rainwater travels on the lawn. Over time, the grass along this path is washed away, leaving bare soil, which doesn't look appealing during sunny days.
+I live in the Hill Country of Austin, Texas. The weather here can be dry, but we experience thunderstorms throughout the year. When the storms hit, rainwater rushes down from the roof, flowing toward the lawn. Since the house is built on a hill, there is a consistent path that the rainwater travels on the lawn. Over time, the grass along this path is washed away, leaving bare soil, which doesn't look appealing during sunny days.
 
 A year ago, I had someone install a dry riverbed along the water path to help manage rainwater. The riverbed is made of rocks of different kinds and colors. It loops around the house and directs the water to the backyard and down the hill. Besides its practical use, the riverbed also adds visual interest to the backyard.
 
@@ -51,7 +51,7 @@ A flat bridge is easy to build, but an arched one is much more visually appealin
 
 I use a board to connect the two arched boards to create an H-shaped base for the bridge. My lawnmower is 23 inches wide, so I designed the surface area of the bridge to be 27 inches wide, with an inch overhang on each side of the bridge. Since the board is 1.5 inches thick, the cross board must be 22 inches long - `27 - 1*2 - 1.5*2 = 22`.
 
-I cut the redwood boards to 27 inches, and one of the pallet boards to 22 inches long. Once cut, all boards need to be stained and sealed. I like to wash the boards before painting them because it removes all dirt and gives the wood a fresh, new look. 
+I cut the redwood boards to 27 inches, and one of the pallet boards to 22 inches long. Once cut, all boards need to be stained and sealed. I like to wash the boards before painting them because it removes dirt and mold and gives the wood a fresh, new look. 
 
 <a href="/assets/garden_bridge/IMG_3269.jpeg" target="_blank">
   <img src="/assets/garden_bridge/IMG_3269.jpeg" />
