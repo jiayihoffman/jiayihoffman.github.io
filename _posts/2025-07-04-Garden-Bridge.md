@@ -22,11 +22,11 @@ A year ago, I had someone install a dry riverbed along the water path to help ma
 
 ## Garden Bridges
 
-### Tools and Materia
-
 The drainage problem has been solved, but it introduced a new issue. The yard is now split into two sections. To open the backyard gate, we must walk on the rocks, which disrupts the layered structure of the riverbed. To mow the lawn, my husband has to lift the lawnmower over the rocks. This makes me want to build a garden bridge that is large enough for a lawnmower and a person to cross easily, but small enough to stay roughly within the bounds of the dry riverbed.  
 
-I have some 2x6 construction heart redwood lumber from the previous decking project in California before we moved here. I also kept pallet boards from the Tesla Powerwall and solar panels. The pallet wood is treated and sturdy, making it perfect for the bridge's foundation. The California redwood is beautiful and unique in this Texas Hill Country since the coastal redwood is exclusive to the American West Coast and has to be transported to Texas. I also have galvanized nails and decking screws from the earlier project. So, I have most of the materials needed to build the garden bridge. I only need to buy the paint and brackets. 
+### Tools and Materia
+
+I have some 2x6 construction heart redwood lumber from the previous decking project. I also kept pallet boards from the Tesla Powerwall and solar panels. The pallet wood is treated and sturdy, making it perfect for the bridge's foundation. The California redwood is beautiful and unique in this Texas Hill Country since the coastal redwood is exclusive to the American West Coast and has to be transported to Texas. I also have galvanized nails and decking screws from the earlier project. So, I have most of the materials needed to build the garden bridge. I only need to buy the paint and brackets. 
 
 Regarding the tools, I need a miter saw to cut lumber to specific lengths. I also need a jigsaw for making curves, along with a drill, impact driver, sander, hammer, rafter square, tape measure, pencils, and a paintbrush. I purchased these tools during the decking project and plan to reuse them for future woodworking. I enjoy woodworking because it requires creativity, artistry, and engineering precision. 
 
@@ -51,7 +51,7 @@ A flat bridge is easy to build, but an arched one is much more visually appealin
 
 I use a board to connect the two arched boards to create an H-shaped base for the bridge. My lawnmower is 23 inches wide, so I designed the surface area of the bridge to be 27 inches wide, with an inch overhang on each side of the bridge. Since the board is 1.5 inches thick, the cross board must be 22 inches long - `27 - 1*2 - 1.5*2 = 22`.
 
-I cut the redwood boards to 27 inches, and one of the pallet boards to 22 inches long. Once cut, all boards need to be stained and sealed. I like to wash the boards before painting because it removes all dirt and gives the wood a fresh, new look. 
+I cut the redwood boards to 27 inches, and one of the pallet boards to 22 inches long. Once cut, all boards need to be stained and sealed. I like to wash the boards before painting them because it removes all dirt and gives the wood a fresh, new look. 
 
 <a href="/assets/garden_bridge/IMG_3269.jpeg" target="_blank">
   <img src="/assets/garden_bridge/IMG_3269.jpeg" />
