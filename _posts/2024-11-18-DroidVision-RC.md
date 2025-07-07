@@ -159,6 +159,6 @@ For detailed step-by-step video tutorial, please check out my another blog post 
 
 Tap the record button next to the play/pause button to record the live stream video.
 
-<a href="/assets/IMG_0523.png" target="_blank">
-  <img src="/assets/IMG_0523.png" />
+<a href="/assets/IMG_0523.PNG" target="_blank">
+  <img src="/assets/IMG_0523.PNG" />
 </a>
