@@ -14,11 +14,9 @@ The solution is to use a public server to relay the video - The video stream fro
 
 All video data sent to the server are in memory and pass through. Nothing is stored unless recording is requested. 
 
-<a href="/assets/video_relay.drawio.png" target="_blank">
-  <img src="/assets/video_relay.drawio.png" />
+<a href="/assets/media_server/video_relay.drawio.png" target="_blank">
+  <img src="/assets/media_server/video_relay.drawio.png" />
 </a>
-
-.
 
 ### MediaMTX RTMP Media Server 
 A common relay option is using an RTMP server. RTMP is a protocol designed for streaming audio, video, and data over the internet, especially with low latency. It allows live video and audio from a source (such as a camera) to be sent to a platform (like YouTube Live or Twitch) for viewers to watch in real-time. 
@@ -118,7 +116,7 @@ MediaMTX has built-in user/password auth for:
  * Publishers 
  * Readers/viewers
 
-I configure users and passwords in the `mediamtx.yml` config file, per path or for all paths.
+I configured users and passwords in the `mediamtx.yml` config file for all paths.
 ```
 # mediamtx.yml
 server:
@@ -129,7 +127,7 @@ server:
   webrtcPort: 8889
 
 paths:
-  all:
+  all_others:
     # protect push
     publishUser: mypublisher
     publishPass: secret123
@@ -139,17 +137,165 @@ paths:
     readPass: view456
 ```
 
-On the robot, I change the rtmp_url of the RTMPPush class to:
+When publishing or reading the stream, include the credentials in the URL. For example, on the robot, I change the rtmp_url of the RTMPPush class to:
 ```
-self.rtmp_url = "rtmp://<username>:<password>@PUBLIC_CLOUD_SERVER/live/stream"
+self.rtmp_url = "rtmp://PUBLIC_CLOUD_SERVER/live/stream?user=mypublisher&pass=secret123"
 ```
 
 In Droid Vision app, I change the RTSP URL to:
 ```
-rtsp://<username>:<password>@PUBLIC_CLOUD_SERVER:8554/live/stream
+rtsp://myviewer:view456@PUBLIC_CLOUD_SERVER:8554/live/stream
 ```
 
-## On-Demand Video Streaming
-With the public cloud server, another critical security monitoring enhancement is on-demand video streaming. Instead of streaming video continuously, the robot streams only when it detects an alert or upon the user's request. 
+This method is straightforward but not ideal for large-scale or highly secure applications due to hardcoded credentials. Therefore, MediaMTX has other methods using external authentication. For the detail, please check MediaMTX [product site](https://github.com/bluenviron/mediamtx).
 
-To be continued...
+## On-Demand Video Streaming
+With the public cloud server, another critical enhancement is on-demand video streaming. Instead of streaming video continuously, the robot streams only when it detects an alert or upon the user's request. 
+
+### Media Control Server
+A quick solution is for the robot to run a small Python control client that periodically polls the cloud server for the streaming state, set by the mobile app using a command. 
+
+<a href="/assets/media_server/control_server.drawio.png" target="_blank">
+  <img src="/assets/media_server/control_server.drawio.png" />
+</a>
+
+### MQTT Broker 
+The second approach involves using MQTT for push notifications. We will set up a public MQTT broker in the cloud. The robot subscribes to a specific MQTT topic, while the mobile app publishes start or stop messages to that topic. 
+
+Compared to the previous solution, this method offers the advantage of eliminating polling, so the robot reacts instantly. It also scales well to many cameras. MQTT is widely used for smart cameras, doorbells, drones, and other devices, which is why I chose this approach for my security cameras. However, I need to make some deployment adjustments to simplify the mobile app’s configuration.
+
+Instead of embedding the MQTT client library directly into the Droid Vision app, I used an MQTT bridge that is an HTTP server, runs in the cloud, and posts messages to the MQTT broker in the same cloud. This setup allows the Droid Vision app to continue using HTTP requests to control the streaming service of the robot. In a future update, I may add an MQTT Swift client library to Droid Vision so we can remove the MQTT bridge from the deployment.
+
+<a href="/assets/media_server/MQTT.drawio.png" target="_blank">
+  <img src="/assets/media_server/MQTT.drawio.png" />
+</a>
+
+#### 1. Install and Config Mosquitto MQTT Broker on the Cloud Server 
+
+```
+# Update packages and install Mosquitto MQTT broker
+sudo apt update
+sudo apt install mosquitto mosquitto-clients -y
+
+# Enable and start Mosquitto service
+sudo systemctl enable mosquitto
+sudo systemctl start mosquitto
+
+# add password auth
+sudo mosquitto_passwd -c /etc/mosquitto/passwd mymqttuser
+# Enter password when prompted
+
+```
+
+Edit Mosquitto config `/etc/mosquitto/conf.d/default.conf`:
+```
+allow_anonymous false
+password_file /etc/mosquitto/passwd 
+```
+
+#### 2. FastAPI MQTT Bridge on the Cloud Server
+```
+# Install FastAPI and MQTT client:
+pip install fastapi uvicorn paho-mqtt
+```
+
+Python code `bridge.py` for the MQTT bridge:
+```
+from fastapi import FastAPI
+from paho.mqtt import publish
+
+app = FastAPI()
+
+MQTT_BROKER = "localhost"
+MQTT_PORT = 1883
+MQTT_USER = "mymqttuser"
+MQTT_PASS = "..."
+TOPIC = "camera/r4/stream"
+
+@app.get("/")
+def index():
+    return {"msg": "MQTT Bridge running!"}
+
+@app.post("/start")
+def start():
+    publish.single(
+        TOPIC, "start",
+        hostname=MQTT_BROKER,
+        port=MQTT_PORT,
+        auth={'username': MQTT_USER, 'password': MQTT_PASS}
+    )
+    return {"msg": "Published start"}
+
+@app.post("/stop")
+def stop():
+    publish.single(
+        TOPIC, "stop",
+        hostname=MQTT_BROKER,
+        port=MQTT_PORT,
+        auth={'username': MQTT_USER, 'password': MQTT_PASS}
+    )
+    return {"msg": "Published stop"}
+```
+Run FastAPI:
+```
+uvicorn bridge:app --host 0.0.0.0 --port 8000
+```
+
+#### 3. Robot Streaming Control
+
+The Raspberry Pi connects to the MQTT broker and waits for the start / stop message. It runs/stops GStreamer on command.
+
+```
+import paho.mqtt.client as mqtt
+import subprocess
+import shlex
+
+BROKER = "PUBLIC_CLOUD_SERVER"
+PORT = 1883
+USERNAME = "mymqttuser"
+MQTT_PASS = "..."
+TOPIC = "camera/r4/stream"
+
+# the GStreamer pipeline created earlier
+GST_PIPELINE = """
+libcamerasrc ! video/x-raw,format=YUY2,width=640,height=480,framerate=30/1 ! ...
+"""
+
+gst_process = None
+
+def on_connect(client, userdata, flags, rc):
+    print(f"Connected with result code {rc}")
+    client.subscribe(TOPIC)
+
+def on_message(client, userdata, msg):
+    global gst_process
+    payload = msg.payload.decode()
+    print(f"Received: {payload}")
+
+    if payload == "start":
+        if gst_process is None:
+            print("Starting GStreamer...")
+            gst_process = subprocess.Popen(
+                shlex.split(f"gst-launch-1.0 {GST_PIPELINE}"),
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE
+            )
+        else:
+            print("Stream already running.")
+
+    elif payload == "stop":
+        if gst_process is not None:
+            print("Stopping GStreamer...")
+            gst_process.terminate()
+            gst_process = None
+        else:
+            print("No stream to stop.")
+
+client = mqtt.Client()
+client.username_pw_set(USERNAME, PASSWORD)
+client.on_connect = on_connect
+client.on_message = on_message
+
+client.connect(BROKER, PORT, 60)
+client.loop_forever()
+```
