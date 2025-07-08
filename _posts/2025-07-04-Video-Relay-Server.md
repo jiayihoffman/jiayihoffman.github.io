@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Live Video Streaming using a Media Server"
+title: "Live Video Streaming for Security Cameras"
 date: 2025-07-07 08:45:28 -0600
 categories: Droid_Vision
 ---
@@ -54,7 +54,7 @@ paths:
 ``` -->
 
 ### Video Stream pushes to the RTMP Server
-Here is the GStreamer pipeline to publish the Raspberry Pi's video stream to the RTMP server. Please replace PUBLIC_CLOUD_SERVER with your server's IP address in the cloud. 
+Here is the GStreamer pipeline for publishing the Raspberry Pi's video stream to the RTMP server. Please replace PUBLIC_CLOUD_SERVER with your server's IP address in the cloud.
 
 ```
 gst-launch-1.0 libcamerasrc ! \
@@ -68,7 +68,7 @@ gst-launch-1.0 libcamerasrc ! \
   rtmpsink location="rtmp://PUBLIC_CLOUD_SERVER/live/stream"
  ```
 
- Here is the corresponding Python code "push_rtmp.py" for the robot:
+ Here is the corresponding Python code "push_rtmp.py" for the robot. Either method can publish the video stream to the RTMP server.
  ```
 import gi
 
@@ -118,7 +118,7 @@ MediaMTX has built-in user/password auth for:
  * Publishers 
  * Readers/viewers
 
-I configure users and passwords in the mediamtx.yml config file, per path or for all paths.
+I configure users and passwords in the `mediamtx.yml` config file, per path or for all paths.
 ```
 # mediamtx.yml
 server:
