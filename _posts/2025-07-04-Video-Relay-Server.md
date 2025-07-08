@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Live Video Streaming for Security Cameras"
+title: "Live Video Streaming of Security Cameras"
 date: 2025-07-07 08:45:28 -0600
 categories: Droid_Vision
 ---
