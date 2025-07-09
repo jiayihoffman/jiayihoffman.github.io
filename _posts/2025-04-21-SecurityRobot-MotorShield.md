@@ -3,6 +3,7 @@ layout: post
 title: "Simplify Robot Cars using TB6612 Motor Shield"
 date: 2025-04-21 8:27:08 -0600
 categories: Security_Robot
+image: /assets/motor_driver/IMG_3098.jpeg
 ---
 
 [ROS 2 Control, Robot Control the Right Way]: {% link _posts/2025-02-22-SecurityRobot-Ros2_control.md %}

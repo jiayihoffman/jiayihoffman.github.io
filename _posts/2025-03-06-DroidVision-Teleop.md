@@ -3,6 +3,7 @@ layout: post
 title: "Droid Vision with built-in Joystick and Keypad"
 date: 2025-03-06 09:15:28 -0600
 categories: Droid_Vision
+image: /assets/teleop/IMG_2964.PNG
 ---
 
 [RPLidar in ROS 2 Docker on Raspberry Pi]: {% link _posts/2025-02-08-SecurityRobot-RPLidar.md %}
@@ -59,12 +60,12 @@ Using the joystick or keypad on the Droid Vision is straightforward. We just ena
 
 ### Joystick Control
 
-<a href="/assets/teleop/IMG_2967.PNG" target="_blank">
-  <img src="/assets/teleop/IMG_2967.PNG" width="350"/>
-</a> 
 <a href="/assets/teleop/IMG_2964.PNG" target="_blank">
   <img src="/assets/teleop/IMG_2964.PNG" width="350" />
 </a>
+<a href="/assets/teleop/IMG_2967.PNG" target="_blank">
+  <img src="/assets/teleop/IMG_2967.PNG" width="350"/>
+</a> 
 
 The "Joystick" is the default option for controlling the robot since it is easier to use than the "Keypad". 
 

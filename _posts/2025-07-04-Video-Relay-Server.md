@@ -3,11 +3,16 @@ layout: post
 title: "Live Video Streaming of Security Cameras"
 date: 2025-07-07 08:45:28 -0600
 categories: Droid_Vision
+image: /assets/media_server/IMG_3341.jpeg
 ---
 
-In one of my early posts, I showed how to set up a streaming server on a mobile robot using GStreamer and visualize the robot’s surroundings from my mobile device. This works well if I’m using the robot to record videos of babies, pets, and flowers. Both the phone and the robot are on the same network, so the phone can directly access the robot’s IP address.
+[Droid Vision on an RC Truck]: {% link _posts/2024-11-18-DroidVision-RC.md %}
+
+In one of my early posts [Droid Vision on an RC Truck], I showed how to set up a streaming server on a mobile robot using GStreamer and visualize the robot’s surroundings from my mobile device. This works well if I’m using the robot to record videos of babies, pets, and flowers at home. Both the phone and the robot are on the same network, so the phone can directly access the robot’s IP address.
 
 However, for a security camera use case, I am away, so my mobile device is outside the home network. The robot's IP address is not visible from the phone. How can I check on my home in real-time while I am away? Exposing the robot's IP address poses a significant security risk and is not an option.  
+
+<img src="/assets/media_server/IMG_3341.jpeg" />
 
 ## Relay the Video using a Public Server
 The solution is to use a public server to relay the video - The video stream from the robot is sent to a cloud server, which then re-publishes the stream to the mobile device. This way, the robot can stay within the private network with all the safety and security, while its video is accessible from a public media server protected by credentials and a firewall.
@@ -21,11 +26,11 @@ All video data sent to the server are in memory and pass through. Nothing is sto
 ### MediaMTX RTMP Media Server 
 A common relay option is using an RTMP server. RTMP is a protocol designed for streaming audio, video, and data over the internet, especially with low latency. It allows live video and audio from a source (such as a camera) to be sent to a platform (like YouTube Live or Twitch) for viewers to watch in real-time. 
 
-The RTMP server I use is [MediaMTX](https://github.com/bluenviron/mediamtx). MediaMTX is open source and supports outputting live streams with RTSP, HLS, and WebRTC protocols. Therefore, the Droid Vision app can continue using RTSP, and I just need to change the RTSP URL to the public server, which is: `rtsp://PUBLIC_CLOUD_SERVER:8554/live/stream`.
+The RTMP server I use is [MediaMTX](https://github.com/bluenviron/mediamtx), which is open source and supports outputting live streams with RTSP, HLS, and WebRTC protocols. Therefore, the Droid Vision app can continue using RTSP, and I just need to change the RTSP URL to the public server, which is: `rtsp://PUBLIC_CLOUD_SERVER:8554/live/stream`.
 
 MediaMTX is easy to run. I can run it as a Docker container or download and run its binaries. The binary download page is on [GitHub](https://github.com/bluenviron/mediamtx/releases). 
 
-Here’s the output from MediaMTX. I used a Docker container. When the robot publishes the video to the MediaMTX server, we see something like “xxx is publishing to path ‘live/stream’”. When the Droid Vision app contacts the media server for the video stream, the message "xxx is reading from path ‘live/stream’” is displayed.
+Here’s the output from MediaMTX. I used the MediaMTX Docker container. When the robot publishes the video to the MediaMTX server, I see something like “xxx is publishing to path ‘live/stream’”. When the Droid Vision app contacts the media server for the video stream, the message "xxx is reading from path ‘live/stream’” is displayed.
 ```
 % docker run --rm -it --network=host bluenviron/mediamtx:latest
 
@@ -116,7 +121,8 @@ MediaMTX has built-in user/password auth for:
  * Publishers 
  * Readers/viewers
 
-I configured users and passwords in the `mediamtx.yml` config file for all paths.
+I configured users and passwords in the `mediamtx.yml` file this way. The credential applies to all paths. 
+
 ```
 # mediamtx.yml
 server:
@@ -137,7 +143,7 @@ paths:
     readPass: view456
 ```
 
-When publishing or reading the stream, include the credentials in the URL. For example, on the robot, I change the rtmp_url of the RTMPPush class to:
+When publishing or reading the stream, I include the credentials in the URL. For example, on the robot, I change the rtmp_url of the RTMPPush class to:
 ```
 self.rtmp_url = "rtmp://PUBLIC_CLOUD_SERVER/live/stream?user=mypublisher&pass=secret123"
 ```
@@ -153,18 +159,18 @@ This method is straightforward but not ideal for large-scale or highly secure ap
 With the public cloud server, another critical enhancement is on-demand video streaming. Instead of streaming video continuously, the robot streams only when it detects an alert or upon the user's request. 
 
 ### Media Control Server
-A quick solution is for the robot to run a small Python control client that periodically polls the cloud server for the streaming state, set by the mobile app using a command. 
+A quick solution is for the robot to run a small Python control client that periodically polls the cloud server for the streaming state, set by the mobile app. 
 
 <a href="/assets/media_server/control_server.drawio.png" target="_blank">
   <img src="/assets/media_server/control_server.drawio.png" />
 </a>
 
 ### MQTT Broker 
-The second approach involves using MQTT for push notifications. We will set up a public MQTT broker in the cloud. The robot subscribes to a specific MQTT topic, while the mobile app publishes start or stop messages to that topic. 
+The second method involves using MQTT for push notifications: set up a public MQTT broker in the cloud. The robot subscribes to a specific MQTT topic, while the mobile app publishes `start` or `stop` messages to that topic. 
 
-Compared to the previous solution, this method offers the advantage of eliminating polling, so the robot reacts instantly. It also scales well to many cameras. MQTT is widely used for smart cameras, doorbells, drones, and other devices, which is why I chose this approach for my security cameras. However, I need to make some deployment adjustments to simplify the mobile app’s configuration.
+Compared to the previous solution, this method offers the advantage of eliminating polling, so the robot reacts instantly. It also scales well to many cameras. MQTT is widely used for smart cameras, doorbells, drones, and other devices, which is why I chose this approach for my security robot. 
 
-Instead of embedding the MQTT client library directly into the Droid Vision app, I used an MQTT bridge that is an HTTP server, runs in the cloud, and posts messages to the MQTT broker in the same cloud. This setup allows the Droid Vision app to continue using HTTP requests to control the streaming service of the robot. In a future update, I may add an MQTT Swift client library to Droid Vision so we can remove the MQTT bridge from the deployment.
+I need to make some deployment adjustments to simplify the mobile app’s configuration: Instead of embedding the MQTT client library directly into the Droid Vision app, I used an MQTT bridge, which is an HTTP server running in the cloud that posts messages to the MQTT broker. This setup allows the Droid Vision app to continue using HTTP requests to control the streaming service on the robot. In a future update, I might add an MQTT Swift client library to Droid Vision so we can remove the MQTT bridge from the deployment.
 
 <a href="/assets/media_server/MQTT.drawio.png" target="_blank">
   <img src="/assets/media_server/MQTT.drawio.png" />
@@ -172,8 +178,9 @@ Instead of embedding the MQTT client library directly into the Droid Vision app,
 
 #### 1. Install and Config Mosquitto MQTT Broker on the Cloud Server 
 
+Update packages, install and config Mosquitto MQTT broker:
+
 ```
-# Update packages and install Mosquitto MQTT broker
 sudo apt update
 sudo apt install mosquitto mosquitto-clients -y
 
@@ -193,9 +200,15 @@ allow_anonymous false
 password_file /etc/mosquitto/passwd 
 ```
 
-#### 2. FastAPI MQTT Bridge on the Cloud Server
+Restart Mosquitto for the config changes:
 ```
-# Install FastAPI and MQTT client:
+sudo systemctl restart mosquitto
+```
+
+#### 2. FastAPI MQTT Bridge on the Cloud Server
+
+Install FastAPI and MQTT client:
+```
 pip install fastapi uvicorn paho-mqtt
 ```
 
@@ -236,14 +249,14 @@ def stop():
     )
     return {"msg": "Published stop"}
 ```
-Run FastAPI:
+Start FastAPI MQTT Bridge:
 ```
 uvicorn bridge:app --host 0.0.0.0 --port 8000
 ```
 
 #### 3. Robot Streaming Control
 
-The Raspberry Pi connects to the MQTT broker and waits for the start / stop message. It runs/stops GStreamer on command.
+The Raspberry Pi connects to the MQTT broker and waits for messages, then starts or stops the GStreamer accordingly.
 
 ```
 import paho.mqtt.client as mqtt

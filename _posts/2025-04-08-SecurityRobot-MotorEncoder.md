@@ -3,6 +3,7 @@ layout: post
 title: "Enhance DC Motors using Motor Encoders"
 date: 2025-04-08 10:27:08 -0600
 categories: Security_Robot
+image: /assets/motor_encoder/IMG_3065.jpeg
 ---
 
 [RPLidar in ROS 2 Docker on Raspberry Pi]: {% link _posts/2025-02-08-SecurityRobot-RPLidar.md %}
@@ -45,8 +46,8 @@ The encoder data is part of the closed-loop system that adjusts motor commands i
 
 The readings from the encoders assist in reporting the position, angle, and velocity of the left and right wheel joints through the /joint_states topic, allowing users to visualize the robot in tools like RViz. This is how my robot appears in RViz.
 
-<a href="/assets/motor_encoder/rviz.png" target="_blank">
-  <img src="/assets/motor_encoder/rviz.png" />
+<a href="/assets/motor_encoder/rviz2.png" target="_blank">
+  <img src="/assets/motor_encoder/rviz2.png" />
 </a>
 
 ## Upgrade DC Motors using Motor Encoders

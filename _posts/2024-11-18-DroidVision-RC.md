@@ -3,6 +3,7 @@ layout: post
 title: "Droid Vision on an RC Truck"
 date: 2024-11-18 23:53:28 -0600
 categories: Droid_Vision
+image: /assets/IMG_2675.jpeg
 ---
 ## Introduction
 I love robots, AI, and racing. I have always been curious about what the world looks like through the lens of a mobile robot, so I created the Droid Vision app. It can be downloaded for free from the [Apple Store](https://apps.apple.com/us/app/droid-vision/id6737351549) and [Google Play](https://play.google.com/store/apps/details?id=ai.modularmachines.droidvision&hl=en-US). 

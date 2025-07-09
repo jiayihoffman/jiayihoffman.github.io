@@ -3,6 +3,7 @@ layout: post
 title: "ROS 2 Control, Robot Control the Right Way"
 date: 2025-02-22 10:27:08 -0600
 categories: Security_Robot
+image: /assets/IMG_2953.jpeg
 ---
 My journey of building a mobile robot using ROS2 and ros2_control.
 

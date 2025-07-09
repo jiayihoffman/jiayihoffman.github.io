@@ -3,6 +3,7 @@ layout: post
 title: "RPLidar in ROS 2 Docker on Raspberry Pi"
 date: 2025-02-08 10:27:08 -0600
 categories: Security_Robot
+image: /assets/rplidar/IMG_3081.jpeg
 ---
 ## Introduction - RPLidar and ROS
 

@@ -3,6 +3,7 @@ layout: post
 title: "Robot Auto Mapping using Nav2 SLAM Toolbox"
 date: 2025-05-26 10:27:08 -0600
 categories: Security_Robot
+image: /assets/slam/DroidVision_SLAM.png
 ---
 
 [Enhance DC Motors using Motor Encoders]: {% link _posts/2025-04-08-SecurityRobot-MotorEncoder.md %}
@@ -28,8 +29,8 @@ The SLAM Toolbox enables the robot to generate a map of an unknown environment w
 
 Here is the kitchen map created by my robot, R4, as it circled the kitchen using the [Droid Vision app](https://apps.apple.com/us/app/droid-vision/id6737351549).
 
-<a href="/assets/slam/mapping.png" target="_blank">
-  <img src="/assets/slam/mapping.png" />
+<a href="/assets/slam/DroidVision_SLAM2.png" target="_blank">
+  <img src="/assets/slam/DroidVision_SLAM2.png" />
 </a>
 
 The tool that displays the map is RViz2, which is a 3D visualization tool within the ROS 2 framework. RViz2 enables users to view and interact with a robot's state, sensor data, and environment in a 3D space. It provides a window into the robot's world, illustrating what the robot "sees" and how it is positioned.

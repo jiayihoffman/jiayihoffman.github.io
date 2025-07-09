@@ -3,6 +3,7 @@ layout: post
 title: "DIY Security Camera using an AI Vision Model"
 date: 2025-01-16 03:26:28 -0600
 categories: Security_Robot
+image: /assets/02-07-25_095643.jpg
 ---
 ## Introduction
 
