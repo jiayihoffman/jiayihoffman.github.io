@@ -8,7 +8,7 @@ image: /assets/media_server/IMG_3341.jpeg
 
 [Droid Vision on an RC Truck]: {% link _posts/2024-11-18-DroidVision-RC.md %}
 
-In one of my early posts [Droid Vision on an RC Truck], I showed how to set up a streaming server on a mobile robot using GStreamer and visualize the robot’s surroundings from my mobile device. This works well if I’m using the robot to record videos of babies, pets, and flowers at home. Both the phone and the robot are on the same network, so the phone can directly access the robot’s IP address.
+In one of my early posts [Droid Vision on an RC Truck], I showed how to set up a streaming server on a mobile robot using GStreamer and visualize the robot’s surroundings from my mobile device. This works well if I’m using the robot to record videos of pets and flowers at home. Both the phone and the robot are on the same network, so the phone can directly access the robot’s IP address.
 
 However, for a security camera use case, I am away, so my mobile device is outside the home network. The robot's IP address is not visible from the phone. How can I check on my home in real-time while I am away? Exposing the robot's IP address poses a significant security risk and is not an option.  
 
