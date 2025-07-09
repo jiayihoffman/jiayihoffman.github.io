@@ -223,7 +223,7 @@ MQTT_BROKER = "localhost"
 MQTT_PORT = 1883
 MQTT_USER = "mymqttuser"
 MQTT_PASS = "..."
-TOPIC = "camera/r4/stream"
+TOPIC = "robot/stream"
 
 @app.get("/")
 def index():
@@ -267,7 +267,7 @@ BROKER = "PUBLIC_CLOUD_SERVER"
 PORT = 1883
 USERNAME = "mymqttuser"
 MQTT_PASS = "..."
-TOPIC = "camera/r4/stream"
+TOPIC = "robot/stream"
 
 # the GStreamer pipeline created earlier
 GST_PIPELINE = """
