@@ -25,9 +25,9 @@ Your activities within the app remain private and are not accessible by us or an
 
 ### Map Data of GPS app
 
-Map data is provided by Apple and Google APIs. This data is never routed through us. Your device will share its location with Apple or Google services to obtain details for rendering the map.
+Map data is provided by Apple and Google APIs. This data is never routed through us. 
 
-Your location is never shared with us.
+Your device will share its location with Apple or Google services to obtain details for rendering the map. Your location is never shared with us.
 
 ## Security
 
