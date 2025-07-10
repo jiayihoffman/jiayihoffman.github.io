@@ -194,10 +194,11 @@ sudo mosquitto_passwd -c /etc/mosquitto/passwd mymqttuser
 
 ```
 
-Edit Mosquitto config `/etc/mosquitto/conf.d/default.conf`:
+Edit Mosquitto config `/etc/mosquitto/conf.d/default.conf` as "mosquitto" user:
 ```
 allow_anonymous false
-password_file /etc/mosquitto/passwd 
+password_file /etc/mosquitto/passwd
+listener 1883 0.0.0.0
 ```
 
 Restart Mosquitto for the config changes:
@@ -209,6 +210,11 @@ sudo systemctl restart mosquitto
 
 Install FastAPI and MQTT client:
 ```
+# Create virtual environment:
+python3 -m venv venv
+source venv/bin/activate
+
+# Install FastAPI and MQTT client
 pip install fastapi uvicorn paho-mqtt
 ```
 
@@ -251,12 +257,29 @@ def stop():
 ```
 Start FastAPI MQTT Bridge:
 ```
-uvicorn bridge:app --host 0.0.0.0 --port 8000
+uvicorn bridge:app --host 0.0.0.0 --port 8000 --reload
+```
+
+Verify messages are sent by MQTT Bridge:
+```
+mosquitto_sub -h localhost -u mymqttuser -P yourpass -t "robot/stream"
 ```
 
 #### 3. Streaming Control on the Robot
 
 The Robot connects to the MQTT broker and waits for messages, then starts or stops the GStreamer accordingly.
+
+To begin, let's install the MQTT client.
+```
+# Create virtual environment:
+python3 -m venv venv
+source venv/bin/activate
+
+# install MQTT client
+pip install paho-mqtt
+```
+
+Then create `stream_control.py`:
 
 ```
 import paho.mqtt.client as mqtt
@@ -265,7 +288,7 @@ import shlex
 
 BROKER = "PUBLIC_CLOUD_SERVER"
 PORT = 1883
-USERNAME = "mymqttuser"
+MQTT_USER = "mymqttuser"
 MQTT_PASS = "..."
 TOPIC = "robot/stream"
 
@@ -305,12 +328,17 @@ def on_message(client, userdata, msg):
             print("No stream to stop.")
 
 client = mqtt.Client()
-client.username_pw_set(USERNAME, PASSWORD)
+client.username_pw_set(MQTT_USER, MQTT_PASS)
 client.on_connect = on_connect
 client.on_message = on_message
 
 client.connect(BROKER, PORT, 60)
 client.loop_forever()
+```
+
+Finally, let's start the robot's stream control program.
+```
+python stream_control.py
 ```
 
 Cheers!
