@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Stock Trading AI Agent"
-date: 2025-07-07 08:45:28 -0600
+date: 2025-07-14 08:45:28 -0600
 categories: AI_Agent
 #image: /assets/media_server/IMG_3341.jpeg
 ---
