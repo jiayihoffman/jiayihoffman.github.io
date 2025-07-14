@@ -194,7 +194,7 @@ sudo mosquitto_passwd -c /etc/mosquitto/passwd mymqttuser
 
 ```
 
-Edit Mosquitto config `/etc/mosquitto/conf.d/default.conf` as "mosquitto" user.
+Create Mosquitto config `/etc/mosquitto/conf.d/default.conf` as "mosquitto" user.
 ```
 allow_anonymous false
 password_file /etc/mosquitto/passwd
