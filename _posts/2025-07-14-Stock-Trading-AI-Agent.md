@@ -13,7 +13,7 @@ That said, I don't always have time to watch stock charts live. That makes me wa
 
 Additionally, in many ways, trading stocks is more of a psychological game than a numbers game. Therefore, using AI agents to trade stocks can be very helpful during times of significant pullbacks when everyone is scared or at market peaks when everyone is greedy. AI has a much calmer mindset than we humans. :)
 
-I have a few stocks in mind to start with, but I’d love to add more to the list as the AI agent recommends new stocks in the sector I’m interested in.
+I have a few stocks in mind to start with, but I’d love to add more to the list as the AI agent recommends new stocks in sectors I’m interested in.
 
 ### Architecture
 Here’s a brief overview of the architecture. The benefit of agent-based design is that:
