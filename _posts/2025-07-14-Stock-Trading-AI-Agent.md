@@ -13,11 +13,13 @@ That said, I don't always have time to watch stock charts live. That makes me wa
 
 Additionally, in many ways, trading stocks is more of a psychological game than a numbers game. Therefore, using AI agents to trade stocks can be very helpful during times of significant pullbacks when everyone is scared or at market peaks when everyone is greedy. AI has a much calmer mindset than we humans. :)
 
+I have a few stocks in mind to start with, but I’d love to add more to the list as the AI agent recommends new stocks in the sector I’m interested in.
+
 ### Architecture
 Here’s a brief overview of the architecture. The benefit of agent-based design is that:
-1. It is modular, flexible, and exhibits human-like intelligence. 
-2. This design also supports the "in the loop" evaluation, enabling the Orchestrator agent to critique the output of other agents to promote reflection, which is a key aspect of the agentic reasoning pattern that improves performance. 
-3. Additionally, the logging agent records the results to facilitate ongoing iterative review and improvement. 
+1. It is modular, flexible, and with human-like intelligence. 
+2. This design supports the "in the loop" evaluation, enabling the Orchestrator agent to critique the output of other agents to promote reflection, which is a key aspect of the agentic reasoning pattern that improves performance. 
+3. Additionally, the logging agent records the trading results to facilitate ongoing iterative review and improvement. 
 
 <a href="/assets/ai_agent/flow_chart.png" target="_blank">
   <img src="/assets/ai_agent/flow_chart.png" />
@@ -34,8 +36,6 @@ Here’s a brief overview of the architecture. The benefit of agent-based design
 ### Technologies
 I use [Alpaca Brokerage](https://alpaca.markets/), which provides a commission-free, API-first platform for trading. It offers free real-time and historical US stock data via API. Additionally, it supports paper trading for safe testing.  
 
-I have a few stocks in mind to start with, but I’d love to add more to the list as AI recommends new stocks in the sections I am interested in. 
-
-As to the agent framework, I use LangChain. 
+I use ChatGPT-4o as the LLM, and LangChain and tools as the agent framework. 
 
 To be continued... 
