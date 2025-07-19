@@ -3,7 +3,7 @@ layout: post
 title: "Stock Trading AI Agent"
 date: 2025-07-14 08:45:28 -0600
 categories: AI_Agent
-#image: /assets/media_server/IMG_3341.jpeg
+#image: /assets/ai_agent/agent_workflow_graph.png
 ---
 I enjoy trading stocks for long-term investing because it requires knowledge, analytical skills, and a long-term perspective. Over time, I have developed technical skills in analyzing stock charts to identify patterns, resistance and support levels, and to gauge whether the stock is becoming bearish or bullish. I also enjoy reading news and listening to tech podcasts to better understand the world around me and upcoming trends.
 
@@ -54,27 +54,27 @@ Here is the generated LangGraph representing the agent workflow where the task i
 
 The graph defines nodes involved in Prompt chaining, where each agent node handles the output of the previous one. Here is the code of chaining the nodes. 
 ```
-    def build_state_graph(self):
-        workflow = StateGraph(State)
+def build_state_graph(self):
+    workflow = StateGraph(State)
 
-        # Add nodes
-        workflow.add_node("fetch_market_data", self.fetch_market_data)
-        workflow.add_node("check_triggers", self.check_triggers)
-        workflow.add_node("technical_analysis", self.technical_analysis)
-        ...
+    # Add nodes
+    workflow.add_node("fetch_market_data", self.fetch_market_data)
+    workflow.add_node("check_triggers", self.check_triggers)
+    workflow.add_node("technical_analysis", self.technical_analysis)
+    ...
 
-        # Add edges to connect nodes
-        workflow.add_edge(START, "fetch_market_data")
-        workflow.add_edge("fetch_market_data", "check_triggers")
-        workflow.add_conditional_edges(
-            "check_triggers", self.check_should_analyze, {True: "technical_analysis", False: END}
-        )
-        ...
+    # Add edges to connect nodes
+    workflow.add_edge(START, "fetch_market_data")
+    workflow.add_edge("fetch_market_data", "check_triggers")
+    workflow.add_conditional_edges(
+        "check_triggers", self.check_should_analyze, {True: "technical_analysis", False: END}
+    )
+    ...
 
-        # Compile
-        memory = MemorySaver()
-        graph = workflow.compile(interrupt_before=["user_trade_approval"], checkpointer=memory)
-        return graph
+    # Compile
+    memory = MemorySaver()
+    graph = workflow.compile(interrupt_before=["user_trade_approval"], checkpointer=memory)
+    return graph
 ```
 
 ### Demonstration
