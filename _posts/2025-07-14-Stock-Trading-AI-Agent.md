@@ -35,11 +35,11 @@ Here is the responsible of each agents.
 * All actions and decisions are logged by the Logging Agent.
 
 The word “agent” here is a general term. It can be an LLM or an entity that completes specific tasks. For example:
-* The “Technical Analysis Agent” is an LLM. It computes the stock’s various technical indicators and uses reasoning to give the stock a technical overview.
+* The “Technical Analysis Agent” is an LLM. It calculates the stock’s various technical indicators and uses reasoning to provide the stock with a technical assessment.
 * On the other hand, the “Market Data Agent” fetches the stock data from the stock exchange.
 
 ### Technologies
-I use ChatGPT-4o as the LLM and LangGraph as the agent framework. The app is written in Python.
+I use ChatGPT-4 as the LLM and LangGraph as the agent framework. The app is written in Python.
 
 The app runs as a REST service with endpoints to support on-demand stock analysis requests. 
 
@@ -50,16 +50,15 @@ Here is the generated LangGraph representing the agent workflow where the task i
 
 <a href="/assets/ai_agent/agent_workflow_graph.png" target="_blank">
   <img src="/assets/ai_agent/agent_workflow_graph.png" width="500"/>
-</a>
 
-The graph defines nodes involved in Prompt chaining, where each agent node handles the output of the previous one. Here is the code of chaining the nodes. 
+The graph defines nodes involved in Prompt Chaining, where each agent node handles the output of the previous one. Here is the code of chaining the nodes. 
 ```
 def build_state_graph(self):
     workflow = StateGraph(State)
 
     # Add nodes
     workflow.add_node("fetch_market_data", self.fetch_market_data)
-    workflow.add_node("check_triggers", self.check_triggers)
+    workflow.add_node("check_technical_indicators", self.check_technical_indicators)
     workflow.add_node("technical_analysis", self.technical_analysis)
     ...
 
@@ -80,38 +79,55 @@ def build_state_graph(self):
 ### Demonstration
 #### NFLX
 On July 18, **Netflix** stock dropped 5% after a strong earnings report, and the large price swing triggered sentiment analysis of the stock. Here is the response from my Stock Trading Agent:
-```
-Sentiment for NFLX News: MIXED (Positive Bias)
 
-Key headlines:
-* Earnings beat but weak reaction: Strong Q2 results but “failed to impress” — short-term cautious tone.
-* Stock drop: Shares fell 5% despite the beat — short-term negative reaction.
-* Analyst action: Many major banks (Wells Fargo, UBS, JP Morgan, TD Cowen, Rosenblatt, Piper Sandler, Morgan Stanley) all maintain Buy/Overweight and raise price targets — strong medium-term positive signal.
-* Engagement mixed: “Anemic” engagement but “shockingly strong” retention — mixed narrative, mostly neutralized by higher subscriber stickiness.
-* Options activity: Covered call suggests cautious big money hedging.
-
-Implication:
-* Short-term sentiment is slightly negative due to the price drop and cautious reaction.
-* Medium-term sentiment is positive because multiple analysts raised price targets significantly, reinforcing fundamental confidence.
-* This offsets technical weakness (price stalling, slight profit-taking) but does not fully reverse it yet.
-
-Sentiment: MIXED leaning POSITIVE — News flow moderately strengthens the medium-term technical signal but near-term profit-taking risk remains.
-```
+> **Sentiment for NFLX News: MIXED (Positive Bias)**
+>
+> **Key headlines:**
+> - Earnings beat but weak reaction: Strong Q2 results but “failed to impress” — short-term cautious tone.
+> - Stock drop: Shares fell 5% despite the beat — short-term negative reaction.
+> - Analyst action: Many major banks (Wells Fargo, UBS, JP Morgan, TD Cowen, Rosenblatt, Piper Sandler, Morgan Stanley) all maintain Buy/Overweight and raise price targets — strong medium-term positive signal.
+> - Engagement mixed: “Anemic” engagement but “shockingly strong” retention — mixed narrative, mostly neutralized by higher subscriber stickiness.
+> - Options activity: Covered call suggests cautious big money hedging.
+>
+> **Implication:**
+> - Short-term sentiment is slightly negative due to the price drop and cautious reaction.
+> - Medium-term sentiment is positive because multiple analysts raised price targets significantly, reinforcing fundamental confidence.
+> - This offsets technical weakness (price stalling, slight profit-taking) but does not fully reverse it yet.
+>
+> **Sentiment**: **MIXED leaning POSITIVE** — News flow moderately strengthens the medium-term technical signal but near-term profit-taking risk remains.
 
 #### AVGO
 
 The Stock Trading Agent's technical analysis of **Broadcom** stock on July 18:
 
-```
-Analysis for AVGO:
-* Trend: Strong upward trend — current price (283.27) is well above all key SMAs (20, 50, 150) and EMA 20, showing clear bullish momentum.
-* RSI: Elevated at 66.98 — nearing overbought but not extreme yet; mild caution warranted.
-* MACD: Positive but slightly below signal line (9.61 vs. 9.77) — suggests momentum is flattening near-term.
-* Support/Resistance: Price is just below resistance (288.28) and close to the upper Bollinger Band (290.22) — possible short-term hesitation if volume stays low.
-* Bollinger Bands: Wide — signals volatility expansion consistent with the strong uptrend.
-* Volume: Recent 3-day average is about 52% of the longer-term average — light volume may limit a strong breakout for now.
+>**AVGO Technical Analysis and Recommendation**
+>
+>**Trend:**  
+>AVGO is in a clear uptrend. The current price ($283.27) is above the 20/50/150 SMAs and the 20-EMA, all of which are rising.
+>
+>**RSI (14):**  
+>At 66.98, RSI is approaching the overbought zone (70+), but not excessively so. This signals strength but also potential for short-term consolidation or pullback.
+>
+>**MACD:**  
+>MACD (9.61) is slightly below the signal line (9.77), which is a mild bearish crossover; however, the values are close, indicating momentum is slowing but not reversing.
+>
+>**Support/Resistance:**  
+>Price is near the resistance at $288.28. If it breaks above, more upside is likely. Support sits well below at $244.17, protecting against a deep sell-off.
+>
+>**Bollinger Bands:**  
+Bands are moderately wide ($290.22 upper, $253.58 lower), showing some volatility but not an extreme expansion or contraction.
+>
+>**Volume:**  
+>Recent volume is significantly below average (ratio ~0.52), which may indicate either a pause before the next move or waning short-term momentum.
+>
+---
+>
+> **Recommendation: _Hold_**  
+>The uptrend remains intact, but the proximity to resistance ($288.28), slightly overstretched RSI, slowing momentum (MACD), and lower volumes suggest a short-term pause or consolidation is likely. Wait for a clear breakout above resistance with volume for a fresh **buy** signal, or confirmation of reversal for a **sell**. For now, **hold**.
 
-Recommendation: HOLD / BUY ON DIP — Strong trend is intact but momentum is flattening and volume is soft near resistance. Hold if in, wait for a pullback toward 270–275 to add. Buy only if it breaks 288.28 with clear volume surge.
-```
+<!-- ![alt text](/assets/ai_agent/get_tech_analysis_screen.png "Title") -->
+
+<a href="/assets/ai_agent/get_tech_analysis_screen.png" target="_blank">
+  <img src="/assets/ai_agent/get_tech_analysis_screen.png" />
 
 Cheers!
