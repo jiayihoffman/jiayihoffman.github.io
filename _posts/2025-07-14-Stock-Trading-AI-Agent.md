@@ -24,34 +24,35 @@ Here’s a brief overview of the architecture. The benefit of agent-based design
   <img src="/assets/ai_agent/component_diagram.png" />
 </a>
 
-Here is the responsible of each agents. 
+Here are the responsibilities of each agent: 
 
-* The Orchestrator Agent triggers the flow (e.g., on schedule or event).
-* It asks the Stock Picker Agent for the current stock list.
-* It tells the Market Data Agent and News Agent to fetch data for those stocks.
-* The Technical Analysis Agent and Sentiment Agent process their respective data.
-* The Trading Rules Agent combines all signals and makes a recommendation.
-* The Orchestrator Agent decides whether to act, and if so, instructs the Execution Agent.
+* The Orchestrator Agent initiates the flow (e.g., on schedule or event).
+* It requests the Stock Picker Agent for the current stock list.
+* It instructs the Market Data Agent and News Agent to fetch data for those stocks.
+* The Technical Analysis Agent and Sentiment Agent analyze their respective data.
+* The Trading Rules Agent combines all signals and makes a recommendation. 
+* The Orchestrator Agent decides whether to act and, if so, directs the Execution Agent. 
 * All actions and decisions are logged by the Logging Agent.
 
-The word “agent” here is a general term. It can be an LLM or an entity that completes specific tasks. For example:
-* The “Technical Analysis Agent” is an LLM. It calculates the stock’s various technical indicators and uses reasoning to provide the stock with a technical assessment.
-* On the other hand, the “Market Data Agent” fetches the stock data from the stock exchange.
+The word “agent” here is a general term. It can refer to an LLM or an entity that performs specific tasks. For example:
+* The “Technical Analysis Agent” is an LLM. It calculates various technical indicators for stocks and uses reasoning to provide a technical assessment.
+* Conversely, the “Market Data Agent” retrieves stock data from the stock exchange.
 
 ### Technologies
-I use ChatGPT-4 as the LLM and LangGraph as the agent framework. The app is written in Python.
+I use ChatGPT-4.1 as the LLM and LangGraph as the agent framework. The app is written in Python.
 
-The app runs as a REST service with endpoints to support on-demand stock analysis requests. 
+The app operates as a REST service with endpoints to support on-demand stock analysis requests. 
 
 Additionally, it has the "Trade Monitoring" job running in the background by the orchestrator to oversee the stocks. Just like a real Wall Street trader, the job uses a scanner that constantly monitors the list of stocks and only drills down when the technicals indicate a potential move worth trading.
 
 #### LangGraph
-Here is the generated LangGraph representing the agent workflow where the task is broken down into fixed subtasks for higher accuracy and predictability due to the nature of the use case. Within the workflow, there is a human approval task to review and grant permission for the trade execution. 
+Here is the generated LangGraph illustrating the agent workflow where the task is divided into fixed subtasks for greater accuracy and predictability due to the nature of the use case. The workflow includes a human approval step to review and authorize trade execution. 
 
 <a href="/assets/ai_agent/agent_workflow_graph.png" target="_blank">
   <img src="/assets/ai_agent/agent_workflow_graph.png" width="500"/>
 
-The graph defines nodes involved in Prompt Chaining, where each agent node handles the output of the previous one. Here is the code of chaining the nodes. 
+The graph describes nodes involved in Prompt Chaining, where each agent node processes the output of the previous one. Here is the code for chaining the nodes. 
+
 ```
 def build_state_graph(self):
     workflow = StateGraph(State)
@@ -63,11 +64,11 @@ def build_state_graph(self):
     ...
 
     # Add edges to connect nodes
-    workflow.add_edge(START, "fetch_market_data")
-    workflow.add_edge("fetch_market_data", "check_triggers")
-    workflow.add_conditional_edges(
-        "check_triggers", self.check_should_analyze, {True: "technical_analysis", False: END}
-    )
+        workflow.add_edge(START, "fetch_market_data")
+        workflow.add_edge("fetch_market_data", "check_technical_indicators")
+        workflow.add_conditional_edges(
+            "check_technical_indicators", self.check_should_analyze, {True: "technical_analysis", False: END}
+        )
     ...
 
     # Compile
@@ -77,25 +78,6 @@ def build_state_graph(self):
 ```
 
 ### Demonstration
-#### NFLX
-On July 18, **Netflix** stock dropped 5% after a strong earnings report, and the large price swing triggered sentiment analysis of the stock. Here is the response from my Stock Trading Agent:
-
-> **Sentiment for NFLX News: MIXED (Positive Bias)**
->
-> **Key headlines:**
-> - Earnings beat but weak reaction: Strong Q2 results but “failed to impress” — short-term cautious tone.
-> - Stock drop: Shares fell 5% despite the beat — short-term negative reaction.
-> - Analyst action: Many major banks (Wells Fargo, UBS, JP Morgan, TD Cowen, Rosenblatt, Piper Sandler, Morgan Stanley) all maintain Buy/Overweight and raise price targets — strong medium-term positive signal.
-> - Engagement mixed: “Anemic” engagement but “shockingly strong” retention — mixed narrative, mostly neutralized by higher subscriber stickiness.
-> - Options activity: Covered call suggests cautious big money hedging.
->
-> **Implication:**
-> - Short-term sentiment is slightly negative due to the price drop and cautious reaction.
-> - Medium-term sentiment is positive because multiple analysts raised price targets significantly, reinforcing fundamental confidence.
-> - This offsets technical weakness (price stalling, slight profit-taking) but does not fully reverse it yet.
->
-> **Sentiment**: **MIXED leaning POSITIVE** — News flow moderately strengthens the medium-term technical signal but near-term profit-taking risk remains.
-
 #### AVGO
 
 The Stock Trading Agent's technical analysis of **Broadcom** stock on July 18:
@@ -129,5 +111,24 @@ Bands are moderately wide ($290.22 upper, $253.58 lower), showing some volatilit
 
 <a href="/assets/ai_agent/get_tech_analysis_screen.png" target="_blank">
   <img src="/assets/ai_agent/get_tech_analysis_screen.png" />
+
+#### NFLX
+On July 18, **Netflix** stock dropped 5% after a strong earnings report, and the large price swing triggered sentiment analysis of the stock. Here is the response from my Stock Trading Agent:
+
+> **Sentiment for NFLX News: MIXED (Positive Bias)**
+>
+> **Key headlines:**
+> - Earnings beat but weak reaction: Strong Q2 results but “failed to impress” — short-term cautious tone.
+> - Stock drop: Shares fell 5% despite the beat — short-term negative reaction.
+> - Analyst action: Many major banks (Wells Fargo, UBS, JP Morgan, TD Cowen, Rosenblatt, Piper Sandler, Morgan Stanley) all maintain Buy/Overweight and raise price targets — strong medium-term positive signal.
+> - Engagement mixed: “Anemic” engagement but “shockingly strong” retention — mixed narrative, mostly neutralized by higher subscriber stickiness.
+> - Options activity: Covered call suggests cautious big money hedging.
+>
+> **Implication:**
+> - Short-term sentiment is slightly negative due to the price drop and cautious reaction.
+> - Medium-term sentiment is positive because multiple analysts raised price targets significantly, reinforcing fundamental confidence.
+> - This offsets technical weakness (price stalling, slight profit-taking) but does not fully reverse it yet.
+>
+> **Sentiment**: **MIXED leaning POSITIVE** — News flow moderately strengthens the medium-term technical signal but near-term profit-taking risk remains.
 
 Cheers!
