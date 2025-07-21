@@ -131,4 +131,18 @@ On July 18, **Netflix** stock dropped 5% after a strong earnings report, and the
 >
 > **Sentiment**: **MIXED leaning POSITIVE** — News flow moderately strengthens the medium-term technical signal but near-term profit-taking risk remains.
 
+#### TGT
+On July 21, analysts downgraded Target. Here is the response from the Stock Trading Agent
+
+> Action: **Sell**  
+>
+> Symbol: TGT  
+>
+> Qty: All  
+>
+> Justification: Despite a mild uptrend, technical momentum is weakening and volume is low. Fresh analyst downgrades and bearish sentiment increase downside risk, overriding technicals and pointing to likely near-term weakness. Reduce or exit exposure until sentiment and momentum improve.
+
+<a href="/assets/ai_agent/get_analysis_screen.png" target="_blank">
+  <img src="/assets/ai_agent/get_analysis_screen.png" />
+
 Cheers!
