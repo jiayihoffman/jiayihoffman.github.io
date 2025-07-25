@@ -78,7 +78,7 @@ def build_state_graph(self):
 ```
 
 ### Demonstration
-The Stock Trading Agent is running at: [https://api.trading-agent.modularmachines.ai](https://api.trading-agent.modularmachines.ai) with access control. It can be accessed using POSTMAN with access keys.
+The Stock Trading Agent is running at: [https://api.trading-agent.modularmachines.ai](https://api.trading-agent.modularmachines.ai). It can be accessed using POSTMAN with access keys.
 
 I am working on a web UI to make access easier. 
 
