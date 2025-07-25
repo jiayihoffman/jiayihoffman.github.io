@@ -78,6 +78,34 @@ def build_state_graph(self):
 ```
 
 ### Demonstration
+The Stock Trading Agent is running at: [https://api.trading-agent.modularmachines.ai](https://api.trading-agent.modularmachines.ai) with access control. It can be accessed using POSTMAN with access keys.
+
+I am working on a web UI to make access easier. 
+
+#### TSLA
+The Stock Trading Agent's analysis of **TSLA** stock on July 25:
+
+> **Analysis:**  
+>TSLA is currently range-bound, trading between support at ~289 and resistance near 338. The price is just above the 20-day SMA but below the 50- and 150-day SMAs, indicating mixed medium-term momentum. RSI near 49 shows neutral momentum with no overbought/oversold signals. MACD slightly positive and above its signal line suggests mild bullish bias but weak conviction. Volume is elevated (23% above average), indicating increased trader interest. Bollinger Bands are moderately wide, implying steady volatility, with no clear expansion or contraction. The recent Doji candle absence suggests no immediate reversal signal.
+>
+>**Key insights:**  
+> - Weak upward pressure but strong resistance at 338 likely to hold for now.  
+> - Support at 289 appears solid with no signs of imminent breakdown.  
+> - Neutral indicators suggest a wait-and-see approach for new positions.
+>
+> Recommendations:
+> 1. **If already holding TSLA:**  
+> **Hold** — The stock is range-bound with mixed signals; no urgent reason to trim or add. Monitor for a decisive break above 338 or below 289.
+> 2. **If not holding TSLA:**  
+> **Nibble** — Consider scaling in small positions as momentum shows mild bullishness and volume is supportive; wait for clearer breakout confirmation before adding significantly.
+>
+>Sentiment: **Neutral to Slightly Negative**
+>Explanation:  
+>Tesla's earnings disappointed (Q2 flop, sales decline), prompting downgrades and criticism (e.g., Gary Black’s “disaster” call). However, the stock sees some lift from robotaxi launch hopes and Cathie Wood’s buying, providing positive catalysts. Macro and market conditions are generally positive but do not offset Tesla’s operational challenges. Overall, the news mix weakens the bullish technical setup due to earnings and sales concerns, but upcoming product/service launches present possible near-term support.
+
+<a href="/assets/ai_agent/tsla_analysis_screen.png" target="_blank">
+  <img src="/assets/ai_agent/tsla_analysis_screen.png" />
+
 #### AVGO
 
 The Stock Trading Agent's technical analysis of **Broadcom** stock on July 18:
@@ -131,18 +159,3 @@ On July 18, **Netflix** stock dropped 5% after a strong earnings report, and the
 >
 > **Sentiment**: **MIXED leaning POSITIVE** — News flow moderately strengthens the medium-term technical signal but near-term profit-taking risk remains.
 
-#### TGT
-On July 21, analysts downgraded Target. Here is the response from the Stock Trading Agent
-
-> Action: **Sell**  
->
-> Symbol: TGT  
->
-> Qty: All  
->
-> Justification: Despite a mild uptrend, technical momentum is weakening and volume is low. Fresh analyst downgrades and bearish sentiment increase downside risk, overriding technicals and pointing to likely near-term weakness. Reduce or exit exposure until sentiment and momentum improve.
-
-<a href="/assets/ai_agent/get_analysis_screen.png" target="_blank">
-  <img src="/assets/ai_agent/get_analysis_screen.png" />
-
-Cheers!
