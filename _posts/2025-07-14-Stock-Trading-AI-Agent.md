@@ -82,29 +82,11 @@ The Stock Trading Agent is running at: [https://api.trading-agent.modularmachine
 
 I am working on a web UI to make access easier. 
 
-#### TSLA
-The Stock Trading Agent's analysis of **TSLA** stock on July 25:
+#### PLTR
+The Stock Trading Agent's advice of **PLTR** stock on Aug 02, two days before its earning report:
 
-> **Analysis:**  
->TSLA is currently range-bound, trading between support at ~289 and resistance near 338. The price is just above the 20-day SMA but below the 50- and 150-day SMAs, indicating mixed medium-term momentum. RSI near 49 shows neutral momentum with no overbought/oversold signals. MACD slightly positive and above its signal line suggests mild bullish bias but weak conviction. Volume is elevated (23% above average), indicating increased trader interest. Bollinger Bands are moderately wide, implying steady volatility, with no clear expansion or contraction. The recent Doji candle absence suggests no immediate reversal signal.
->
->**Key insights:**  
-> - Weak upward pressure but strong resistance at 338 likely to hold for now.  
-> - Support at 289 appears solid with no signs of imminent breakdown.  
-> - Neutral indicators suggest a wait-and-see approach for new positions.
->
-> Recommendations:
-> 1. **If already holding TSLA:**  
-> **Hold** — The stock is range-bound with mixed signals; no urgent reason to trim or add. Monitor for a decisive break above 338 or below 289.
-> 2. **If not holding TSLA:**  
-> **Nibble** — Consider scaling in small positions as momentum shows mild bullishness and volume is supportive; wait for clearer breakout confirmation before adding significantly.
->
->Sentiment: **Neutral to Slightly Negative**
->Explanation:  
->Tesla's earnings disappointed (Q2 flop, sales decline), prompting downgrades and criticism (e.g., Gary Black’s “disaster” call). However, the stock sees some lift from robotaxi launch hopes and Cathie Wood’s buying, providing positive catalysts. Macro and market conditions are generally positive but do not offset Tesla’s operational challenges. Overall, the news mix weakens the bullish technical setup due to earnings and sales concerns, but upcoming product/service launches present possible near-term support.
-
-<a href="/assets/ai_agent/tsla_analysis_screen.png" target="_blank">
-  <img src="/assets/ai_agent/tsla_analysis_screen.png" />
+<a href="/assets/ai_agent/pltr_analysis_screen.png" target="_blank">
+  <img src="/assets/ai_agent/pltr_analysis_screen.png" />
 
 #### AVGO
 
@@ -141,7 +123,7 @@ Bands are moderately wide ($290.22 upper, $253.58 lower), showing some volatilit
   <img src="/assets/ai_agent/get_tech_analysis_screen.png" />
 
 #### NFLX
-On July 18, **Netflix** stock dropped 5% after a strong earnings report, and the large price swing triggered sentiment analysis of the stock. Here is the response from my Stock Trading Agent:
+On July 18, **Netflix** stock dropped 5% after a strong earnings report, and the large price swing triggered a sentiment assessment of the stock. Here is the response from my Stock Trading Agent:
 
 > **Sentiment for NFLX News: MIXED (Positive Bias)**
 >
