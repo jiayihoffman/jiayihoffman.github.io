@@ -78,19 +78,19 @@ def build_state_graph(self):
 ```
 
 ### Demonstration
-The Stock Trading Agent is running at: [https://api.trading-agent.modularmachines.ai](https://api.trading-agent.modularmachines.ai). It can be accessed using POSTMAN with access keys.
+Using the above technology, I created a Stock Analyzer Agent that provides professional stock insights and analysis upon user request. 
 
-I am working on a web UI to make access easier. 
+The Stock Analyzer Agent is available at: [https://stock-analyzer.modularmachines.ai](https://stock-analyzer.modularmachines.ai/). It is access-controlled. If you want to try, please let me know and I will create an account for you, and you can reset your password once you log in. 
 
 #### PLTR
-The Stock Trading Agent's advice of **PLTR** stock on Aug 02, two days before its earning report:
+The Stock Analyzer Agent's advice of **PLTR** stock on Aug 02, two days before its earning report:
 
 <a href="/assets/ai_agent/pltr_analysis_screen.png" target="_blank">
   <img src="/assets/ai_agent/pltr_analysis_screen.png" />
 
 #### AVGO
 
-The Stock Trading Agent's technical analysis of **Broadcom** stock on July 18:
+The Stock Analyzer Agent's technical analysis of **Broadcom** stock on July 18:
 
 >**AVGO Technical Analysis and Recommendation**
 >
@@ -123,7 +123,7 @@ Bands are moderately wide ($290.22 upper, $253.58 lower), showing some volatilit
   <img src="/assets/ai_agent/get_tech_analysis_screen.png" />
 
 #### NFLX
-On July 18, **Netflix** stock dropped 5% after a strong earnings report, and the large price swing triggered a sentiment assessment of the stock. Here is the response from my Stock Trading Agent:
+On July 18, **Netflix** stock dropped 5% after a strong earnings report, and the large price swing triggered a sentiment assessment of the stock. Here is the response from my Stock Analyzer Agent:
 
 > **Sentiment for NFLX News: MIXED (Positive Bias)**
 >
