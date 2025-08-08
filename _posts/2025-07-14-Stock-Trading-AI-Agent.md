@@ -83,7 +83,7 @@ Using the above technology, I developed the Stock Analyzer app that offers profe
 The Stock Analyzer app is available at: [https://stock-analyzer.modularmachines.ai](https://stock-analyzer.modularmachines.ai/). It is access-controlled. If you want to try, please let me know and I will create an account for you, and you can reset your password once you log in. 
 
 #### PLTR
-The Stock Analyzer's advice of **PLTR** stock on Aug 02, two days before its earning report:
+The Stock Analyzer's insights of **PLTR** stock on Aug 02, two days before its earning report:
 
 <a href="/assets/ai_agent/pltr_analysis_screen.png" target="_blank">
   <img src="/assets/ai_agent/pltr_analysis_screen.png" />
