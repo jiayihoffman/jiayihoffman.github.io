@@ -88,7 +88,7 @@ The Stock Analyzer app is available at: [https://stock-analyzer.modularmachines.
 
 Two days before Palantir's earnings report, the Stock Analyzer's insights recommended holding the position and not trimming it. It also noted that news headlines reinforced the technical outlook and supported a bullish run. After the earnings report, PLTR stock surged by 22%, from $154 to $188.
 
-Then, on Friday, August 08, the Analyzer advised me to trim and take some profits because the stock was strongly overbought. One week later, the stock dropped 6% to $177.
+Then, on Friday, August 08, the Analyzer advised me to trim slightly and take some profits because the stock was strongly overbought. One week later, the stock dropped 6% to $177.
 
 <a href="/assets/ai_agent/pltr_stock_chart.png" target="_blank">
   <img src="/assets/ai_agent/pltr_stock_chart.png" />
@@ -101,9 +101,12 @@ Then, on Friday, August 08, the Analyzer advised me to trim and take some profit
 
 #### Broadcom (AVGO)
 
-Here is the Stock Analyzer's technical review of Broadcom stock (Stock ticker AVGO) on July 18. It recommended holding and waiting for a clear breakout since momentum is slowing but not reversing. The uptrend remains intact.
+Here is the Stock Analyzer's technical review of Broadcom stock (symbol AVGO) on July 18. It recommended holding and waiting for a clear breakout since momentum is slowing but not reversing. The uptrend remains intact.
 
-On July 25, AVGO broke through resistance with volume and has been soaring since then. Its current price (as of August 15) is $306.34.
+On July 25, AVGO broke through resistance and has been soaring since then. Its current price (as of August 15) is $306.34.
+
+<a href="/assets/ai_agent/avgo_stock_chart.png" target="_blank">
+  <img src="/assets/ai_agent/avgo_stock_chart.png" />
 
 >**AVGO Technical Analysis and Recommendation**
 >
