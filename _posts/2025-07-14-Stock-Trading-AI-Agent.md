@@ -3,7 +3,7 @@ layout: post
 title: "Stock Trading AI Agent"
 date: 2025-07-14 08:45:28 -0600
 categories: AI_Agent
-#image: /assets/ai_agent/agent_workflow_graph.png
+image: /assets/ai_agent/pltr_stock_chart.png
 ---
 I enjoy trading stocks for long-term investing because it requires knowledge, analytical skills, and a long-term perspective. Over time, I have developed technical skills in analyzing stock charts to identify patterns, resistance and support levels, and to gauge whether the stock is becoming bearish or bullish. I also enjoy reading news and listening to tech podcasts to better understand the world around me and upcoming trends.
 
