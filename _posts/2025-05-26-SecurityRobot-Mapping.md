@@ -102,7 +102,7 @@ A Docker container is created from a Docker image, which serves as a template de
 
 The Dockerfile I prepared for my robot can be downloaded from here: [Dockerfile](/code/Dockerfile) and [requirements.txt](/code/requirements.txt). The Docker image created from the Dockerfile includes all the necessary ROS 2 modules, Python libraries, and source code repositories. Access to the private Git repository is granted using an SSL key.
 
-We can build the Docker image and start the Docker container using the following commands. Building the Docker image compiles the source code and creates the bot environment.
+We can build the Docker image and start the Docker container using the following commands. Building the Docker image compiles the source code and creates the bot environment. You only need to build the image once and can reuse it to start the Docker container whenever needed.
 
 ```
 # build the docker image "my_bot_image"
