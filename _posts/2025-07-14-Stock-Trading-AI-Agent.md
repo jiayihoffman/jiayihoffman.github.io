@@ -7,7 +7,7 @@ categories: AI_Agent
 ---
 I enjoy trading stocks for long-term investing because it requires knowledge, analytical skills, and a long-term perspective. Over time, I have developed technical skills in analyzing stock charts to identify patterns, resistance and support levels, and to gauge whether the stock is becoming bearish or bullish. I also enjoy reading news and listening to tech podcasts to better understand the world around me and upcoming trends.
 
-## Stock Trading App
+## A stock trading app
 That said, I don't always have time to watch live stock charts. That makes me want to build a stock trading app where AI agents analyze the charts and correlate them with different data to make trading decisions.  
 
 Additionally, in many ways, trading stocks is more of a psychological game than a numbers game. Therefore, using AI agents to trade stocks is helpful during major pullbacks when everyone is scared or at market peaks when everyone is greedy. AI has a much calmer mind than we humans. :)
@@ -39,7 +39,7 @@ The word “agent” here is a general term. It can refer to an LLM or an entity
 * Conversely, the “Market Data Agent” retrieves stock data from the stock exchange.
 
 ### Technologies
-I use ChatGPT-4.1 as the LLM and LangGraph as the agent framework. The app is written in Python.
+I use ChatGPT-4.1 as the LLM and LangGraph as the agent framework. The app is developed with Python and Angular, created through AI-assisted coding. 
 
 The app operates as a REST service with endpoints to support on-demand stock analysis requests. 
 
@@ -77,15 +77,21 @@ def build_state_graph(self):
     return graph
 ``` -->
 
-### Demonstration
-Using the above technology, I developed Stock Analyzer, an app that offers professional stock insights and analysis upon user request. 
+### The Stock Analyzer app
+Using the above technology, I developed Stock Analyzer, an app that offers professional stock insights and analysis upon user request.
 
 The Stock Analyzer app is available at: [https://stock-analyzer.modularmachines.ai](https://stock-analyzer.modularmachines.ai/). It is access-controlled. If you want to try, please let me know and I will create an account for you, and you can reset your password once you log in. 
 
-#### PLTR
-The Stock Analyzer's insights on **PLTR** stock on August 02, two days before its earnings report, recommended holding the position and not trimming it. It also noted that news headlines reinforced the technical outlook and supported a bullish run. After the earnings report, PLTR stock rose by 22%, from $154 to $188.
+### Testimony
+
+#### Palantir (PLTR)
+
+Two days before Palantir's earnings report, the Stock Analyzer's insights recommended holding the position and not trimming it. It also noted that news headlines reinforced the technical outlook and supported a bullish run. After the earnings report, PLTR stock surged by 22%, from $154 to $188.
 
 Then, on Friday, August 08, the Analyzer advised me to trim and take some profits because the stock was strongly overbought. One week later, the stock dropped 6% to $177.
+
+<a href="/assets/ai_agent/pltr_stock_chart.png" target="_blank">
+  <img src="/assets/ai_agent/pltr_stock_chart.png" />
 
 <a href="/assets/ai_agent/pltr_analysis_8-3.png" target="_blank">
   <img src="/assets/ai_agent/pltr_analysis_8-3.png" />
@@ -93,9 +99,11 @@ Then, on Friday, August 08, the Analyzer advised me to trim and take some profit
 <a href="/assets/ai_agent/pltr_analysis_8-8.png" target="_blank">
   <img src="/assets/ai_agent/pltr_analysis_8-8.png" />
 
-#### AVGO
+#### Broadcom (AVGO)
 
-Here is the Stock Analyzer's technical review of **Broadcom** stock (Stock ticker AVGO) on July 18. It recommended holding and waiting for a clear breakout. On July 25, AVGO broke through resistance with volume and has been soaring since then. Its current price (as of August 15) is $306.34.
+Here is the Stock Analyzer's technical review of Broadcom stock (Stock ticker AVGO) on July 18. It recommended holding and waiting for a clear breakout since momentum is slowing but not reversing. The uptrend remains intact.
+
+On July 25, AVGO broke through resistance with volume and has been soaring since then. Its current price (as of August 15) is $306.34.
 
 >**AVGO Technical Analysis and Recommendation**
 >
@@ -126,25 +134,4 @@ Bands are moderately wide ($290.22 upper, $253.58 lower), showing some volatilit
 
 <a href="/assets/ai_agent/get_tech_analysis_screen.png" target="_blank">
   <img src="/assets/ai_agent/get_tech_analysis_screen.png" />
-
-#### NFLX
-On July 18, **Netflix** stock fell 5% after a strong earnings report, and the large price swing prompted a sentiment assessment of the stock. Here is the response from my Stock Analyzer Agent: it indicated positive learning sentiment and is expected to strengthen the medium-term technical signal. 
-
-NFLX stock is currently at $1238 as of August 15, recovering from the sell-off from $1147.
-
-> **Sentiment for NFLX News: MIXED (Positive Bias)**
->
-> **Key headlines:**
-> - Earnings beat but weak reaction: Strong Q2 results but “failed to impress” — short-term cautious tone.
-> - Stock drop: Shares fell 5% despite the beat — short-term negative reaction.
-> - Analyst action: Many major banks (Wells Fargo, UBS, JP Morgan, TD Cowen, Rosenblatt, Piper Sandler, Morgan Stanley) all maintain Buy/Overweight and raise price targets — strong medium-term positive signal.
-> - Engagement mixed: “Anemic” engagement but “shockingly strong” retention — mixed narrative, mostly neutralized by higher subscriber stickiness.
-> - Options activity: Covered call suggests cautious big money hedging.
->
-> **Implication:**
-> - Short-term sentiment is slightly negative due to the price drop and cautious reaction.
-> - Medium-term sentiment is positive because multiple analysts raised price targets significantly, reinforcing fundamental confidence.
-> - This offsets technical weakness (price stalling, slight profit-taking) but does not fully reverse it yet.
->
-> **Sentiment**: **MIXED leaning POSITIVE** — News flow moderately strengthens the medium-term technical signal but near-term profit-taking risk remains.
 
