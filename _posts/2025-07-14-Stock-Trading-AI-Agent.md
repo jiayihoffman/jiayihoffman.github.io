@@ -101,7 +101,7 @@ Then, on Friday, August 08, the Analyzer advised me to trim slightly and take so
 
 #### Broadcom (AVGO)
 
-Here is the Stock Analyzer's technical review of Broadcom stock (symbol AVGO) on July 18. It recommended holding and waiting for a clear breakout since momentum is slowing but not reversing. The uptrend remains intact.
+Here is the Stock Analyzer's technical review of Broadcom stock (symbol AVGO) on July 18. It recommended holding and waiting for a clear breakout since momentum is slowing but not reversing. The uptrend remains intact. The stock price was at $283 on July 18.
 
 On July 25, AVGO broke through resistance and has been soaring since then. Its current price (as of August 15) is $306.34.
 
