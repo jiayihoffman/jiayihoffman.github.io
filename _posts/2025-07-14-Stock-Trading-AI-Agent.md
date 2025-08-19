@@ -7,43 +7,41 @@ image: /assets/ai_agent/pltr_stock_chart.png
 ---
 I enjoy trading stocks for long-term investing because it requires knowledge, analytical skills, and a long-term perspective. Over time, I have developed technical skills in analyzing stock charts to identify patterns, resistance and support levels, and to gauge whether the stock is becoming bearish or bullish. I also enjoy reading news and listening to tech podcasts to better understand the world around me and upcoming trends.
 
-## A stock trading app
-That said, I don't always have time to watch live stock charts. That makes me want to build a stock trading app where AI agents analyze the charts and correlate them with different data to make trading decisions.  
+## A stock app
+That said, I don't always have time to watch live stock charts. That makes me want to create a stock app where AI agents analyze the charts and relate them to market sentiment to give trading suggestions.  
 
-Additionally, in many ways, trading stocks is more of a psychological game than a numbers game. Therefore, using AI agents to trade stocks is helpful during major pullbacks when everyone is scared or at market peaks when everyone is greedy. AI has a much calmer mind than we humans. :)
+Additionally, in many ways, trading stocks is more of a psychological game than a numbers game. Therefore, using AI agents to recommend stock actions can be helpful during major pullbacks when everyone is scared or at market peaks when everyone is greedy. AI has a much calmer mind than we humans. :)
 
-With the app, I have a few stocks to start with, but I’d love to add more to the list as the AI agent recommends new stocks in sectors I’m interested in.
+I have a few stocks to start with, but I’d love to add more to the list as the AI agent researches and recommends new stocks in sectors I’m interested in.
 
 ### Architecture
 Here’s a brief overview of the architecture. The benefit of agent-based design is that:
 1. It is modular, flexible, and with expert stock analyst intelligence. 
 2. This design supports the "in the loop" evaluation, enabling the Orchestrator agent to critique the output of other agents to promote reflection, which is a key aspect of the agentic reasoning pattern that help improve performance. 
-3. Additionally, the logging agent records the trading results to facilitate ongoing iterative review and improvement. 
+3. Additionally, the logging agent records the stocks' insights and feedback to facilitate ongoing iterative review and improvement.
 
-<a href="/assets/ai_agent/component_diagram.png" target="_blank">
-  <img src="/assets/ai_agent/component_diagram.png" />
+<a href="/assets/ai_agent/stock_analyzer_components.drawio.png" target="_blank">
+  <img src="/assets/ai_agent/stock_analyzer_components.drawio.png" />
 </a>
 
 Here are the responsibilities of each agent: 
 
 * The Orchestrator Agent initiates the flow (e.g., on schedule or event).
-* It requests the Stock Picker Agent for the current stock list.
-* It instructs the Market Data Agent and News Agent to fetch data for those stocks.
-* The Technical Analysis Agent and Sentiment Agent analyze their respective data.
-* The Trading Rules Agent combines all signals and makes a recommendation. 
-* The Orchestrator Agent decides whether to act and, if so, directs the Execution Agent. 
-* All actions and decisions are logged by the Logging Agent.
+* It instructs the Technical Analysis Agent and Sentiment Agent to analyze the stocks.
+* The Technical Agent contacts the Market Data Agent for stock data, and the Sentiment Agent uses News Agent to fetch news data for the stocks.
+* The Orchestrator Agent combines all signals and makes a recommendation. 
+* All insights are logged by the Logging Agent.
 
-The word “agent” here is a general term. It can refer to an LLM or an entity that performs specific tasks. For example:
-* The “Technical Analysis Agent” is an LLM. It calculates various technical indicators for stocks and uses reasoning to provide a technical assessment.
+The word “agent” here is a general term. It can refer to an large language model (LLM) or an entity that performs specific tasks. For example:
+* The “Technical Analysis Agent” is a large language model. It calculates various technical indicators for stocks and uses reasoning to provide a technical assessment.
 * Conversely, the “Market Data Agent” retrieves stock data from the stock exchange.
 
 ### Technologies
-I use ChatGPT-4.1 as the language model and LangGraph as the agent framework. The app is developed with Python and Angular. The web user interface is created entirely through AI-assisted coding. 
+I use ChatGPT-4.1 as the large language model (LLM) and LangGraph as the agent framework. The app is built with Python and Angular. The web user interface is developed entirely through AI-assisted coding.
 
-The app operates as a REST service with endpoints to support on-demand stock analysis requests. 
+The app operates as a REST service with endpoints to handle on-demand stock analysis requests. It also runs the "watchlist" job in the background to automatically generate insights for stocks requested by the user.
 
-Additionally, it has the "Trade Monitoring" job running in the background by the orchestrator to oversee the stocks. Just like a real Wall Street trader, the job uses a scanner that constantly monitors the list of stocks and only drills down when the technicals indicate a potential move worth trading.
+<!-- Additionally, it has the "Trade Monitoring" job running in the background by the orchestrator to oversee the stocks. Just like a real Wall Street trader, the job uses a scanner that constantly monitors the list of stocks and only drills down when the technicals indicate a potential move worth trading. -->
 
 <!-- #### LangGraph
 Here is the generated LangGraph illustrating the agent workflow where the task is divided into fixed subtasks for greater accuracy and predictability due to the nature of the use case. The workflow includes a human approval step to review and authorize trade execution. 
@@ -78,11 +76,11 @@ def build_state_graph(self):
 ``` -->
 
 ### The Stock Analyzer app
-Using the above technology, I developed Stock Analyzer, an app that offers professional stock insights and analysis upon user request.
+Here is the Stock Analyzer, the app that offers professional stock technical insights and market sentiment analysis.
 
-The Stock Analyzer app is available at: [https://stock-analyzer.modularmachines.ai](https://stock-analyzer.modularmachines.ai/). It is access-controlled. If you want to try, please let me know and I will create an account for you, and you can reset your password once you log in. 
+The Stock Analyzer app is available at: [https://stock-analyzer.modularmachines.ai](https://stock-analyzer.modularmachines.ai/). It is access-controlled. If you'd like to try it, let me know, and I will create an account for you. You can reset your password once you log in.
 
-Here is the screenshots of the product. It offers insights into the stock's technical details and market sentiment. 
+Here are the screenshots of the product:
 
 <a href="/assets/ai_agent/ccj_chart.png" target="_blank">
   <img src="/assets/ai_agent/ccj_chart.png" width="360" />
@@ -95,7 +93,7 @@ Here is the screenshots of the product. It offers insights into the stock's tech
 
 Two days before Palantir's earnings report, the Stock Analyzer's insights recommended holding the position and not trimming it. It also noted that news headlines reinforced the technical outlook and supported a bullish run. After the earnings report, PLTR stock surged by 22%, from $154 to $188.
 
-Then, on Friday, August 08, the Analyzer advised me to trim slightly and take some profits because the stock was strongly overbought. One week later, the stock dropped 6% to $177. 
+Then, on Friday, August 08, the Analyzer recommended that I trim slightly and take some profits because the stock was strongly overbought. One week later, the stock dropped 6% to $177. Ten days later, on August 19, PLTR sits at $157, 16% down from the price point where the Stock Analyzer suggested trimming.
 
 <a href="/assets/ai_agent/pltr_stock_chart.png" target="_blank">
   <img src="/assets/ai_agent/pltr_stock_chart.png" />
