@@ -39,7 +39,7 @@ The word “agent” here is a general term. It can refer to an LLM or an entity
 * Conversely, the “Market Data Agent” retrieves stock data from the stock exchange.
 
 ### Technologies
-I use ChatGPT-4.1 as the LLM and LangGraph as the agent framework. The app is developed with Python and Angular, created through AI-assisted coding. 
+I use ChatGPT-4.1 as the language model and LangGraph as the agent framework. The app is developed with Python and Angular. The web user interface is created entirely through AI-assisted coding. 
 
 The app operates as a REST service with endpoints to support on-demand stock analysis requests. 
 
@@ -82,13 +82,20 @@ Using the above technology, I developed Stock Analyzer, an app that offers profe
 
 The Stock Analyzer app is available at: [https://stock-analyzer.modularmachines.ai](https://stock-analyzer.modularmachines.ai/). It is access-controlled. If you want to try, please let me know and I will create an account for you, and you can reset your password once you log in. 
 
+Here is the screenshots of the product. It offers insights into the stock's technical details and market sentiment. 
+
+<a href="/assets/ai_agent/ccj_chart.png" target="_blank">
+  <img src="/assets/ai_agent/ccj_chart.png" width="360" />
+<a href="/assets/ai_agent/ccj_analysis.png" target="_blank">
+  <img src="/assets/ai_agent/ccj_analysis.png" width="370" />
+
 ### Testimony
 
 #### Palantir (PLTR)
 
 Two days before Palantir's earnings report, the Stock Analyzer's insights recommended holding the position and not trimming it. It also noted that news headlines reinforced the technical outlook and supported a bullish run. After the earnings report, PLTR stock surged by 22%, from $154 to $188.
 
-Then, on Friday, August 08, the Analyzer advised me to trim slightly and take some profits because the stock was strongly overbought. One week later, the stock dropped 6% to $177.
+Then, on Friday, August 08, the Analyzer advised me to trim slightly and take some profits because the stock was strongly overbought. One week later, the stock dropped 6% to $177. 
 
 <a href="/assets/ai_agent/pltr_stock_chart.png" target="_blank">
   <img src="/assets/ai_agent/pltr_stock_chart.png" />
