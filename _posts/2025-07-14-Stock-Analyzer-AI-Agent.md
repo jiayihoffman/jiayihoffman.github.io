@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Stock Trading AI Agent"
+title: "Stock Analyzer AI Agent"
 date: 2025-07-14 08:45:28 -0600
 categories: AI_Agent
 image: /assets/ai_agent/pltr_stock_chart.png
