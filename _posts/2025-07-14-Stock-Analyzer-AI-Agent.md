@@ -18,7 +18,7 @@ I have a few stocks to start with, but I’d love to add more to the list as the
 Here’s a brief overview of the architecture. The benefit of agent-based design is that:
 1. It is modular, flexible, and with expert stock analyst intelligence. 
 2. This design supports the "in the loop" evaluation, enabling the Orchestrator agent to critique the output of other agents to promote reflection, which is a key aspect of the agentic reasoning pattern that help improve performance. 
-3. Additionally, the logging agent records the stocks' insights and feedback to facilitate ongoing iterative review and improvement.
+3. Additionally, the logging agent records the stock's insights and feedback to facilitate ongoing iterative review and improvement.
 
 <a href="/assets/ai_agent/stock_analyzer_components.drawio.png" target="_blank">
   <img src="/assets/ai_agent/stock_analyzer_components.drawio.png" />
