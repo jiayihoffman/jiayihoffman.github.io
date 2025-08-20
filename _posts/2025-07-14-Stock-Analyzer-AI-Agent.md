@@ -14,7 +14,7 @@ Additionally, in many ways, trading stocks is more of a psychological game than 
 
 I have a few stocks to start with, but I’d love to add more to the list as the AI agent researches and recommends new stocks in sectors I’m interested in.
 
-### Architecture
+<!-- ### Architecture
 Here’s a brief overview of the architecture. The benefit of agent-based design is that:
 1. It is modular, flexible, and with expert stock analyst intelligence. 
 2. This design supports the "in the loop" evaluation, enabling the Orchestrator agent to critique the output of other agents to promote reflection, which is a key aspect of the agentic reasoning pattern that help improve performance. 
@@ -34,12 +34,12 @@ Here are the responsibilities of each agent:
 
 The word “agent” here is a general term. It can refer to an large language model (LLM) or an entity that performs specific tasks. For example:
 * The “Technical Analysis Agent” is a large language model. It calculates various technical indicators for stocks and uses reasoning to provide a technical assessment.
-* Conversely, the “Market Data Agent” retrieves stock data from the stock exchange.
+* Conversely, the “Market Data Agent” retrieves stock data from the stock exchange. -->
 
 ### Technologies
 I use ChatGPT-4.1 as the large language model (LLM) and LangGraph as the agent framework. The app is built with Python and Angular. The web user interface is developed entirely through AI-assisted coding.
 
-The app operates as a REST service with endpoints to handle on-demand stock analysis requests. It also runs the "watchlist" job in the background to automatically generate insights for stocks requested by the user.
+The app operates as a REST service with endpoints to handle on-demand stock analysis requests. It also runs the "watchlist" job in the background to automatically generate insights for stocks configured by the user.
 
 <!-- Additionally, it has the "Trade Monitoring" job running in the background by the orchestrator to oversee the stocks. Just like a real Wall Street trader, the job uses a scanner that constantly monitors the list of stocks and only drills down when the technicals indicate a potential move worth trading. -->
 
