@@ -14,7 +14,7 @@ Additionally, in many ways, trading stocks is more of a psychological game than 
 
 I have a few stocks to start with, but I’d love to add more to the list as the AI agent researches and recommends new stocks in sectors I’m interested in.
 
-<!-- ### Architecture
+### Architecture
 Here’s a brief overview of the architecture. The benefit of agent-based design is that:
 1. It is modular, flexible, and with expert stock analyst intelligence. 
 2. This design supports the "in the loop" evaluation, enabling the Orchestrator agent to critique the output of other agents to promote reflection, which is a key aspect of the agentic reasoning pattern that help improve performance. 
@@ -34,7 +34,7 @@ Here are the responsibilities of each agent:
 
 The word “agent” here is a general term. It can refer to an large language model (LLM) or an entity that performs specific tasks. For example:
 * The “Technical Analysis Agent” is a large language model. It calculates various technical indicators for stocks and uses reasoning to provide a technical assessment.
-* Conversely, the “Market Data Agent” retrieves stock data from the stock exchange. -->
+* Conversely, the “Market Data Agent” retrieves stock data from the stock exchange.
 
 ### Technologies
 I use ChatGPT-4.1 as the large language model (LLM) and LangGraph as the agent framework. The app is built with Python and Angular. The web user interface is developed entirely through AI-assisted coding.
@@ -103,6 +103,19 @@ Then, on Friday, August 08, the Analyzer recommended that I trim slightly and ta
 
 <a href="/assets/ai_agent/pltr_analysis_8-8.png" target="_blank">
   <img src="/assets/ai_agent/pltr_analysis_8-8.png" />
+
+#### Tesla (TSLA)
+
+The Stock Analyzer app suggested that I modestly trim Tesla stock the day before Nvidia, the biggest AI company, reports earnings since the TSLA chart shows uncertainty and lack of conviction in breaking through the resistance. 
+
+This proved to be a very helpful tip. The Tesla stock slid more than 20 dollars in the next two trading days.
+
+<a href="/assets/ai_agent/tsla_stock_chart.png" target="_blank">
+  <img src="/assets/ai_agent/tsla_stock_chart.png" />
+
+<a href="/assets/ai_agent/tsla_analysis_8_27.png" target="_blank">
+  <img src="/assets/ai_agent/tsla_analysis_8_27.png" />
+
 
 #### Broadcom (AVGO)
 
