@@ -106,9 +106,9 @@ Then, on Friday, August 08, the Analyzer recommended that I trim slightly and ta
 
 #### Tesla (TSLA)
 
-The Stock Analyzer app suggested that I modestly trim Tesla stock the day before Nvidia, the biggest AI company, reports earnings since the TSLA chart shows uncertainty and lack of conviction in breaking through the resistance. 
+On Aug 27, the Stock Analyzer app recommended that I modestly trim my Tesla stock position at $352 since the TSLA chart indicates uncertainty and lack of conviction in breaking through the resistance.
 
-This proved to be a very helpful tip. The Tesla stock slid more than 20 dollars in the next two trading days.
+This turned out to be a very helpful tip. The Tesla stock dropped more than $20 over the next two trading days.
 
 <a href="/assets/ai_agent/tsla_stock_chart.png" target="_blank">
   <img src="/assets/ai_agent/tsla_stock_chart.png" />
