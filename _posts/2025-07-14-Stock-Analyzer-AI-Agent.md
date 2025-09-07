@@ -7,8 +7,8 @@ image: /assets/ai_agent/pltr_stock_chart.png
 ---
 I enjoy trading stocks for long-term investing because it requires knowledge, analytical skills, and a long-term perspective. Over time, I have developed technical skills in analyzing stock charts to identify patterns, resistance and support levels, and to gauge whether the stock is becoming bearish or bullish. I also enjoy reading news and listening to tech podcasts to better understand the world around me and upcoming trends.
 
-## A stock app
-That said, I don't always have time to watch live stock charts. That makes me want to create a stock app where AI agents analyze the charts and relate them to market sentiment to give trading suggestions.  
+## A Stock AI Agent
+That said, I don't always have time to watch live stock charts. That makes me want to create a stock app where AI agents analyze the charts and relate them to market sentiment to give trading insights.  
 
 Additionally, in many ways, trading stocks is more of a psychological game than a numbers game. Therefore, using AI agents to recommend stock actions can be helpful during major pullbacks when everyone is scared or at market peaks when everyone is greedy. AI has a much calmer mind than we humans. :)
 
@@ -37,9 +37,9 @@ The word “agent” here is a general term. It can refer to an large language m
 * Conversely, the “Market Data Agent” retrieves stock data from the stock exchange.
 
 ### Technologies
-I use ChatGPT-4.1 as the large language model (LLM) and LangGraph as the agent framework. The app is built with Python and Angular. The web user interface is developed entirely through AI-assisted coding.
+I use ChatGPT-4.1 as the large language model (LLM) and LangGraph as the agent framework. The AI agent is built with Python and Angular. The web user interface is developed entirely through AI-assisted coding.
 
-The app operates as a REST service with endpoints to handle on-demand stock analysis requests. It also runs the "watchlist" job in the background to automatically generate insights for stocks configured by the user.
+The agent functions as a REST service with endpoints for on-demand stock analysis requests. It also runs the "watchlist" job in the background to automatically generate insightful alerts for the user.
 
 <!-- Additionally, it has the "Trade Monitoring" job running in the background by the orchestrator to oversee the stocks. Just like a real Wall Street trader, the job uses a scanner that constantly monitors the list of stocks and only drills down when the technicals indicate a potential move worth trading. -->
 
@@ -75,17 +75,17 @@ def build_state_graph(self):
     return graph
 ``` -->
 
-### The Stock Analyzer app
-Here is the Stock Analyzer, the app that offers professional stock technical insights and market sentiment analysis.
+### The Stock Analyzer AI Agent
+Here is the Stock Analyzer, the AI agent that offers professional stock technical insights and market sentiment analysis.
 
-The Stock Analyzer app is available at: [https://stock-analyzer.modularmachines.ai](https://stock-analyzer.modularmachines.ai/). It is access-controlled. If you'd like to try it, let me know, and I will create an account for you. You can reset your password once you log in.
+<!-- The Stock Analyzer app is available at: [https://stock-analyzer.modularmachines.ai](https://stock-analyzer.modularmachines.ai/). It is access-controlled. If you'd like to try it, let me know, and I will create an account for you. You can reset your password once you log in.
 
-Here are the screenshots of the product:
+Here are the screenshots of the product: -->
 
-<a href="/assets/ai_agent/ccj_chart.png" target="_blank">
-  <img src="/assets/ai_agent/ccj_chart.png" width="360" />
-<a href="/assets/ai_agent/ccj_analysis.png" target="_blank">
-  <img src="/assets/ai_agent/ccj_analysis.png" width="370" />
+<a href="/assets/ai_agent/avgo_stock_chart.png" target="_blank">
+  <img src="/assets/ai_agent/avgo_stock_chart.png" width="360" />
+<a href="/assets/ai_agent/avgo_analysis_9_06.png" target="_blank">
+  <img src="/assets/ai_agent/avgo_analysis_9_06.png" width="370" />
 
 ### Testimony
 
@@ -93,7 +93,7 @@ Here are the screenshots of the product:
 
 Two days before Palantir's earnings report, the Stock Analyzer's insights recommended holding the position and not trimming it. It also noted that news headlines reinforced the technical outlook and supported a bullish run. After the earnings report, PLTR stock surged by 22%, from $154 to $188.
 
-Then, on Friday, August 08, the Analyzer recommended that I trim slightly and take some profits because the stock was strongly overbought. One week later, the stock dropped 6% to $177. Ten days later, on August 19, PLTR sits at $157, 16% down from the price point where the Stock Analyzer suggested trimming.
+Then, on Friday, August 08, the Analyzer recommended that I trim slightly and take some profits because the stock was strongly overbought. One week later, the stock dropped 6% to $177. Ten days later, on August 19, PLTR sits at $157, 16% down from the price point where the Stock Analyzer recommended trimming.
 
 <a href="/assets/ai_agent/pltr_stock_chart.png" target="_blank">
   <img src="/assets/ai_agent/pltr_stock_chart.png" />
@@ -106,7 +106,7 @@ Then, on Friday, August 08, the Analyzer recommended that I trim slightly and ta
 
 #### Tesla (TSLA)
 
-On Aug 27, the Stock Analyzer app recommended that I modestly trim my Tesla stock position at $352 since the TSLA chart indicates uncertainty and lack of conviction in breaking through the resistance.
+On Aug 27, the Stock Analyzer Agent recommended that I modestly trim my Tesla stock position at $352 since the TSLA chart indicates uncertainty and lack of conviction in breaking through the resistance.
 
 This turned out to be a very helpful tip. The Tesla stock dropped more than $20 over the next two trading days.
 
@@ -117,3 +117,4 @@ This turned out to be a very helpful tip. The Tesla stock dropped more than $20 
   <img src="/assets/ai_agent/tsla_analysis_8_27.png" />
 
 
+Cheers!
