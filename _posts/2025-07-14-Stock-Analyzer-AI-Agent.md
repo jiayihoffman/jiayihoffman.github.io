@@ -84,8 +84,8 @@ Here are the screenshots of the product: -->
 
 <a href="/assets/ai_agent/avgo_stock_chart.png" target="_blank">
   <img src="/assets/ai_agent/avgo_stock_chart.png" width="360" />
-<a href="/assets/ai_agent/avgo_analysis_9_06.png" target="_blank">
-  <img src="/assets/ai_agent/avgo_analysis_9_06.png" width="370" />
+<a href="/assets/ai_agent/avgo_analysis_9_08.png" target="_blank">
+  <img src="/assets/ai_agent/avgo_analysis_9_08.png" width="370" />
 
 ### Testimony
 
