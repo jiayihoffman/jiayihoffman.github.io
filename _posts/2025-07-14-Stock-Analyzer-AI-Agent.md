@@ -5,19 +5,21 @@ date: 2025-07-14 08:45:28 -0600
 categories: AI_Agent
 image: /assets/ai_agent/pltr_stock_chart.png
 ---
-I enjoy trading stocks for long-term investing because it requires knowledge, analytical skills, and a long-term perspective. Over time, I have developed technical skills in analyzing stock charts to identify patterns, resistance and support levels, and to gauge whether the stock is becoming bearish or bullish. I also enjoy reading news and listening to tech podcasts to better understand the world around me and upcoming trends.
+I enjoy trading stocks for long-term investing because it requires knowledge, analytical skills, and a long-term perspective. Over time, I have developed technical skills in analyzing stock charts to identify patterns, resistance and support levels, and to gauge whether the stock is becoming bearish or bullish. I also enjoy reading news and listening to tech podcasts to stay up-to-date on upcoming trends.
+
+In addition to personal interests, wealth generation in the post-AI era is predominantly driven by investments in the equity market. 
 
 ## A Stock AI Agent
 That said, I don't always have time to watch live stock charts. That makes me want to create a stock app where AI agents analyze the charts and relate them to market sentiment to give trading insights.  
 
-Additionally, in many ways, trading stocks is more of a psychological game than a numbers game. Therefore, using AI agents to recommend stock actions can be helpful during major pullbacks when everyone is scared or at market peaks when everyone is greedy. AI has a much calmer mind than we humans. :)
+Additionally, in many ways, trading stocks is more of a psychological game than a numbers game. Therefore, using AI agents to recommend stock actions can be helpful during major pullbacks when everyone is scared, as well as at market peaks when everyone is greedy. AI has a much calmer mind than we humans. :)
 
-I have a few stocks to start with, but I’d love to add more to the list as the AI agent researches and recommends new stocks in sectors I’m interested in.
+I have a few stocks to start with, but I’d love to add more to the list as the AI agent researches and recommends new stocks in sectors that interest me.
 
 ### Architecture
 Here’s a brief overview of the architecture. The benefit of agent-based design is that:
 1. It is modular, flexible, and with expert stock analyst intelligence. 
-2. This design supports the "in the loop" evaluation, enabling the Orchestrator agent to critique the output of other agents to promote reflection, which is a key aspect of the agentic reasoning pattern that help improve performance. 
+2. This design supports the "in the loop" evaluation, enabling the Orchestrator agent to oversee and critique the output of other agents, promoting reflection - a key aspect of the agentic reasoning pattern that helps improve performance. 
 3. Additionally, the logging agent records the stock's insights and feedback to facilitate ongoing iterative review and improvement.
 
 <a href="/assets/ai_agent/stock_analyzer_components.drawio.png" target="_blank">
@@ -28,16 +30,16 @@ Here are the responsibilities of each agent:
 
 * The Orchestrator Agent initiates the flow (e.g., on schedule or event).
 * It instructs the Technical Analysis Agent and Sentiment Agent to analyze the stocks.
-* The Technical Agent contacts the Market Data Agent for stock data, and the Sentiment Agent uses News Agent to fetch news data for the stocks.
+* The Technical Agent contacts the Market Data Agent for stock data, and the Sentiment Agent uses the News Agent to fetch news data for the stocks.
 * The Orchestrator Agent combines all signals and makes a recommendation. 
 * All insights are logged by the Logging Agent.
 
-The word “agent” here is a general term. It can refer to an large language model (LLM) or an entity that performs specific tasks. For example:
+The word “agent” is a general term here. It can refer to a large language model (LLM) or an entity that performs specific tasks. For example:
 * The “Technical Analysis Agent” is a large language model. It calculates various technical indicators for stocks and uses reasoning to provide a technical assessment.
 * Conversely, the “Market Data Agent” retrieves stock data from the stock exchange.
 
 ### Technologies
-I use ChatGPT-4.1 as the large language model (LLM) and LangGraph as the agent framework. The AI agent is built with Python and Angular. The web user interface is developed entirely through AI-assisted coding.
+I use ChatGPT-4.1 as the large language model (LLM) and LangGraph as the agent framework. The AI agent is built with Python and Angular. The web user interface is developed entirely through Cursor, an AI-assisted coding tool.
 
 The agent functions as a REST service with endpoints for on-demand stock analysis requests. It also runs the "watchlist" job in the background to automatically generate insightful alerts for the user.
 
@@ -82,10 +84,8 @@ Here is the Stock Analyzer, the AI agent that offers professional stock technica
 
 Here are the screenshots of the product: -->
 
-<a href="/assets/ai_agent/avgo_stock_chart.png" target="_blank">
-  <img src="/assets/ai_agent/avgo_stock_chart.png" width="360" />
-<a href="/assets/ai_agent/avgo_analysis_9_08.png" target="_blank">
-  <img src="/assets/ai_agent/avgo_analysis_9_08.png" width="370" />
+<a href="/assets/ai_agent/avgo_screenshot.png" target="_blank">
+  <img src="/assets/ai_agent/avgo_screenshot.png" />
 
 ### Testimony
 
@@ -106,7 +106,7 @@ Then, on Friday, August 08, the Analyzer recommended that I trim slightly and ta
 
 #### Tesla (TSLA)
 
-On Aug 27, the Stock Analyzer Agent recommended that I modestly trim my Tesla stock position at $352 since the TSLA chart indicates uncertainty and lack of conviction in breaking through the resistance.
+On August 27, the Stock Analyzer Agent recommended that I modestly trim my Tesla stock position at $352 as the TSLA chart indicates uncertainty and lack of conviction in breaking through the resistance.
 
 This turned out to be a very helpful tip. The Tesla stock dropped more than $20 over the next two trading days.
 
