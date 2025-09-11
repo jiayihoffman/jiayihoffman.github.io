@@ -84,8 +84,8 @@ Here is the Stock Analyzer, the AI agent that offers professional stock technica
 
 Here are the screenshots of the product: -->
 
-<a href="/assets/ai_agent/avgo_screenshot.png" target="_blank">
-  <img src="/assets/ai_agent/avgo_screenshot.png" />
+<a href="/assets/ai_agent/oklo.png" target="_blank">
+  <img src="/assets/ai_agent/oklo_screenshot.png" />
 
 ### Testimony
 
