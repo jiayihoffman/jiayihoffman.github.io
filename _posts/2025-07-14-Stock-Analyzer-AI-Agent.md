@@ -104,17 +104,17 @@ Then, on Friday, August 08, the Analyzer recommended that I trim slightly and ta
 <a href="/assets/ai_agent/pltr_analysis_8-8.png" target="_blank">
   <img src="/assets/ai_agent/pltr_analysis_8-8.png" />
 
-#### Tesla (TSLA)
+#### Oklo Inc. (OKLO)
 
-On August 27, the Stock Analyzer Agent recommended that I modestly trim my Tesla stock position at $352 as the TSLA chart indicates uncertainty and lack of conviction in breaking through the resistance.
+On September 25, the Stock Analyzer Agent recommended that I trim my OKLO position modestly at $131, as the OKLO chart indicates a loss of momentum and signals a potential distribution following the big run.
 
-This turned out to be a very helpful tip. The Tesla stock dropped more than $20 over the next two trading days.
+This proved to be a very helpful tip. The OKLO stock fell more than $21, closing at $110 over the next two trading days. Additionally, CNBC later reported that "[Oklo has also seen a cluster of insider selling over the past few days](https://www.cnbc.com/2025/09/25/oklo-nuclear-shares-fall-ai-data-center.html)", which matches my AI agent's speculation based on the chart. 
 
-<a href="/assets/ai_agent/tsla_stock_chart.png" target="_blank">
-  <img src="/assets/ai_agent/tsla_stock_chart.png" />
+<a href="/assets/ai_agent/oklo_stock_chart.png" target="_blank">
+  <img src="/assets/ai_agent/oklo_stock_chart.png" />
 
-<a href="/assets/ai_agent/tsla_analysis_8_27.png" target="_blank">
-  <img src="/assets/ai_agent/tsla_analysis_8_27.png" />
+<a href="/assets/ai_agent/oklo_analysis_9-25.png" target="_blank">
+  <img src="/assets/ai_agent/oklo_analysis_9-25.png" />
 
 
 Cheers!
