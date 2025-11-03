@@ -87,6 +87,15 @@ Here are the screenshots of the product: -->
 <a href="/assets/ai_agent/oklo_screenshot.png" target="_blank">
   <img src="/assets/ai_agent/oklo_screenshot.png" />
 
+Conversation with the agent about the user's specific questions. Unlike a chatbot, the agent has concrete data points and lets the user take immediate actions.
+
+<a href="/assets/ai_agent/T_response1.png" target="_blank">
+  <img src="/assets/ai_agent/T_response1.png" />
+
+<a href="/assets/ai_agent/T_response2.png" target="_blank">
+  <img src="/assets/ai_agent/T_response2.png" />
+
+
 ### Testimony
 
 #### Palantir (PLTR)
