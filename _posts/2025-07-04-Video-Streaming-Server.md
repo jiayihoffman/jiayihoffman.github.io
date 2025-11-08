@@ -157,6 +157,10 @@ self.rtmp_url = "rtmp://PUBLIC_CLOUD_SERVER/live/stream?user=mypublisher&pass=se
 
 The Droid Vision app has been updated so users can configure the "Use Media Server" option with the media server's username and password. The app automatically inserts these credentials into the URL. 
 
+<a href="/assets/media_server/IMG_0512.PNG" target="_blank">
+  <img src="/assets/media_server/IMG_0512.PNG" />
+</a>
+
 This method of protection is straightforward but not ideal for large-scale or highly secure applications because it uses hardcoded credentials. Therefore, MediaMTX offers alternative methods that utilize external authentication. For more information, please see the MediaMTX [product site](https://github.com/bluenviron/mediamtx).
 
 ## On-Demand Video Streaming
