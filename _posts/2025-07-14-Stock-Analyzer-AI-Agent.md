@@ -7,7 +7,7 @@ image: /assets/ai_agent/pltr_stock_chart.png
 ---
 I enjoy trading stocks for long-term investing because it requires knowledge, analytical skills, and a long-term perspective. Over time, I have developed technical skills in analyzing stock charts to identify patterns, resistance and support levels, and to gauge whether the stock is becoming bearish or bullish. I also enjoy reading news and listening to tech podcasts to stay up-to-date on upcoming trends.
 
-In addition to personal interests, wealth generation in the post-AI era is predominantly driven by investments in the equity market. 
+In addition to personal interests, in the era of AGI, wealth is predominantly generated through equity market investments. 
 
 ## A Stock AI Agent
 That said, I don't always have time to watch live stock charts. That makes me want to create a stock app where AI agents analyze the charts and relate them to market sentiment to give trading insights.  
@@ -39,7 +39,7 @@ The word “agent” is a general term here. It can refer to a large language mo
 * Conversely, the “Market Data Agent” retrieves stock data from the stock exchange.
 
 ### Technologies
-I use ChatGPT-4.1 as the large language model (LLM) and LangGraph as the agent framework. The AI agent is built with Python and Angular. The web user interface is developed entirely through Cursor, an AI-assisted coding tool.
+I use ChatGPT-5 as the large language model (LLM) and LangGraph as the agent framework. The AI agent is built with Python and Angular. The web user interface is developed entirely through Cursor, an AI-assisted coding tool.
 
 The agent functions as a REST service with endpoints for on-demand stock analysis requests. It also runs the "watchlist" job in the background to automatically generate insightful alerts for the user.
 
@@ -87,7 +87,7 @@ Here are the screenshots of the product: -->
 <a href="/assets/ai_agent/oklo_screenshot.png" target="_blank">
   <img src="/assets/ai_agent/oklo_screenshot.png" />
 
-Conversation with the agent about the user's specific questions. Unlike a chatbot, the agent has concrete data points and lets the user take immediate actions.
+In addition to "Quick Insights," the user can also chat with the agent about specific stock topics. Unlike a generic chatbot, the agent has access to the stock's charts and the latest news, so it can provide the user with solid data points for quick decision-making.
 
 <a href="/assets/ai_agent/T_response1.png" target="_blank">
   <img src="/assets/ai_agent/T_response1.png" />
