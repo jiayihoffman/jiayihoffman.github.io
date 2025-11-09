@@ -143,10 +143,10 @@ paths:
     readPass: view456
 ```
 
-To run the docker container with the updated yaml file, I mount the local file "/mediamtx.yml" into the container:
+To run the docker container with the updated yaml file, I mount the local "mediamtx.yml" into the container:
 ```
 % docker run --rm -it --network=host \
-    -v /home/user/mediamtx/mediamtx.yml:/mediamtx.yml \
+    -v /path/to/local/config/mediamtx.yml:/mediamtx.yml \
     bluenviron/mediamtx:latest
 ```
 
@@ -205,7 +205,7 @@ sudo mosquitto_passwd -c /etc/mosquitto/passwd mymqttuser
 
 ```
 
-Create Mosquitto config `/etc/mosquitto/conf.d/default.conf` as "mosquitto" user.
+Create Mosquitto config `/etc/mosquitto/conf.d/default.conf` as "mosquitto" user:
 ```
 allow_anonymous false
 password_file /etc/mosquitto/passwd
