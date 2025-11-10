@@ -99,7 +99,6 @@ class RTMPPush:
         )
     def run(self):
         self.pipeline.set_state(Gst.State.PLAYING)
-        print(f"Pushing stream to: {self.rtmp_url}")
         loop = GLib.MainLoop()
         loop.run()
 
@@ -125,13 +124,6 @@ I configured users and passwords in the `mediamtx.yml` file. The credential appl
 
 ```
 # mediamtx.yml
-server:
-  # default bind ports
-  rtspPort: 8554
-  rtmpPort: 1935
-  hlsPort: 8888
-  webrtcPort: 8889
-
 paths:
   all_others:
     # protect push
@@ -152,7 +144,11 @@ To run the docker container with the updated yaml file, I mount the local "media
 
 When publishing or reading the stream, I include the credentials in the URL. For example, on the robot, I change the rtmp_url of the RTMPPush class to:
 ```
-self.rtmp_url = "rtmp://PUBLIC_CLOUD_SERVER/live/stream?user=mypublisher&pass=secret123"
+MEDIA_SERVER = os.getenv("MEDIA_SERVER")
+MEDIA_PUBLISH_USER = os.getenv("MEDIA_PUBLISH_USER")
+MEDIA_PUBLISH_PASS = os.getenv("MEDIA_PUBLISH_PASS")
+
+self.rtmp_url = f"rtmp://{MEDIA_SERVER}/live/stream?user={MEDIA_PUBLISH_USER}&pass={MEDIA_PUBLISH_PASS}"
 ```
 
 The Droid Vision app has been updated so users can configure the "Use Media Server" option with the media server's username and password. The app automatically inserts these credentials into the URL. 
@@ -205,7 +201,7 @@ sudo mosquitto_passwd -c /etc/mosquitto/passwd mymqttuser
 
 ```
 
-Create Mosquitto config `/etc/mosquitto/conf.d/default.conf` as "mosquitto" user:
+Create Mosquitto config `/etc/mosquitto/conf.d/default.conf` as the "root" user:
 ```
 allow_anonymous false
 password_file /etc/mosquitto/passwd
@@ -231,41 +227,55 @@ pip install fastapi uvicorn paho-mqtt
 
 Python code `bridge.py` for the media bridge server:
 ```
-from fastapi import FastAPI
+import os
+from typing import Optional
+
+from fastapi import FastAPI, HTTPException
 from paho.mqtt import publish
+import uvicorn
 
 app = FastAPI()
 
-MQTT_BROKER = "localhost"
-MQTT_PORT = 1883
-MQTT_USER = "mymqttuser"
-MQTT_PASS = "..."
-TOPIC = "robot/stream"
+MQTT_BROKER = os.getenv("MQTT_BROKER", "localhost")
+MQTT_PORT = int(os.getenv("MQTT_PORT", "1883"))
+MQTT_USER = os.getenv("MQTT_USER")
+MQTT_PASS = os.getenv("MQTT_PASS")
+MQTT_TOPIC = os.getenv("MQTT_TOPIC", "robot/stream")
+
+def _publish(command: str) -> None:
+    auth: Optional[dict] = None
+    if MQTT_USER and MQTT_PASS:
+        auth = {"username": MQTT_USER, "password": MQTT_PASS}
+
+    try:
+        publish.single(
+            MQTT_TOPIC,
+            command,
+            hostname=MQTT_BROKER,
+            port=MQTT_PORT,
+            auth=auth,
+        )
+    except Exception as exc:  # noqa: BLE001
+        raise HTTPException(status_code=502, detail=f"Failed to publish MQTT message: {exc}") from exc
+
 
 @app.get("/")
 def index():
     return {"msg": "Media bridge service running!"}
 
+
 @app.post("/stream/start")
 def start():
-    publish.single(
-        TOPIC, "start",
-        hostname=MQTT_BROKER,
-        port=MQTT_PORT,
-        auth={'username': MQTT_USER, 'password': MQTT_PASS}
-    )
+    _publish("start")
     return {"msg": "Published start"}
+
 
 @app.post("/stream/stop")
 def stop():
-    publish.single(
-        TOPIC, "stop",
-        hostname=MQTT_BROKER,
-        port=MQTT_PORT,
-        auth={'username': MQTT_USER, 'password': MQTT_PASS}
-    )
+    _publish("stop")
     return {"msg": "Published stop"}
 ```
+
 Start FastAPI media bridge server in the Python virtual environment:
 ```
 uvicorn bridge:app --host 0.0.0.0 --port 8000 --reload
@@ -290,29 +300,44 @@ source venv/bin/activate
 pip install paho-mqtt
 ```
 
-Then I create `stream_control.py` that waits for messages from the "robot/stream" topic. If the message is "start", it starts the video streaming on the robot and publishs it to the media server. If the message is "stop", the robot stops streaming video.
+Then I create `stream_control.py` that waits for messages from the "robot/stream" topic. If the message is "start", it starts the video streaming on the robot and publishs it to the media server. If the message is "stop", the robot stops streaming the video.
 
 ```
-import paho.mqtt.client as mqtt
-import subprocess
+import os
 import shlex
+import subprocess
 
-BROKER = "PUBLIC_CLOUD_SERVER"
-PORT = 1883
-MQTT_USER = "mymqttuser"
-MQTT_PASS = "..."
-TOPIC = "robot/stream"
+import paho.mqtt.client as mqtt
 
-# the GStreamer pipeline created earlier
-GST_PIPELINE = """
-libcamerasrc ! video/x-raw,format=YUY2,width=640,height=480,framerate=30/1 ! ...
+MQTT_BROKER = os.getenv("MQTT_BROKER")
+MQTT_PORT = int(os.getenv("MQTT_PORT", "1883"))
+MQTT_USER = os.getenv("MQTT_USER")
+MQTT_PASS = os.getenv("MQTT_PASS")
+MQTT_TOPIC = os.getenv("MQTT_TOPIC", "robot/stream")
+
+MEDIA_SERVER = os.getenv("MEDIA_SERVER")
+MEDIA_PUBLISH_USER = os.getenv("MEDIA_PUBLISH_USER")
+MEDIA_PUBLISH_PASS = os.getenv("MEDIA_PUBLISH_PASS")
+
+RTMP_URL = f"rtmp://{MEDIA_SERVER}/live/stream?user={MEDIA_PUBLISH_USER}&pass={MEDIA_PUBLISH_PASS}"
+
+GST_PIPELINE = f"""
+libcamerasrc ! \
+  video/x-raw,format=YUY2,width=640,height=480,framerate=30/1 ! \
+  videoconvert ! \
+  queue ! \
+  x264enc tune=zerolatency speed-preset=ultrafast bitrate=1500 ! \
+  queue ! \
+  flvmux streamable=true name=mux ! \
+  queue ! \
+  rtmpsink location="{RTMP_URL}"
 """
 
 gst_process = None
 
 def on_connect(client, userdata, flags, rc):
     print(f"Connected with result code {rc}")
-    client.subscribe(TOPIC)
+    client.subscribe(MQTT_TOPIC)
 
 def on_message(client, userdata, msg):
     global gst_process
@@ -339,11 +364,12 @@ def on_message(client, userdata, msg):
             print("No stream to stop.")
 
 client = mqtt.Client()
-client.username_pw_set(MQTT_USER, MQTT_PASS)
+if MQTT_USER:
+    client.username_pw_set(username=MQTT_USER, password=MQTT_PASS)
 client.on_connect = on_connect
 client.on_message = on_message
 
-client.connect(BROKER, PORT, 60)
+client.connect(MQTT_BROKER, MQTT_PORT, 60)
 client.loop_forever()
 ```
 
