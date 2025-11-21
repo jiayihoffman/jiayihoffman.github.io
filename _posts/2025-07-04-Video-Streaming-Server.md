@@ -151,10 +151,10 @@ MEDIA_PUBLISH_PASS = os.getenv("MEDIA_PUBLISH_PASS")
 self.rtmp_url = f"rtmp://{MEDIA_SERVER}/live/stream?user={MEDIA_PUBLISH_USER}&pass={MEDIA_PUBLISH_PASS}"
 ```
 
-The Droid Vision app has been updated so users can configure the "Use Media Server" option with the media server's username and password. The app automatically inserts these credentials into the URL. 
+The Droid Vision app has been updated so users can configure the "Use Media Server" option with the media server's username and password as separate fields. The app automatically inserts these credentials into the URL. 
 
-<a href="/assets/media_server/IMG_0512.PNG" target="_blank">
-  <img src="/assets/media_server/IMG_0512.PNG" />
+<a href="/assets/media_server/IMG_0517.PNG" target="_blank">
+  <img src="/assets/media_server/IMG_0517.PNG" />
 </a>
 
 This method of protection is straightforward but not ideal for large-scale or highly secure applications because it uses hardcoded credentials. Therefore, MediaMTX offers alternative methods that utilize external authentication. For more information, please see the MediaMTX [product site](https://github.com/bluenviron/mediamtx).
@@ -285,6 +285,8 @@ Verify that the messages are sent by the bridge server:
 ```
 mosquitto_sub -h localhost -u mymqttuser -P <mqtt passwd> -t "robot/stream"
 ```
+
+For security reasons, the Media bridge must have SSL enabled. I prefer to use Nginx and generate the SSL certificate with Certbot. Nginx acts as a reverse proxy, forwarding stream commands to the FastAPI application. This way, the FastAPI port 8000 remains hidden behind the firewall, and the cloud instance exposes only the default HTTP ports, 443 and 80.
 
 #### 3. Streaming Control on the Robot
 
