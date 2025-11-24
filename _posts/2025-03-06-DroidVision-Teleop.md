@@ -26,6 +26,10 @@ Rosbridge WebSocket is a communication interface that allows non-ROS application
 
 This is particularly beneficial for applications that need real-time interaction with a ROS system while avoiding the complexity of ROS 2 DDS networking.
 
+<a href="/assets/teleop/Rosbridge.drawio.png" target="_blank">
+  <img src="/assets/teleop/Rosbridge.drawio.png" />
+</a>
+
 ## ROS 2 Docker Container
 To run ROS on a Raspberry Pi, I recommend using the ROS 2 Docker container. It simplifies dependency management, making the environment portable, consistent, and shareable.
 
