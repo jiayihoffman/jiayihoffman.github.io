@@ -153,8 +153,8 @@ self.rtmp_url = f"rtmp://{MEDIA_SERVER}/live/stream?user={MEDIA_PUBLISH_USER}&pa
 
 The Droid Vision app has been updated so users can configure the "Use Media Server" option with the media server's username and password as separate fields. The app automatically inserts these credentials into the URL. 
 
-<a href="/assets/media_server/IMG_0517.PNG" target="_blank">
-  <img src="/assets/media_server/IMG_0517.PNG" />
+<a href="/assets/media_server/IMG_0597.PNG" target="_blank">
+  <img src="/assets/media_server/IMG_0597.PNG" />
 </a>
 
 This method of protection is straightforward but not ideal for large-scale or highly secure applications because it uses hardcoded credentials. Therefore, MediaMTX offers alternative methods that utilize external authentication. For more information, please see the MediaMTX [product site](https://github.com/bluenviron/mediamtx).
@@ -225,7 +225,8 @@ source venv/bin/activate
 pip install fastapi uvicorn paho-mqtt
 ```
 
-Python code `bridge.py` for the media bridge server:
+Python code `bridge.py` for the media bridge server. The APIs use the "x_api_key" header for the Authentication. 
+
 ```
 import os
 from typing import Optional
@@ -240,16 +241,19 @@ MQTT_BROKER = os.getenv("MQTT_BROKER", "localhost")
 MQTT_PORT = int(os.getenv("MQTT_PORT", "1883"))
 MQTT_USER = os.getenv("MQTT_USER")
 MQTT_PASS = os.getenv("MQTT_PASS")
-MQTT_TOPIC = os.getenv("MQTT_TOPIC", "robot/stream")
+API_KEY = os.getenv("API_KEY")
 
-def _publish(command: str) -> None:
+def _publish(command: str, robot_name: str) -> None:
     auth: Optional[dict] = None
     if MQTT_USER and MQTT_PASS:
         auth = {"username": MQTT_USER, "password": MQTT_PASS}
 
+    # Use robot-specific topic: robots/{robot_name}/stream
+    topic = f"robots/{robot_name}/stream"
+
     try:
         publish.single(
-            MQTT_TOPIC,
+            topic,
             command,
             hostname=MQTT_BROKER,
             port=MQTT_PORT,
@@ -258,22 +262,34 @@ def _publish(command: str) -> None:
     except Exception as exc:  # noqa: BLE001
         raise HTTPException(status_code=502, detail=f"Failed to publish MQTT message: {exc}") from exc
 
+def verify_api_key(x_api_key: Optional[str] = Header(None, alias="X-API-Key")) -> None:
+    """Verify API key authentication."""
+    if not API_KEY:
+        # If no API key is configured, skip authentication
+        return
+    
+    if not x_api_key or x_api_key != API_KEY:
+        raise HTTPException(
+            status_code=401, 
+            detail="Invalid or missing API key. Include X-API-Key header."
+        )
+
 
 @app.get("/")
 def index():
     return {"msg": "Media bridge service running!"}
 
 
-@app.post("/stream/start")
-def start():
-    _publish("start")
-    return {"msg": "Published start"}
+@app.post("/robots/{robot_name}/stream/start")
+def start(robot_name: str, _: None = Depends(verify_api_key)):
+    _publish("start", robot_name)
+    return {"msg": f"Published start for robot: {robot_name}"}
 
 
-@app.post("/stream/stop")
-def stop():
-    _publish("stop")
-    return {"msg": "Published stop"}
+@app.post("/robots/{robot_name}/stream/stop")
+def stop(robot_name: str, _: None = Depends(verify_api_key)):
+    _publish("stop", robot_name)
+    return {"msg": f"Published stop for robot: {robot_name}"}
 ```
 
 Start FastAPI media bridge server in the Python virtual environment:
@@ -384,6 +400,6 @@ With that, the robot now waits for the start/stop command for video streaming.
 
 #### 4. Start or Stop Streaming using the Droid Vision App
 
-Last but not least, in the Droid Vision app, I tap "Go Live View" to start the streaming request on the robot. Closing the streaming view stops the video streaming from the robot. 
+Last but not least, in the Droid Vision app, I configure the media server API key and tap "Go Live View" to start the streaming request on the robot. Closing the streaming view stops the video streaming from the robot. 
 
 Cheers!
