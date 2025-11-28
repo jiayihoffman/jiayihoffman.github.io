@@ -23,14 +23,6 @@ Your data is stored on your device and iCloud when using iOS apps. Our apps do n
 
 Your activities within the app remain private and are not accessible by us or any third-party services.
 
-### Data of Stock Analyzer app
-
-The Stock Analyzer app offers insights into stocks' technical details and market sentiment. It saves the insights it generates so you can monitor the app's performance over time.
-
-<!-- The application's database is hosted in the cloud with firewall protection and has no inbound or outbound connections to the outside world. -->
-
-The Stock Analyzer app does not execute trades on your behalf. Therefore, we do NOT request information about your stock brokerage account.
-
 ### Map Data of GPS app
 
 Map data is provided by Apple and Google APIs. This data is never routed through us. 

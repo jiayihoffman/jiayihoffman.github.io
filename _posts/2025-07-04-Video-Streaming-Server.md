@@ -331,7 +331,10 @@ MQTT_BROKER = os.getenv("MQTT_BROKER")
 MQTT_PORT = int(os.getenv("MQTT_PORT", "1883"))
 MQTT_USER = os.getenv("MQTT_USER")
 MQTT_PASS = os.getenv("MQTT_PASS")
-MQTT_TOPIC = os.getenv("MQTT_TOPIC", "robot/stream")
+ROBOT_NAME = os.getenv("ROBOT_NAME", "Robot1")
+
+# Construct robot-specific topic: robots/{robot_name}/stream
+MQTT_TOPIC = f"robots/{ROBOT_NAME}/stream"
 
 MEDIA_SERVER = os.getenv("MEDIA_SERVER")
 MEDIA_PUBLISH_USER = os.getenv("MEDIA_PUBLISH_USER")
@@ -355,6 +358,7 @@ gst_process = None
 
 def on_connect(client, userdata, flags, rc):
     print(f"Connected with result code {rc}")
+    print(f"Subscribing to topic: {MQTT_TOPIC}")
     client.subscribe(MQTT_TOPIC)
 
 def on_message(client, userdata, msg):
