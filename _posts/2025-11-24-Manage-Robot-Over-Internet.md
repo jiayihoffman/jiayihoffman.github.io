@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Control Security Robots over the Internet"
+title: "Remotely Control Security Robots over the Internet"
 date: 2025-12-15 08:45:28 -0600
 categories: Droid_Vision
 image: /assets/teleop/rosbridge_tunnel.drawio.png
@@ -14,7 +14,7 @@ In robotics, the Robot Operating System (ROS) offers software libraries and tool
 
 However, ROS nodes in robots communicate with each other via TCP/UDP sockets, which are not accessible outside the robot's LAN. Rosbridge WebSocket is a communication interface that enables non-ROS applications, such as web or mobile apps, to interact with a ROS system over a WebSocket connection through standard HTTP.
 
-To use the robot as a security robot, I need to be able to interact with it while I am away. How can I do that securely?
+To use the robot as a security robot, I need to be able to interact with it over the internet while I'm away. How can I do that securely?
 
 In my previous post, [Live Video Streaming of Security Robots], I explained how to stream video from the robot over the internet securely. In this article, I will discuss how to control the robot over the internet securely.
 
