@@ -12,11 +12,11 @@ A year ago, I had someone install a dry riverbed along the water path to help ma
 
 <!-- The dry riverbed is made up of three types of rocks: large rocks about the size of two fists line the edges to shape it; small gray rocks form the foundation, and red and white rocks act as accents. We also randomly place some large rocks on top of the dry riverbed to create patterns and break up the uniform appearance. -->
 
-<a href="/assets/garden_bridge/IMG_3331.jpeg" target="_blank">
+<a href="/assets/garden_bridge/IMG_3331.jpeg" >
   <img src="/assets/garden_bridge/IMG_3331.jpeg" />
 </a> 
 
-<a href="/assets/garden_bridge/IMG_3275.jpeg" target="_blank">
+<a href="/assets/garden_bridge/IMG_3275.jpeg" >
   <img src="/assets/garden_bridge/IMG_3275.jpeg" />
 </a> 
 
@@ -30,10 +30,10 @@ I have some 2x6 construction heart redwood lumber from the previous decking proj
 
 Regarding the tools, I need a miter saw to cut lumber to specific lengths. I also need a jigsaw for making curves, along with a drill, impact driver, sander, hammer, rafter square, tape measure, pencils, and a paintbrush. I purchased these tools during the decking project and plan to reuse them for future woodworking. I enjoy woodworking because it requires creativity, artistry, and engineering precision. 
 
-<a href="/assets/garden_bridge/IMG_3320.jpeg" target="_blank">
+<a href="/assets/garden_bridge/IMG_3320.jpeg" >
   <img src="/assets/garden_bridge/IMG_3320.jpeg" width="350"/>
 </a> 
-<a href="/assets/garden_bridge/IMG_3326.jpeg" target="_blank">
+<a href="/assets/garden_bridge/IMG_3326.jpeg" >
   <img src="/assets/garden_bridge/IMG_3326.jpeg" width="370" />
 </a> 
 
@@ -41,11 +41,11 @@ Regarding the tools, I need a miter saw to cut lumber to specific lengths. I als
 
 A flat bridge is easy to build, but an arched one is much more visually appealing. To create an arch on the wood, I used a thin, flexible piece of metal and traced along it. I use small nails to hold the metal piece on the board, making it easy for me to trace. The 3B drawing pencil is best for marking on wood because of its darkness and precise lead.
 
-<a href="/assets/garden_bridge/IMG_3250.jpeg" target="_blank">
+<a href="/assets/garden_bridge/IMG_3250.jpeg" >
   <img src="/assets/garden_bridge/IMG_3250.jpeg" width="350"/>
 </a> 
 
-<a href="/assets/garden_bridge/IMG_3297.jpeg" target="_blank">
+<a href="/assets/garden_bridge/IMG_3297.jpeg" >
   <img src="/assets/garden_bridge/IMG_3297.jpeg" />
 </a> 
 
@@ -53,7 +53,7 @@ I use a board to connect the two arched boards to create an H-shaped base for th
 
 I cut the redwood boards to 27 inches, and one of the pallet boards to 22 inches long. Once cut, all boards need to be stained and sealed. I like to wash the boards before painting them because it removes dirt and mold and gives the wood a fresh, new look. 
 
-<a href="/assets/garden_bridge/IMG_3269.jpeg" target="_blank">
+<a href="/assets/garden_bridge/IMG_3269.jpeg" >
   <img src="/assets/garden_bridge/IMG_3269.jpeg" />
 </a> 
 
@@ -62,44 +62,44 @@ I cut the redwood boards to 27 inches, and one of the pallet boards to 22 inches
 
 To connect the two arched boards, I use galvanized nails with metal brackets. I learned this from my decking project, where galvanized nails are used for all joist hangers and joints because they protect against corrosion and offer superior shear strength, supporting the weight and resisting movement. Before driving in the nails, I pre-drilled the holes to prevent the wood from splitting. It also makes the nails go in easier. I asked ChatGPT, and it suggested using a 1/8 drill bit for the 10D galvanized nails.
 
-<a href="/assets/garden_bridge/IMG_3298.jpeg" target="_blank">
+<a href="/assets/garden_bridge/IMG_3298.jpeg" >
   <img src="/assets/garden_bridge/IMG_3298.jpeg" />
 </a> 
 
-<a href="/assets/garden_bridge/IMG_3299.jpeg" target="_blank">
+<a href="/assets/garden_bridge/IMG_3299.jpeg" >
   <img src="/assets/garden_bridge/IMG_3299.jpeg" width="360" />
 </a> 
-<a href="/assets/garden_bridge/IMG_3300.jpeg" target="_blank">
+<a href="/assets/garden_bridge/IMG_3300.jpeg" >
   <img src="/assets/garden_bridge/IMG_3300.jpeg" width="360" />
 </a> 
 
 To create a precise one-inch overhang on both sides of the bridge, I marked one-inch on the boards so that when I install them onto the base, I can check if both sides are even. To secure the boards, I measure and pre-drill the holes to avoid splitting. 
 
-<a href="/assets/garden_bridge/IMG_3301.jpeg" target="_blank">
+<a href="/assets/garden_bridge/IMG_3301.jpeg" >
   <img src="/assets/garden_bridge/IMG_3301.jpeg"  />
 </a> 
-<a href="/assets/garden_bridge/IMG_3305.jpeg" target="_blank">
+<a href="/assets/garden_bridge/IMG_3305.jpeg" >
   <img src="/assets/garden_bridge/IMG_3305.jpeg"  />
 </a> 
 
 I set the impact driver's setting to "1" so it does not overpower the screws. Once the screws are in, I change the setting to "2" so I can push the screws slightly below the wood surface to create a finished look. 
 
-<a href="/assets/garden_bridge/IMG_3304.jpeg" target="_blank">
+<a href="/assets/garden_bridge/IMG_3304.jpeg" >
   <img src="/assets/garden_bridge/IMG_3304.jpeg"  />
 </a> 
 
-<a href="/assets/garden_bridge/IMG_3306.jpeg" target="_blank">
+<a href="/assets/garden_bridge/IMG_3306.jpeg" >
   <img src="/assets/garden_bridge/IMG_3306.jpeg"  />
 </a> 
 
 ### Backyard Time
 Check out my backyard! I’ve constructed two bridges, one before and one after the gate.
 
-<a href="/assets/garden_bridge/IMG_3264.jpeg" target="_blank">
+<a href="/assets/garden_bridge/IMG_3264.jpeg" >
   <img src="/assets/garden_bridge/IMG_3264.jpeg" />
 </a>
 
-<a href="/assets/garden_bridge/IMG_3335.jpeg" target="_blank">
+<a href="/assets/garden_bridge/IMG_3335.jpeg" >
   <img src="/assets/garden_bridge/IMG_3335.jpeg" />
 </a>
 

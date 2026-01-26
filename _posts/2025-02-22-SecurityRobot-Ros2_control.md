@@ -58,7 +58,7 @@ Arduino is a microcontroller optimized for low-level tasks, such as precise PWM 
 
 I integrated Arduino into my robot design and rewired the motors, LED light, and PIR sensor. Here is its current appearance.
 
-<a href="/assets/IMG_2953.jpeg" target="_blank">
+<a href="/assets/IMG_2953.jpeg" >
   <img src="/assets/IMG_2953.jpeg" />
 </a>
 
@@ -138,7 +138,7 @@ For reference, ros2_control supports various types of control for the [wheeled m
 
 ### Update My Code to Use ros2_control
 
-<a href="/assets/ros2_control.drawio.png" target="_blank">
+<a href="/assets/ros2_control.drawio.png" >
   <img src="/assets/ros2_control.drawio.png" />
 </a>
 

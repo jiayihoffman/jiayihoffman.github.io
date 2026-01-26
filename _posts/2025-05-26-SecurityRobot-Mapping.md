@@ -29,7 +29,7 @@ The SLAM Toolbox enables the robot to generate a map of an unknown environment w
 
 Here is the kitchen map created by my robot, R4, as it circled the kitchen using the [Droid Vision app](https://apps.apple.com/us/app/droid-vision/id6737351549).
 
-<a href="/assets/slam/DroidVision_SLAM2.png" target="_blank">
+<a href="/assets/slam/DroidVision_SLAM2.png" >
   <img src="/assets/slam/DroidVision_SLAM2.png" />
 </a>
 
@@ -54,7 +54,7 @@ The ROS coordinate frame follows the Right-Hand Rule, where X goes forward from 
 
 Here are the frames of my mobile robot, as seen in RViz, with red representing the X-axis, green representing the Y-axis, and blue representing the Z-axis. Every joint defined in the robot's URDF has a frame.
 
-<a href="/assets/slam/rviz2.png" target="_blank">
+<a href="/assets/slam/rviz2.png" >
   <img src="/assets/slam/rviz2.png" />
 </a>
 
@@ -89,7 +89,7 @@ This is my Differential Mobile Robot featuring two independently driven wheels a
 
 At the top of the robot is the RPLidar, which generates the scan data. I have a blog [RPLidar in ROS 2 Docker on Raspberry Pi] that details how to configure and run the Lidar nodes on a real robot. Please check that out.
 
-<a href="/assets/teleop/IMG_3220.jpeg" target="_blank">
+<a href="/assets/teleop/IMG_3220.jpeg" >
   <img src="/assets/teleop/IMG_3220.jpeg" width="400" />
 </a>
 

@@ -15,7 +15,7 @@ I select motor drivers based on the motor's [specifications](https://osepp.com/d
 
 To control the motor's direction, we commonly use a design called an “H-Bridge", which consists of four switches (typically transistors) arranged in an “H” pattern, with the motor connected between the center points of the left and right legs. By turning on specific pairs of switches, current flows through the motor in one direction or the other, allowing it to spin forward or backward. 
 
-<a href="/assets/motor_driver/H_bridge.png" target="_blank">
+<a href="/assets/motor_driver/H_bridge.png" >
   <img src="/assets/motor_driver/H_bridge.png" width="500" />
 </a>
 
@@ -36,10 +36,10 @@ Another problem I face when using the L298N is that it is bulky and requires mes
 * IN1, IN2, IN3, IN4 (control the motor direction) 
 * 5V logic voltage, GND 
 
-<a href="/assets/motor_driver/IMG_3119.jpeg" target="_blank">
+<a href="/assets/motor_driver/IMG_3119.jpeg" >
   <img src="/assets/motor_driver/IMG_3119.jpeg" width="350" />
 </a>
-<a href="/assets/motor_driver/IMG_3079.jpeg" target="_blank">
+<a href="/assets/motor_driver/IMG_3079.jpeg" >
   <img src="/assets/motor_driver/IMG_3079.jpeg" width="350" />
 </a>
 
@@ -52,7 +52,7 @@ Regarding the wiring, TB6612FNG uses the same pins as L298N and can serve as a d
 
 Here are L298N and TB6612FNG side by side; TB6612FNG is less than one-fifth the size of L298N. 
 
-<a href="/assets/motor_driver/IMG_3125.jpeg" target="_blank">
+<a href="/assets/motor_driver/IMG_3125.jpeg" >
   <img src="/assets/motor_driver/IMG_3125.jpeg" width="350" />
 </a>
 
@@ -68,10 +68,10 @@ Here are the pictures of the updated wiring. I replaced the L298N motor driver w
 
 The motor shield has convenient "V" and "G" rails to provide the 5V Logic Voltage and GND for the encoders and sensors. However, they are NOT directly connected to Arduino’s 5V/GND rails, so be careful when using them. More details will be discussed in the next section on how to use them correctly.
 
-<a href="/assets/motor_driver/IMG_3098.jpeg" target="_blank">
+<a href="/assets/motor_driver/IMG_3098.jpeg" >
   <img src="/assets/motor_driver/IMG_3098.jpeg" width="350" />
 </a>
-<a href="/assets/motor_driver/IMG_3099.jpeg" target="_blank">
+<a href="/assets/motor_driver/IMG_3099.jpeg" >
   <img src="/assets/motor_driver/IMG_3099.jpeg" width="350" />
 </a>
 

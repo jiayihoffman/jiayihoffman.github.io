@@ -28,7 +28,7 @@ In a local hobby shop, I found one like this. It is called the "Mojave Grom 4X4 
 
 This RC truck is durable. I occasionally drove it into a wall or a curb, but the front and back bumpers absorbed the impact, so the frame remained unharmed. 
 
-<a href="/assets/IMG_2725.jpeg" target="_blank">
+<a href="/assets/IMG_2725.jpeg">
   <img src="/assets/IMG_2725.jpeg" />
 </a>
 
@@ -36,10 +36,10 @@ This RC truck is durable. I occasionally drove it into a wall or a curb, but the
 
 Now, it is time to upgrade the RC truck. I removed the outer shell and the "drivers", and replaced them with the Raspberry Pi and the Pi camera.
 
-<a href="/assets/IMG_2724.jpeg" target="_blank">
+<a href="/assets/IMG_2724.jpeg">
   <img src="/assets/IMG_2724.jpeg" width="350" />
 </a>
-<a href="/assets/IMG_2675.jpeg" target="_blank">
+<a href="/assets/IMG_2675.jpeg">
   <img src="/assets/IMG_2675.jpeg" width="350" />
 </a>
 
@@ -160,6 +160,6 @@ For detailed step-by-step video tutorial, please check out my another blog post 
 
 Tap the record button next to the play/pause button to record the live stream video.
 
-<a href="/assets/IMG_0523.PNG" target="_blank">
+<a href="/assets/IMG_0523.PNG">
   <img src="/assets/IMG_0523.PNG" />
 </a>

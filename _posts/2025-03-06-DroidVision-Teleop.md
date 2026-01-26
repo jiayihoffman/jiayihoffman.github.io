@@ -26,7 +26,7 @@ Rosbridge WebSocket is a communication interface that allows non-ROS application
 
 This is particularly beneficial for applications that need real-time interaction with a ROS system while avoiding the complexity of ROS 2 DDS networking.
 
-<a href="/assets/teleop/Rosbridge.drawio.png" target="_blank">
+<a href="/assets/teleop/Rosbridge.drawio.png" >
   <img src="/assets/teleop/Rosbridge.drawio.png" />
 </a>
 
@@ -64,10 +64,10 @@ Using the joystick or keypad on the Droid Vision is straightforward. We just ena
 
 ### Joystick Control
 
-<a href="/assets/teleop/IMG_2964.PNG" target="_blank">
+<a href="/assets/teleop/IMG_2964.PNG" >
   <img src="/assets/teleop/IMG_2964.PNG" width="350" />
 </a>
-<a href="/assets/teleop/IMG_2967.PNG" target="_blank">
+<a href="/assets/teleop/IMG_2967.PNG" >
   <img src="/assets/teleop/IMG_2967.PNG" width="350"/>
 </a> 
 
@@ -78,14 +78,14 @@ The value of "ROS2 Topic" depends on your robot, but "/cmd_vel" is the default R
 ### Keypad Control
 If using the "Keypad", we tap the key for the robot to go in the corresponding direction. To continuously send the same velocity messages, we press down the key, which sends the same message every 0.3 seconds.  
 
-<a href="/assets/teleop/IMG_2975.PNG" target="_blank">
+<a href="/assets/teleop/IMG_2975.PNG" >
   <img src="/assets/teleop/IMG_2975.PNG" width="350" />
 </a>
 
 ## Meet Robot R4
 This is a Differential Mobile Robot featuring two independently driven wheels and two caster wheels for balance. The Differential Bot moves forward or backward by spinning both wheels in the same direction, and it rotates in place by spinning the wheels in opposite directions. 
 
-<a href="/assets/teleop/IMG_3220.jpeg" target="_blank">
+<a href="/assets/teleop/IMG_3220.jpeg" >
   <img src="/assets/teleop/IMG_3220.jpeg" width="400" />
 </a>
 

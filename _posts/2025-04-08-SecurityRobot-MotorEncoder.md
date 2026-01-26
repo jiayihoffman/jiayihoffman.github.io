@@ -21,7 +21,7 @@ A motor encoder is a sensor attached to a motor shaft that measures the rotation
 
 Recall from my blog "[ROS 2 Control, Robot Control the Right Way]" that I briefly touched on using motor encoders and ros2_control for a closed-loop robot system. In the following component diagram, the motor encoder contributes to the elements circled in red.
 
-<a href="/assets/motor_encoder/ros2_control.drawio.png" target="_blank">
+<a href="/assets/motor_encoder/ros2_control.drawio.png" >
   <img src="/assets/motor_encoder/ros2_control.drawio.png" />
 </a>
 
@@ -46,23 +46,23 @@ The encoder data is part of the closed-loop system that adjusts motor commands i
 
 The readings from the encoders assist in reporting the position, angle, and velocity of the left and right wheel joints through the /joint_states topic, allowing users to visualize the robot in tools like RViz. This is how my robot appears in RViz.
 
-<a href="/assets/motor_encoder/rviz2.png" target="_blank">
+<a href="/assets/motor_encoder/rviz2.png" >
   <img src="/assets/motor_encoder/rviz2.png" />
 </a>
 
 ## Upgrade DC Motors using Motor Encoders
 I have several [OSEPP DC motors](https://osepp.com/accessories/motors/143-ls-00041-high-torque-electric-motor-6v) that I used for different DIY robotics projects. These motors are high-quality, made from durable materials, and they provide high torque and a long motor shaft. They work well with the mechanical components of my robot.
 
-<a href="/assets/IMG_2910.jpeg" target="_blank">
+<a href="/assets/IMG_2910.jpeg" >
   <img src="/assets/IMG_2910.jpeg" width="350" />
 </a>
-<a href="/assets/motor_encoder/IMG_2990.jpeg" target="_blank">
+<a href="/assets/motor_encoder/IMG_2990.jpeg" >
   <img src="/assets/motor_encoder/IMG_2990.jpeg" width="350" />
 </a>
 
 I considered using a new pair of DC motors with built-in encoders to simplify the setup. However, the ones I found on Amazon do not have a long enough motor shaft to work with my robotic parts. 
 
-<a href="/assets/motor_encoder/IMG_3065.jpeg" target="_blank">
+<a href="/assets/motor_encoder/IMG_3065.jpeg" >
   <img src="/assets/motor_encoder/IMG_3065.jpeg" width="600" />
 </a>
 
@@ -73,10 +73,10 @@ The OSEPP motor encoder is a quadrature encoder, a type of rotary encoder. It pr
 1.	Speed (the rate at which the motor is rotating).
 2.	Direction (If A leads B → clockwise. If B leads A → counterclockwise).
 
-<a href="/assets/motor_encoder/Assembly_Guide_Magnet.jpeg" target="_blank">
+<a href="/assets/motor_encoder/Assembly_Guide_Magnet.jpeg" >
   <img src="/assets/motor_encoder/Assembly_Guide_Magnet.jpeg" width="350" />
 </a>
-<a href="/assets/motor_encoder/Assembly_Guide_A3144_Mount.jpeg" target="_blank">
+<a href="/assets/motor_encoder/Assembly_Guide_A3144_Mount.jpeg" >
   <img src="/assets/motor_encoder/Assembly_Guide_A3144_Mount.jpeg" width="350" />
 </a>
 
@@ -107,7 +107,7 @@ void loop() {
 
 If everything is installed and wired correctly, we should see "value A" and "value B" interlacing in the Serial Plotter when I manually rotate the wheel. 
 
-<a href="/assets/motor_encoder/reading.png" target="_blank">
+<a href="/assets/motor_encoder/reading.png" >
   <img src="/assets/motor_encoder/reading.png" width="600" />
 </a>
 
@@ -115,7 +115,7 @@ If the plot appears as a flat line or shows only one value oscillating while rot
 
 In my case, the problem was that the encoder mount was too far from the magnet. Additionally, the two channels were angled relative to the magnet. The A3144 sensor’s Channels A and B must be close to and parallel to the magnet’s side to detect the magnetic field while the motor shaft spins. Here is a picture of a properly installed motor encoder mount.
 
-<a href="/assets/motor_encoder/IMG_3068.jpeg" target="_blank">
+<a href="/assets/motor_encoder/IMG_3068.jpeg" >
   <img src="/assets/motor_encoder/IMG_3068.jpeg" width="600" />
 </a>
 

@@ -22,7 +22,7 @@ Here’s a brief overview of the architecture. The benefit of agent-based design
 2. This design supports the "in the loop" evaluation, enabling the Orchestrator agent to oversee and critique the output of other agents, promoting reflection - a key aspect of the agentic reasoning pattern that helps improve performance. 
 3. Additionally, the logging agent records the stock's insights and feedback to facilitate ongoing iterative review and improvement.
 
-<a href="/assets/ai_agent/stock_analyzer_components.drawio.png" target="_blank">
+<a href="/assets/ai_agent/stock_analyzer_components.drawio.png" >
   <img src="/assets/ai_agent/stock_analyzer_components.drawio.png" />
 </a>
 
@@ -48,7 +48,7 @@ The agent functions as a REST service with endpoints for on-demand stock analysi
 <!-- #### LangGraph
 Here is the generated LangGraph illustrating the agent workflow where the task is divided into fixed subtasks for greater accuracy and predictability due to the nature of the use case. The workflow includes a human approval step to review and authorize trade execution. 
 
-<a href="/assets/ai_agent/agent_workflow_graph.png" target="_blank">
+<a href="/assets/ai_agent/agent_workflow_graph.png" >
   <img src="/assets/ai_agent/agent_workflow_graph.png" width="500"/>
 
 The graph describes nodes involved in Prompt Chaining, where each agent node processes the output of the previous one. Here is the code for chaining the nodes. 
@@ -84,15 +84,15 @@ Here is the Stock Analyzer, the AI agent that offers professional stock technica
 
 Here are the screenshots of the product: -->
 
-<a href="/assets/ai_agent/oklo_screenshot.png" target="_blank">
+<a href="/assets/ai_agent/oklo_screenshot.png" >
   <img src="/assets/ai_agent/oklo_screenshot.png" />
 
 In addition to "Quick Insights," the user can also chat with the agent about specific stock topics. Unlike a generic chatbot, the agent has access to the stock's charts and the latest news, so it can provide the user with solid data points for quick decision-making.
 
-<a href="/assets/ai_agent/T_response1.png" target="_blank">
+<a href="/assets/ai_agent/T_response1.png" >
   <img src="/assets/ai_agent/T_response1.png" />
 
-<a href="/assets/ai_agent/T_response2.png" target="_blank">
+<a href="/assets/ai_agent/T_response2.png" >
   <img src="/assets/ai_agent/T_response2.png" />
 
 
@@ -104,13 +104,13 @@ Two days before Palantir's earnings report, the Stock Analyzer's insights recomm
 
 Then, on Friday, August 08, the Analyzer recommended that I trim slightly and take some profits because the stock was strongly overbought. One week later, the stock dropped 6% to $177. Ten days later, on August 19, PLTR sits at $157, 16% down from the price point where the Stock Analyzer recommended trimming.
 
-<a href="/assets/ai_agent/pltr_stock_chart.png" target="_blank">
+<a href="/assets/ai_agent/pltr_stock_chart.png" >
   <img src="/assets/ai_agent/pltr_stock_chart.png" />
 
-<a href="/assets/ai_agent/pltr_analysis_8-3.png" target="_blank">
+<a href="/assets/ai_agent/pltr_analysis_8-3.png" >
   <img src="/assets/ai_agent/pltr_analysis_8-3.png" />
 
-<a href="/assets/ai_agent/pltr_analysis_8-8.png" target="_blank">
+<a href="/assets/ai_agent/pltr_analysis_8-8.png" >
   <img src="/assets/ai_agent/pltr_analysis_8-8.png" />
 
 #### Oklo Inc. (OKLO)
@@ -119,10 +119,10 @@ On September 25, the Stock Analyzer Agent recommended that I trim my OKLO positi
 
 This proved to be a very helpful tip. The OKLO stock fell more than $21, closing at $110 over the next two trading days. Additionally, CNBC later reported that "[Oklo has also seen a cluster of insider selling over the past few days](https://www.cnbc.com/2025/09/25/oklo-nuclear-shares-fall-ai-data-center.html)", which matches my AI agent's speculation based on the chart. 
 
-<a href="/assets/ai_agent/oklo_stock_chart.png" target="_blank">
+<a href="/assets/ai_agent/oklo_stock_chart.png" >
   <img src="/assets/ai_agent/oklo_stock_chart.png" />
 
-<a href="/assets/ai_agent/oklo_analysis_9-25.png" target="_blank">
+<a href="/assets/ai_agent/oklo_analysis_9-25.png" >
   <img src="/assets/ai_agent/oklo_analysis_9-25.png" />
 
 

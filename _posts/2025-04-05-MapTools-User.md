@@ -54,10 +54,10 @@ At the top, select your preferred input method for the location:
 * Select the Format (e.g., Decimal Degrees).
 * Enter the location text (coordinates) into the input field that matches the example format. 
 
-<a href="/assets/maptools/IMG_2999.PNG" target="_blank">
+<a href="/assets/maptools/IMG_2999.PNG" >
   <img src="/assets/maptools/IMG_2999.PNG" width="350" />
 </a>
-<a href="/assets/maptools/IMG_3001.PNG" target="_blank">
+<a href="/assets/maptools/IMG_3001.PNG" >
   <img src="/assets/maptools/IMG_3001.PNG" width="350"/>
 </a> 
 
@@ -70,16 +70,16 @@ Permissions Note:
 
 To use the current location, the app needs location permission. If denied, grant access in your device’s Settings > Privacy > Location Services.
 
-<a href="/assets/maptools/IMG_3059.PNG" target="_blank">
+<a href="/assets/maptools/IMG_3059.PNG" >
   <img src="/assets/maptools/IMG_3059.PNG" width="350" />
 </a>
-<a href="/assets/maptools/IMG_3006.PNG" target="_blank">
+<a href="/assets/maptools/IMG_3006.PNG" >
   <img src="/assets/maptools/IMG_3006.PNG" width="350" />
 </a>
 
 For either input method, you can use the map icon to preview the location on the map. Tap the map icon next to the input header to visually confirm if your location is correct.
 
-<a href="/assets/maptools/IMG_0583.PNG" target="_blank">
+<a href="/assets/maptools/IMG_0583.PNG" >
   <img src="/assets/maptools/IMG_0583.PNG" width="500" />
 </a>
 
@@ -121,10 +121,10 @@ Optional: Preview on Map
 #### Choose Distance Units 
 Select your preferred distance unit (e.g., kilometers, miles) from the Distance Unit dropdown.
 
-<a href="/assets/maptools/IMG_2994.PNG" target="_blank">
+<a href="/assets/maptools/IMG_2994.PNG" >
   <img src="/assets/maptools/IMG_2994.PNG" width="350" />
 </a>
-<a href="/assets/maptools/IMG_3007.PNG" target="_blank">
+<a href="/assets/maptools/IMG_3007.PNG" >
   <img src="/assets/maptools/IMG_3007.PNG" width="350"/>
 </a> 
 

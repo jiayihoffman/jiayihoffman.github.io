@@ -13,10 +13,10 @@ This blog will focus on the technologies for building a security camera, particu
 
 ## Choose the Hardware
 
-<a href="/assets/IMG_2903.jpeg" target="_blank">
+<a href="/assets/IMG_2903.jpeg" >
   <img src="/assets/IMG_2903.jpeg" width="350" />
 </a>
-<a href="/assets/IMG_2910.jpeg" target="_blank">
+<a href="/assets/IMG_2910.jpeg" >
   <img src="/assets/IMG_2910.jpeg" width="350" />
 </a>
 

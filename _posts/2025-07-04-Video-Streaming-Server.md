@@ -19,7 +19,7 @@ The solution is to use a public server to relay the video: the video stream from
 
 All video data sent to the server is in memory and passes through. Nothing is stored unless recording is requested. 
 
-<a href="/assets/media_server/video_relay.drawio.png" target="_blank">
+<a href="/assets/media_server/video_relay.drawio.png" >
   <img src="/assets/media_server/video_relay.drawio.png" />
 </a>
 
@@ -153,7 +153,7 @@ self.rtmp_url = f"rtmp://{MEDIA_SERVER}/live/stream?user={MEDIA_PUBLISH_USER}&pa
 
 The Droid Vision app has been updated so users can configure the "Use Media Server" option with the media server's username and password as separate fields. The app automatically inserts these credentials into the URL. 
 
-<a href="/assets/media_server/IMG_0597.PNG" target="_blank">
+<a href="/assets/media_server/IMG_0597.PNG" >
   <img src="/assets/media_server/IMG_0597.PNG" />
 </a>
 
@@ -165,7 +165,7 @@ With a security camera, another critical feature is on-demand video streaming. I
 ### Media Control Server
 A quick solution is for the robot to run a small control client that periodically polls the cloud server for the streaming state, as requested by the mobile app. 
 
-<a href="/assets/media_server/control_server.drawio.png" target="_blank">
+<a href="/assets/media_server/control_server.drawio.png" >
   <img src="/assets/media_server/control_server.drawio.png" />
 </a>
 
@@ -179,7 +179,7 @@ To use messaging in the mobile app, I need to make some deployment adjustments: 
 
 This setup keeps the Droid Vision app simple - it can use HTTP requests to start and stop the robot's streaming through the bridge server rather than sending direct messages by embedding the MQTT client library.  
 
-<a href="/assets/media_server/MQTT.drawio.png" target="_blank">
+<a href="/assets/media_server/MQTT.drawio.png" >
   <img src="/assets/media_server/MQTT.drawio.png" />
 </a>
 

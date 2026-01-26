@@ -9,10 +9,10 @@ image: /assets/rplidar/IMG_3081.jpeg
 
 I purchased RPLidars for my security robot's localization, mapping, and navigation. RPLidar is a 360-degree 2D LiDAR scanner that measures distances and detects obstacles using laser through triangulation or Time-of-Flight.
 
-<a href="/assets/rplidar/IMG_3081.jpeg" target="_blank">
+<a href="/assets/rplidar/IMG_3081.jpeg" >
   <img src="/assets/rplidar/IMG_3081.jpeg" width="350" />
 </a>
-<a href="/assets/rplidar/IMG_2918.jpeg" target="_blank">
+<a href="/assets/rplidar/IMG_2918.jpeg" >
   <img src="/assets/rplidar/IMG_2918.jpeg" width="350"/>
 </a>
 
@@ -208,12 +208,12 @@ $ ros2 launch rplidar_ros view_rviz2.py
 Here, by using RViz, I can view the robot's lidar scan from my Ubuntu desktop. On the left side is the curved bay window of my office. A desk, a bookshelf, and a cat tower sit next to the window, making that area quite busy. 
 
 Scan from the RPLidar C1:
-<a href="/assets/rplidar/rviz2_c1_scan.png" target="_blank">
+<a href="/assets/rplidar/rviz2_c1_scan.png" >
   <img src="/assets/rplidar/rviz2_c1_scan.png" />
 </a>
 
 Scan from the RPLidar A1:
-<a href="/assets/rplidar/rviz2_a1_scan.png" target="_blank">
+<a href="/assets/rplidar/rviz2_a1_scan.png" >
   <img src="/assets/rplidar/rviz2_a1_scan.png" />
 </a>
 
