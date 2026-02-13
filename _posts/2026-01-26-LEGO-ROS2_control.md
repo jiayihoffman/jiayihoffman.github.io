@@ -7,6 +7,7 @@ image: /assets/lego/IMG_4165.jpeg
 ---
 
 [ROS 2 Control, Robot Control the Right Way]: {% link _posts/2025-02-22-SecurityRobot-Ros2_control.md %}
+[Robot Auto Mapping using Nav2 SLAM Toolbox]: {% link _posts/2025-05-26-SecurityRobot-Mapping.md %}
 
 
 My journey of building a mobile robot using ROS2 and ros2_control.
@@ -15,7 +16,7 @@ My journey of building a mobile robot using ROS2 and ros2_control.
 
 ## Introduction
 
-After building a differential robot ([ROS 2 Control, Robot Control the Right Way]) using mechanical parts from [OSEPP](https://osepp.com/mechanical-parts), I am looking to build a more durable mobile robot with stronger motors and a more attractive look. 
+After building a differential robot ([Robot Auto Mapping using Nav2 SLAM Toolbox]) using mechanical parts from [OSEPP](https://osepp.com/mechanical-parts), I am looking to build a more durable mobile robot with stronger motors and a more attractive look. 
 
 I started with RC cars. However, to modify an RC car for ROS2 Control, I would have to discard many of its original RC parts, which is not very economical. Besides, the modified RC car does not look good.
 
@@ -238,10 +239,10 @@ I have a separate `LegoMotorController` class that handles all communication wit
 
 For more information about creating a new ros2_control hardware component, please see the documentation on [control.ros.org](https://control.ros.org/humble/doc/ros2_control/hardware_interface/doc/writing_new_hardware_component.html)
 
-The source code repository of this LEGO car's ros2_control hardware component is [here](https://github.com/jiayihoffman/lego_audi_etron).
+The source code repository for this LEGO car's ros2_control hardware component is: [https://github.com/jiayihoffman/lego_audi_etron](https://github.com/jiayihoffman/lego_audi_etron).
 
 #### Build the project
-When running ROS2 robots, I prefer using a ROS2 Docker container because it provides a complete ROS2 environment with all dependencies and can run on any environment. I have a Dockerfile prepared for this project, located in the [project](https://github.com/jiayihoffman/lego_audi_etron)'s "docker" folder.
+When running ROS2 robots, I prefer using a ROS2 Docker container because it provides a complete ROS2 environment with all dependencies and can run on any environment. I have a Dockerfile prepared for this project, located in the project's [docker](https://github.com/jiayihoffman/lego_audi_etron/tree/main/docker) folder.
 
 To build the Docker image: 
 ```bash
