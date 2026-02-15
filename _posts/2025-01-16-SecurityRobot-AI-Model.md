@@ -167,6 +167,10 @@ while cm.is_camera_open():
 ```
 
 ## Security Alerts
-Here, the security camera spotted a wildcat came to our back deck in the morning of February 02:
+Here, the security camera spotted a wildcat visiting our back deck multiple times on February 07:
 
-![alt text](/assets/02-07-25_095643.jpg)
+![alt text](/assets/object_detection/02-11-25_170430.jpg)
+
+![alt text](/assets/object_detection/02-11-25_123520.jpg)
+
+![alt text](/assets/object_detection/02-07-25_095643.jpg)
