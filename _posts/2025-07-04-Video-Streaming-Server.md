@@ -162,15 +162,15 @@ This method of protection is straightforward but not ideal for large-scale or hi
 ## On-Demand Video Streaming
 With a security camera, another critical feature is on-demand video streaming. Instead of streaming video continuously, the robot streams only when it detects something or when the user requests. 
 
-### Media Control Server
+### Media Control Server (Polling)
 A quick solution is for the robot to run a small control client that periodically polls the cloud server for the streaming state, as requested by the mobile app. 
 
-<a href="/assets/media_server/control_server.drawio.png" >
-  <img src="/assets/media_server/control_server.drawio.png" />
+<a href="/assets/media_server/media_control_server.drawio.png" >
+  <img src="/assets/media_server/media_control_server.drawio.png" />
 </a>
 
-### MQTT Broker 
-The second approach involves using Message Queuing Telemetry Transport (MQTT) for push notifications: set up a public MQTT broker in the cloud. The robot subscribes to a specific MQTT topic, while the mobile app publishes `start` or `stop` messages to that topic. 
+### MQTT Broker (Messaging)
+The second approach involves using Message Queuing Telemetry Transport (MQTT) for push notifications: set up a public cloud MQTT broker. The robot subscribes to a specific MQTT topic, while the mobile app publishes `start` or `stop` messages to that topic. 
 
 Compared to the previous solution, this method eliminates polling, allowing the robot to react instantly. It also scales well to many cameras. MQTT is widely used for smart cameras, doorbells, drones, and other devices, which is why I chose this approach for my security robot. 
 
@@ -405,5 +405,16 @@ With that, the robot now waits for the start/stop command for video streaming.
 #### 4. Start or Stop Streaming using the Droid Vision App
 
 Last but not least, in the Droid Vision app, I configure the media server API key and tap "Go Live View" to start the streaming request on the robot. Closing the streaming view stops the video streaming from the robot. 
+
+<a href="/assets/media_server/IMG_0599.PNG" >
+  <img src="/assets/media_server/IMG_0599.PNG" />
+</a>
+
+## All in One Picture
+Putting video relay and on-demand streaming together:
+
+<a href="/assets/media_server/remote_video_streaming.drawio.png" >
+  <img src="/assets/media_server/remote_video_streaming.drawio.png" />
+</a>
 
 Cheers!
