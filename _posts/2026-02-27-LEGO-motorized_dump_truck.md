@@ -34,8 +34,7 @@ Here are the guts of the Audi rally car. I placed the truck's tires next to the 
 <a href="/assets/lego/IMG_4238.jpeg" >
   <img src="/assets/lego/IMG_4238.jpeg" width="350" />
 </a>
-
-Now let's design the truck's steering and propulsion system. 
+ 
 
 ### Gear Rack with a Double Bevel Gear for Steering
 
@@ -69,11 +68,11 @@ My LEGO Technic Differential Gear has:
   <img src="/assets/lego/IMG_4297.jpeg" />
 </a>
 
-In my truck, the motor sits a bit higher than the differential's input. To transfer the rotation downward, I vertically aligned two spur gears on the motor's output shaft. A spur gear is a flat gear with straight teeth.
+In my truck, the motor sits a bit higher than the Differential's input. To transfer the rotation downward, I vertically aligned two Spur Gears on the motor's output shaft. A Spur Gear is a flat gear with straight teeth.
 
 ### Putting All Together
 
-Here’s the base frame for the upgraded truck! I removed the original gear set that lifts and lowers the cargo bed and used the space for the two motors. 
+Here’s the base frame for the upgraded truck! I removed the original gear set that lifts and lowers the cargo bed and used the space for the two motors and the Differential Gear.
 
 <a href="/assets/lego/IMG_4262.jpeg" >
   <img src="/assets/lego/IMG_4262.jpeg" />
