@@ -91,9 +91,9 @@ Here is how the upgraded truck looks. You won't notice much difference at first 
   <img src="/assets/lego/IMG_4291.jpeg" />
 </a>
 
-Enjoy a quick demo of me driving the construction truck with ROS2 Control using a gamepad!
+Enjoy a quick demo of the construction truck driving autonomously using a [ROS2 script](https://github.com/jiayihoffman/lego_audi_etron/blob/main/scripts/demo_drive.py)!
 
-For information on how to control a LEGO motorized car using a gamepad, please checkout my earlier post on [ROS2 Control of the LEGO Audi e-tron].
+For information on how to control a LEGO motorized car using a gamepad or autonomously, please check out my earlier post on [ROS2 Control of the LEGO Audi e-tron].
 
 <iframe width="800" height="468"
 src="https://www.youtube.com/embed/gXDgUqN7Z0k?autoplay=1&mute=0">

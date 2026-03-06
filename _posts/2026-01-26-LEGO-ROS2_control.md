@@ -310,7 +310,7 @@ To start the ROS2 `teleop_twist_joy`:
 ros2 launch teleop_twist_joy teleop-launch.py joy_config:='ps3' publish_stamped_twist:=true
 ``` 
 
-Here is a demo of driving the car in ROS using ros2_control and visualizing it in RViz.
+Here is a demo of the car driving autonomously using a [ROS2 script](https://github.com/jiayihoffman/lego_audi_etron/blob/main/scripts/demo_drive.py), and we visualize it in RViz.
 
 <iframe width="800" height="468"
 src="https://www.youtube.com/embed/SI8qrDnAVWQ?autoplay=1&mute=0">
